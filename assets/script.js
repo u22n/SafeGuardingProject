@@ -1,7 +1,5 @@
 const form = document.getElementById('reportForm');
 const formMessage = document.getElementById('formMessage');
-// Always start at top on refresh/load
-// (reverted) do not force scroll to top on load
 if(form){
   // Elements used across handlers
   const otherReasonInputGlobal = document.getElementById('otherReason');
