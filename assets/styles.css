@@ -72,7 +72,13 @@ a:focus, a:focus-visible {box-shadow:0 0 0 4px rgba(124,92,255,0.06)}
 .stagger > *:nth-child(3){--stagger-index:2}
 .stagger > *:nth-child(4){--stagger-index:3}
 .stagger > *:nth-child(5){--stagger-index:4}
-.brand-outline{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(124,58,237,0.14);color:var(--brand);background:transparent;padding:.4rem .6rem}
+.brand-outline{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(124,58,237,0.14);color:var(--brand);background:transparent;padding:.4rem .6rem;border-radius:8px;transition:background-color .12s ease, transform .12s ease}
+.brand-outline:hover{background:rgba(124,58,237,0.06);transform:translateY(-1px)}
+
+/* Sleek small "Back to Home" button */
+.back-home{display:inline-flex;align-items:center;gap:.5rem;border-radius:8px;padding:.45rem .7rem;border:1px solid rgba(124,58,237,0.16);color:var(--brand);background:transparent;font-weight:600;text-decoration:none;transition:transform .12s ease, box-shadow .12s ease, background-color .12s ease}
+.back-home:hover{background:var(--brand);color:#fff;transform:translateY(-3px);box-shadow:0 10px 30px rgba(91,33,182,0.12)}
+.back-home:focus-visible{outline:none;box-shadow:0 0 0 6px rgba(124,58,237,0.08)}
 
 @media (prefers-reduced-motion: reduce){
   .fade-in,.float-illustration{animation:none}
