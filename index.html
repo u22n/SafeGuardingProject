@@ -26,9 +26,14 @@
         </svg>
       </button>
       <ul id="primaryNav" class="nav-menu hidden sm:flex gap-4" role="menubar" aria-label="Primary">
-        <li role="none"><a role="menuitem" href="#what" class="nav-link">What</a></li>
+        <li role="none"><a role="menuitem" href="#what" class="nav-link">Overview</a></li>
+        <li role="none"><a role="menuitem" href="#how" class="nav-link">How It Works</a></li>
         <li role="none"><a role="menuitem" href="#signs" class="nav-link">Signs</a></li>
-        <li role="none"><a role="menuitem" href="#actions" class="nav-link">Action Steps</a></li>
+        <li role="none"><a role="menuitem" href="#actions" class="nav-link">Steps</a></li>
+        <li role="none"><a role="menuitem" href="#resources" class="nav-link">Resources</a></li>
+        <li role="none"><a role="menuitem" href="#cases" class="nav-link">Examples</a></li>
+        <li role="none"><a role="menuitem" href="#regional" class="nav-link">Regional</a></li>
+        <li role="none"><a role="menuitem" href="#accessibility" class="nav-link">Accessibility</a></li>
         <li role="none"><a role="menuitem" href="contact.html" class="nav-link brand-btn contact-link">Contact</a></li>
       </ul>
       
@@ -74,6 +79,27 @@
         <div class="bg-white p-4 rounded shadow-sm">
           <h3 class="font-semibold">Your role</h3>
           <p class="mt-2 text-slate-700">Recognise signs, respond calmly, record facts, and report concerns through the proper channels.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="mt-12 fade-in" aria-labelledby="how-heading">
+      <h2 id="how-heading" class="text-2xl font-bold text-slate-900">How It Works</h2>
+      <div class="mt-4 grid gap-3 sm:grid-cols-3">
+        <div class="bg-white p-4 rounded shadow-sm text-center">
+          <div class="brand-bg text-white w-10 h-10 rounded-full mx-auto flex items-center justify-center" aria-hidden="true">1</div>
+          <h3 class="mt-2 font-semibold">Recognise</h3>
+          <p class="mt-1 text-slate-700">Notice signs or disclosures that suggest risk of harm.</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow-sm text-center">
+          <div class="brand-bg text-white w-10 h-10 rounded-full mx-auto flex items-center justify-center" aria-hidden="true">2</div>
+          <h3 class="mt-2 font-semibold">Respond</h3>
+          <p class="mt-1 text-slate-700">Stay calm, reassure, and ensure immediate safety.</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow-sm text-center">
+          <div class="brand-bg text-white w-10 h-10 rounded-full mx-auto flex items-center justify-center" aria-hidden="true">3</div>
+          <h3 class="mt-2 font-semibold">Refer</h3>
+          <p class="mt-1 text-slate-700">Record facts and report via the proper pathway.</p>
         </div>
       </div>
     </section>
@@ -137,7 +163,51 @@
       <a href="contact.html" class="brand-btn px-4 py-2 rounded-lg shadow">Need help?</a>
     </aside>
 
-      <section id="intl" class="mt-12" aria-labelledby="intl-heading">
+      <section id="resources" class="mt-12" aria-labelledby="resources-heading">
+        <h2 id="resources-heading" class="text-2xl font-bold text-slate-900">Resources</h2>
+        <div class="mt-4 grid gap-3 sm:grid-cols-3">
+          <a class="card-inner block" href="#" target="_blank">Policy: Safeguarding</a>
+          <a class="card-inner block" href="#" target="_blank">Guide: Recognising signs</a>
+          <a class="card-inner block" href="#" target="_blank">External: Local services</a>
+        </div>
+      </section>
+
+      <section id="cases" class="mt-12" aria-labelledby="cases-heading">
+        <h2 id="cases-heading" class="text-2xl font-bold text-slate-900">Case Examples</h2>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          <div class="bg-white p-4 rounded shadow-sm"><strong>Scenario A</strong><p class="mt-1 text-slate-700">A student shows sudden fear around a staff member. Action: ensure safety, record facts, report.</p></div>
+          <div class="bg-white p-4 rounded shadow-sm"><strong>Scenario B</strong><p class="mt-1 text-slate-700">An elderly neighbor appears neglected. Action: check immediate needs, contact local safeguarding team.</p></div>
+        </div>
+      </section>
+
+      <section id="regional" class="mt-12" aria-labelledby="regional-heading">
+        <h2 id="regional-heading" class="text-2xl font-bold text-slate-900">Regional Contacts</h2>
+        <div class="mt-3 flex items-center gap-3">
+          <label for="regionFilter" class="text-sm">Region</label>
+          <select id="regionFilter" class="border rounded px-2 py-1">
+            <option value="all" selected>All</option>
+            <option value="uk">United Kingdom</option>
+            <option value="us">United States</option>
+            <option value="eu">European Union</option>
+            <option value="au">Australia</option>
+            <option value="ca">Canada</option>
+            <option value="nz">New Zealand</option>
+          </select>
+        </div>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2" id="regionalGrid">
+          <div class="bg-white p-4 rounded shadow-sm" data-region="uk"><strong class="block">United Kingdom</strong><span class="text-slate-600">999</span></div>
+          <div class="bg-white p-4 rounded shadow-sm" data-region="us"><strong class="block">United States</strong><span class="text-slate-600">911</span></div>
+          <div class="bg-white p-4 rounded shadow-sm" data-region="eu"><strong class="block">European Union</strong><span class="text-slate-600">112</span></div>
+          <div class="bg-white p-4 rounded shadow-sm" data-region="au"><strong class="block">Australia</strong><span class="text-slate-600">000</span></div>
+          <div class="bg-white p-4 rounded shadow-sm" data-region="ca"><strong class="block">Canada</strong><span class="text-slate-600">911</span></div>
+          <div class="bg-white p-4 rounded shadow-sm" data-region="nz"><strong class="block">New Zealand</strong><span class="text-slate-600">111</span></div>
+        </div>
+      </section>
+
+      <section id="accessibility" class="mt-12" aria-labelledby="accessibility-heading">
+        <h2 id="accessibility-heading" class="text-2xl font-bold text-slate-900">Accessibility</h2>
+        <p class="mt-2 text-slate-700">We aim for WCAG AA accessibility. If you spot issues or have suggestions, please <a href="contact.html" class="brand-text">send feedback</a>.</p>
+      </section>
         <h2 id="intl-heading" class="text-2xl font-bold text-slate-900">Emergency Numbers — Selected Countries</h2>
         <p class="mt-2 text-slate-700">Quick list of emergency numbers for commonly used regions.</p>
         <div class="mt-4 grid gap-3 sm:grid-cols-2">

@@ -213,6 +213,20 @@ if(navToggle && primaryNav){
   })
 }
 
+// Regional contacts filter
+const regionFilter = document.getElementById('regionFilter');
+const regionalGrid = document.getElementById('regionalGrid');
+if(regionFilter && regionalGrid){
+  regionFilter.addEventListener('change', function(){
+    const val = regionFilter.value;
+    regionalGrid.querySelectorAll('[data-region]').forEach(function(card){
+      const region = card.getAttribute('data-region');
+      const show = (val === 'all' || val === region);
+      card.classList.toggle('hidden', !show);
+    });
+  });
+}
+
 // FAQ accordion
 document.querySelectorAll('.faq-toggle').forEach(function(btn){
   btn.addEventListener('click', function(){

@@ -125,3 +125,14 @@ form#reportForm ::placeholder{color:#94a3b8}
 .nav-toggle{font-size:28px; line-height:1; color:var(--brand); padding:6px 10px; border-radius:8px; border:1px solid rgba(var(--brand-rgb),0.2); background:rgba(var(--brand-rgb),0.06)}
 .nav-toggle:focus{outline:2px solid rgba(var(--brand-rgb),0.35); outline-offset:2px}
 .nav-toggle[aria-expanded="true"]{background:rgba(var(--brand-rgb),0.12)}
+html{
+  scroll-behavior: smooth;
+}
+
+.card-inner{
+  background: #ffffff;
+  color: #1f2937;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
