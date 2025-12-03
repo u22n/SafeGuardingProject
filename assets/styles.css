@@ -1,8 +1,8 @@
 :root{
-  --brand: #0ea5a4;
-  --brand-dark: #047d77;
-  --muted: #475569;
-  --card-bg: #f8fafc;
+  --brand: #7c3aed; /* purple */
+  --brand-dark: #5b21b6; /* darker purple */
+  --muted: #6b7280;
+  --card-bg: #ffffff; /* white cards on page */
 }
 *{box-sizing:border-box}
 html,body,#root{height:100%}
@@ -22,7 +22,7 @@ nav[aria-label="Main navigation"] a[role="menuitem"]:hover::after, nav[aria-labe
 
 /* Top contact link special hover */
 .contact-link{border-radius:6px;padding:.35rem .6rem}
-.contact-link:hover{background:rgba(124,92,255,0.12);color:#fff}
+.contact-link:hover{background:var(--brand);color:#fff}
 .site-header{background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.03)}
 .site-footer{border-top:1px solid rgba(15,23,42,0.04);padding-top:1.5rem}
 .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem}
@@ -72,7 +72,7 @@ a:focus, a:focus-visible {box-shadow:0 0 0 4px rgba(124,92,255,0.06)}
 .stagger > *:nth-child(3){--stagger-index:2}
 .stagger > *:nth-child(4){--stagger-index:3}
 .stagger > *:nth-child(5){--stagger-index:4}
-.brand-outline{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(124,92,255,0.12);color:var(--brand-dark);background:transparent;padding:.4rem .6rem}
+.brand-outline{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(124,58,237,0.14);color:var(--brand);background:transparent;padding:.4rem .6rem}
 
 @media (prefers-reduced-motion: reduce){
   .fade-in,.float-illustration{animation:none}
