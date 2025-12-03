@@ -1,3 +1,20 @@
+// Ensure page starts at the top on load/refresh/navigation (covers bfcache/pageshow)
+(function ensureStartAtTop(){
+  try{
+    window.addEventListener('pageshow', function(e){
+      if(e.persisted){
+        try{ window.scrollTo({top:0,left:0,behavior:'auto'}); }catch(err){}
+      }
+    });
+    window.addEventListener('load', function(){
+      // small timeout to override any browser restore
+      setTimeout(function(){ try{ window.scrollTo({top:0,left:0,behavior:'auto'}); }catch(err){} }, 0);
+    });
+    // Attempt to reset scroll before unload so reload starts from top in some browsers
+    window.addEventListener('beforeunload', function(){ try{ window.scrollTo(0,0); }catch(err){} });
+  }catch(e){/* no-op */}
+})();
+
 const form = document.getElementById('reportForm');
 const formMessage = document.getElementById('formMessage');
 if(form){
