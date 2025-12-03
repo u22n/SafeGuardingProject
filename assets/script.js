@@ -47,14 +47,26 @@ if(form){
   function formatIntl(raw){
     const lib = window.libphonenumber || window['libphonenumber-js'];
     let candidate = raw.trim();
-    // Do not guess country; only format if international
-    if(!candidate.startsWith('+')){
-      candidate = candidate.replace(/[^\d]/g,'');
-    }
+    // Determine a sensible default country from browser locale
+    const locale = (navigator.language || navigator.userLanguage || 'en-GB').toUpperCase();
+    const localeCountryMap = {
+      'EN-GB':'GB','EN-US':'US','EN-CA':'CA','EN-AU':'AU','EN-NZ':'NZ','EN-IE':'IE',
+      'FR-FR':'FR','DE-DE':'DE','ES-ES':'ES','IT-IT':'IT'
+    };
+    const defaultCountry = localeCountryMap[locale] || 'GB';
     try{
-      const phone = lib.parsePhoneNumber(candidate);
-      if(phone && phone.isValid()){
-        return phone.formatInternational();
+      if(candidate.startsWith('+')){
+        const phone = lib.parsePhoneNumber(candidate);
+        if(phone && phone.isValid()){
+          return phone.formatInternational();
+        }
+      } else {
+        // Attempt parsing using a defaultCountry for local numbers
+        const stripped = candidate.replace(/[^\d]/g,'');
+        const phone = lib.parsePhoneNumberFromString(stripped, defaultCountry);
+        if(phone && phone.isValid()){
+          return phone.formatInternational();
+        }
       }
     }catch(e){/* ignore parse errors */}
     return candidate.replace(/[^+\d]/g,'');
