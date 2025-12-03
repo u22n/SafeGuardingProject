@@ -4,6 +4,8 @@ if(form){
   // Elements used across handlers
   const otherReasonInputGlobal = document.getElementById('otherReason');
   const otherReasonWrapGlobal = document.getElementById('otherReasonWrap');
+  const emailInput = document.getElementById('email');
+  const emailSuggestions = document.getElementById('emailSuggestions');
   // Show/hide Other reason field immediately on change (before submit)
   form.topic?.addEventListener('change', function(){
     if(form.topic.value === 'Other'){
@@ -21,6 +23,25 @@ if(form){
     otherReasonWrapGlobal?.classList.add('hidden');
   }
 
+  // Email domain suggestions: show after '@'
+  emailInput?.addEventListener('input', function(){
+    const val = emailInput.value;
+    const atIndex = val.indexOf('@');
+    if(atIndex !== -1){
+      emailSuggestions?.classList.remove('hidden');
+      const pre = val.slice(0, atIndex + 1);
+      // update click handlers to fill domain
+      emailSuggestions?.querySelectorAll('li').forEach(function(li){
+        li.onclick = function(){
+          emailInput.value = pre + li.dataset.domain;
+          emailSuggestions.classList.add('hidden');
+        }
+      })
+    } else {
+      emailSuggestions?.classList.add('hidden');
+    }
+  })
+
 form.addEventListener('submit', function(e){
   e.preventDefault();
   const name = form.name.value.trim();
@@ -31,10 +52,20 @@ form.addEventListener('submit', function(e){
   const details = form.details.value.trim();
   const evidence = document.getElementById('evidence');
   const confirmCopy = document.getElementById('confirmCopy');
-  // Auto-format phone: keep digits and leading +, group visually
+  // Auto-format phone: normalize and apply country code if local style
+  const country = document.getElementById('country');
   if(form.phone && form.phone.value){
     const raw = form.phone.value.trim();
-    const normalized = raw.replace(/[^+\d]/g,'');
+    let normalized = raw.replace(/[^+\d]/g,'');
+    const ccMap = {GB:'+44',US:'+1',CA:'+1',AU:'+61',NZ:'+64',IE:'+353',FR:'+33',DE:'+49',ES:'+34',IT:'+39'};
+    const cc = ccMap[country?.value || 'GB'];
+    if(normalized.startsWith('+')){
+      // already international, leave as-is
+    } else if(normalized.startsWith('0')){
+      normalized = cc + normalized.slice(1);
+    } else {
+      normalized = cc + normalized;
+    }
     form.phone.value = normalized;
   }
   
