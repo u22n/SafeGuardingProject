@@ -9,14 +9,19 @@ form.addEventListener('submit', function(e){
   const otherReasonInput = document.getElementById('otherReason');
   const otherReasonWrap = document.getElementById('otherReasonWrap');
   const details = form.details.value.trim();
+  
+  form.name.setAttribute('aria-invalid','false');
+  form.email.setAttribute('aria-invalid','false');
   if(!name || !email || !details){
     formMessage.textContent = 'Please complete all required fields.';
-    formMessage.style.color = 'var(--brand)';
+    formMessage.style.color = '#ef4444';
     return
   }
   if(!topic){
     formMessage.textContent = 'Please select a topic.';
     formMessage.style.color = '#ef4444';
+    form.topic.setAttribute('aria-invalid','true');
+    form.topic.focus();
     return
   }
   if(topic === 'Other'){
@@ -25,6 +30,8 @@ form.addEventListener('submit', function(e){
     if(!reason){
       formMessage.textContent = 'Please provide a reason for Other.';
       formMessage.style.color = '#ef4444';
+      otherReasonInput?.setAttribute('aria-invalid','true');
+      otherReasonInput?.focus();
       return
     }
   } else {
@@ -44,6 +51,8 @@ form.addEventListener('submit', function(e){
   if(!emailPattern.test(email)){
     formMessage.textContent = 'Please enter a valid email address.';
     formMessage.style.color = '#ef4444';
+    form.email.setAttribute('aria-invalid','true');
+    form.email.focus();
     return
   }
   formMessage.textContent = '';
