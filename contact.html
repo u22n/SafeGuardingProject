@@ -69,22 +69,8 @@
         </div>
         <div>
           <label for="phone" class="block text-sm font-medium text-slate-700">Phone (optional)</label>
-          <div class="mt-1 grid grid-cols-[140px_1fr] gap-2">
-            <select id="country" name="country" class="border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none">
-              <option value="GB" selected>United Kingdom (+44)</option>
-              <option value="US">United States (+1)</option>
-              <option value="CA">Canada (+1)</option>
-              <option value="AU">Australia (+61)</option>
-              <option value="NZ">New Zealand (+64)</option>
-              <option value="IE">Ireland (+353)</option>
-              <option value="FR">France (+33)</option>
-              <option value="DE">Germany (+49)</option>
-              <option value="ES">Spain (+34)</option>
-              <option value="IT">Italy (+39)</option>
-            </select>
-            <input id="phone" name="phone" type="tel" aria-describedby="phone-help" placeholder="07… or local format" class="block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
-          </div>
-          <p id="phone-help" class="mt-1 text-xs text-slate-500">We format to international style automatically based on country.</p>
+          <input id="phone" name="phone" type="tel" aria-describedby="phone-help" placeholder="Enter phone (+… or local)" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
+          <p id="phone-help" class="mt-1 text-xs text-slate-500">We format automatically; include +country code if known.</p>
         </div>
         <div>
           <label for="topic" class="block text-sm font-medium text-slate-700">Topic <span class="text-red-500" aria-hidden="true">*</span></label>

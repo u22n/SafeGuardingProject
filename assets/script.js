@@ -7,7 +7,6 @@ if(form){
   const emailInput = document.getElementById('email');
   const emailSuggestions = document.getElementById('emailSuggestions');
   const phoneInput = document.getElementById('phone');
-  const countrySelect = document.getElementById('country');
   // Show/hide Other reason field immediately on change (before submit)
   form.topic?.addEventListener('change', function(){
     if(form.topic.value === 'Other'){
@@ -45,17 +44,12 @@ if(form){
   })
 
   // Phone formatting helpers
-  function formatIntl(raw, cc){
+  function formatIntl(raw){
     const lib = window.libphonenumber || window['libphonenumber-js'];
     let candidate = raw.trim();
-    // Prepend cc if local style
+    // Do not guess country; only format if international
     if(!candidate.startsWith('+')){
-      const stripped = candidate.replace(/[^\d]/g,'');
-      if(stripped.startsWith('0')){
-        candidate = cc + stripped.slice(1);
-      } else if(stripped.length){
-        candidate = cc + stripped;
-      }
+      candidate = candidate.replace(/[^\d]/g,'');
     }
     try{
       const phone = lib.parsePhoneNumber(candidate);
@@ -65,15 +59,12 @@ if(form){
     }catch(e){/* ignore parse errors */}
     return candidate.replace(/[^+\d]/g,'');
   }
-  const ccMap = {GB:'+44',US:'+1',CA:'+1',AU:'+61',NZ:'+64',IE:'+353',FR:'+33',DE:'+49',ES:'+34',IT:'+39'};
-  function currentCC(){return ccMap[countrySelect?.value || 'GB']}
   function applyPhoneFormat(){
     if(phoneInput && phoneInput.value){
-      phoneInput.value = formatIntl(phoneInput.value, currentCC());
+      phoneInput.value = formatIntl(phoneInput.value);
     }
   }
   phoneInput?.addEventListener('blur', applyPhoneFormat);
-  countrySelect?.addEventListener('change', applyPhoneFormat);
 
 form.addEventListener('submit', function(e){
   e.preventDefault();
