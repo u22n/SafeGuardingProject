@@ -22,7 +22,7 @@ nav[aria-label="Main navigation"]{backdrop-filter:blur(6px)}
 nav[aria-label="Main navigation"] a[role="menuitem"]:hover{color:var(--brand-dark)}
 
 /* Nav underline effect */
-nav[aria-label="Main navigation"] a[role="menuitem"]{position:relative;padding:.25rem .45rem}
+nav[aria-label="Main navigation"] a[role="menuitem"]{position:relative;padding:.5rem .7rem;letter-spacing:.015em}
 nav[aria-label="Main navigation"] a[role="menuitem"]::after{content:"";position:absolute;left:0;right:auto;bottom:-6px;height:2px;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-dark));transition:width .22s cubic-bezier(.2,.9,.2,1)}
 nav[aria-label="Main navigation"] a[role="menuitem"]:hover::after, nav[aria-label="Main navigation"] a[role="menuitem"][aria-current="page"]::after{width:100%}
 /* Ensure brand button in nav remains readable on hover */
