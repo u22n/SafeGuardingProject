@@ -8,11 +8,13 @@ form.addEventListener('submit', function(e){
   const details = form.details.value.trim();
   if(!name || !email || !details){
     formMessage.textContent = 'Please complete all required fields.';
+    formMessage.style.color = 'var(--brand)';
     return
   }
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   if(!emailPattern.test(email)){
     formMessage.textContent = 'Please enter a valid email address.';
+    formMessage.style.color = '#ef4444';
     return
   }
   formMessage.textContent = '';

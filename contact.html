@@ -35,44 +35,56 @@
   </header>
 
   <main class="max-w-3xl mx-auto px-4 py-12 fade-in">
-    <div class="flex items-center justify-between mb-6">
+    <div class="flex items-center justify-between mb-8">
       <div>
-        <h1 class="text-2xl font-extrabold" style="font-family: 'Poppins', 'Inter', system-ui;">Contact & Report</h1>
-        <p class="text-slate-700">Send a confidential report to our safeguarding team. We review all reports promptly.</p>
+        <h1 class="text-3xl font-extrabold" style="font-family: 'Poppins', 'Inter', system-ui;">Contact & Report</h1>
+        <p class="mt-2 text-slate-700">Send a confidential report to our safeguarding team. We review all reports promptly.</p>
       </div>
       <div>
         <a href="index.html" class="back-home" aria-label="Back to Home">← Back to Home</a>
       </div>
     </div>
 
-    <form id="reportForm" class="grid gap-4 bg-white p-6 rounded shadow-sm" novalidate>
-      <div>
-        <label for="name" class="block text-sm font-medium text-slate-700">Your name</label>
-        <input id="name" name="name" type="text" required class="mt-1 block w-full border rounded px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
+    <form id="reportForm" class="bg-white p-6 rounded-lg shadow-sm" novalidate>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div>
+          <label for="name" class="block text-sm font-medium text-slate-700">Your name <span class="text-red-500" aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" required placeholder="Jane Doe" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-slate-700">Email <span class="text-red-500" aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" required placeholder="jane@example.com" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
+        </div>
+        <div>
+          <label for="phone" class="block text-sm font-medium text-slate-700">Phone (optional)</label>
+          <input id="phone" name="phone" type="tel" placeholder="+44 0000 000000" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
+        </div>
+        <div>
+          <label for="topic" class="block text-sm font-medium text-slate-700">Topic</label>
+          <select id="topic" name="topic" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none">
+            <option value="">Choose a topic…</option>
+            <option>Immediate concern</option>
+            <option>General enquiry</option>
+            <option>Follow-up</option>
+          </select>
+        </div>
+        <div class="md:col-span-2">
+          <label for="details" class="block text-sm font-medium text-slate-700">Details <span class="text-red-500" aria-hidden="true">*</span></label>
+          <textarea id="details" name="details" rows="6" required placeholder="Provide clear, factual details…" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none"></textarea>
+          <p class="mt-2 text-xs text-slate-500">Avoid sharing sensitive information unless necessary for safeguarding.</p>
+        </div>
       </div>
-      <div>
-        <label for="email" class="block text-sm font-medium text-slate-700">Email</label>
-        <input id="email" name="email" type="email" required class="mt-1 block w-full border rounded px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
-      </div>
-      <div>
-        <label for="phone" class="block text-sm font-medium text-slate-700">Phone (optional)</label>
-        <input id="phone" name="phone" type="tel" class="mt-1 block w-full border rounded px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
-      </div>
-      <div>
-        <label for="details" class="block text-sm font-medium text-slate-700">Details</label>
-        <textarea id="details" name="details" rows="6" required class="mt-1 block w-full border rounded px-3 py-2 focus:ring-indigo-300 focus:outline-none"></textarea>
-      </div>
-      <div class="flex items-center gap-3">
-        <button id="submitBtn" type="submit" class="brand-btn px-4 py-2 rounded">Submit Report</button>
+      <div class="mt-6 flex items-center gap-3">
+        <button id="submitBtn" type="submit" class="brand-btn px-4 py-2 rounded-lg">Submit Report</button>
         <div id="formMessage" role="status" aria-live="polite" class="text-sm text-slate-700"></div>
       </div>
     </form>
 
-    <section class="mt-8">
+    <section class="mt-10">
       <h2 class="text-lg font-semibold">Other ways to contact us</h2>
-      <ul class="mt-3 space-y-2">
-        <li>Email: <a href="mailto:safeguard@example.org" class="brand-text">safeguard@example.org</a></li>
-        <li>Phone (UK): <a href="tel:+440000000000" class="brand-text">+44 0000 000000</a></li>
+      <ul class="mt-3 grid gap-3 sm:grid-cols-2">
+        <li class="card-inner"><strong>Email</strong><div class="mt-1"><a href="mailto:safeguard@example.org" class="brand-text">safeguard@example.org</a></div></li>
+        <li class="card-inner"><strong>Phone (UK)</strong><div class="mt-1"><a href="tel:+440000000000" class="brand-text">+44 0000 000000</a></div></li>
       </ul>
     </section>
 

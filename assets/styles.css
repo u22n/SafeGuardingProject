@@ -116,6 +116,9 @@ main .bg-white{background:var(--card-bg) !important}
 
 /* Card inner wrapper to give subtle lifted panels on dark bg */
 .card-inner{background:var(--card-bg);padding:1.25rem;border-radius:10px}
+form#reportForm input, form#reportForm select, form#reportForm textarea{border:1px solid rgba(2,6,23,0.12)}
+form#reportForm input:focus, form#reportForm select:focus, form#reportForm textarea:focus{border-color:rgba(var(--brand-rgb),0.35)}
+form#reportForm ::placeholder{color:#94a3b8}
 
 /* Mobile nav toggle styling */
 .nav-toggle{font-size:28px; line-height:1; color:var(--brand); padding:6px 10px; border-radius:8px; border:1px solid rgba(var(--brand-rgb),0.2); background:rgba(var(--brand-rgb),0.06)}
