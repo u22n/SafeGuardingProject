@@ -1,6 +1,7 @@
 :root{
-  --brand: #4f46e5;
-  --muted: #6b7280;
+  --brand: #0ea5a4;
+  --brand-dark: #047d77;
+  --muted: #475569;
 }
 *{box-sizing:border-box}
 html,body,#root{height:100%}
@@ -14,3 +15,13 @@ a:focus,input:focus,textarea:focus,button:focus{outline:2px solid rgba(79,70,229
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .hidden{display:none}
 .form-success{color:var(--brand)}
+
+.brand-text{color:var(--brand)}
+.brand-bg{background:linear-gradient(90deg, var(--brand), var(--brand-dark))}
+.brand-btn{background:var(--brand);color:#fff}
+.brand-btn:hover{background:var(--brand-dark)}
+.brand-border{border:1px solid var(--brand);color:var(--brand)}
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important}
+}
