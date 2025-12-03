@@ -118,8 +118,16 @@ main .bg-white{background:var(--card-bg) !important}
 
 /* Card inner wrapper to give subtle lifted panels on dark bg */
 .card-inner{background:var(--card-bg);padding:1.25rem;border-radius:10px}
-section.card-wrap{background:#fff;border:1px solid rgba(2,6,23,0.06);border-radius:12px;padding:1.25rem}
-section.card-wrap + section.card-wrap{margin-top:1rem}
+section.card-wrap{background:#fff;border:1px solid rgba(2,6,23,0.06);border-radius:16px;padding:1.5rem;box-shadow:0 8px 24px rgba(2,6,23,0.06)}
+section.card-wrap + section.card-wrap{margin-top:1.25rem}
+section.card-wrap h2{margin-bottom:.75rem}
+.card-grid{display:grid;gap:1rem}
+.card-grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card-grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:#fff;border:1px solid rgba(2,6,23,0.08);border-radius:14px;padding:1rem;box-shadow:0 4px 18px rgba(2,6,23,0.05);transition:transform .12s ease, box-shadow .12s ease}
+.card:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(2,6,23,0.08)}
+.card strong{font-weight:600}
+.section-spacer{margin-top:1.25rem}
 form#reportForm input, form#reportForm select, form#reportForm textarea{border:1px solid rgba(2,6,23,0.12)}
 form#reportForm input:focus, form#reportForm select:focus, form#reportForm textarea:focus{border-color:rgba(var(--brand-rgb),0.35)}
 form#reportForm ::placeholder{color:#94a3b8}

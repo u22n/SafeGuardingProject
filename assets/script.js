@@ -36,12 +36,47 @@ if(form){
         li.onclick = function(){
           emailInput.value = pre + li.dataset.domain;
           emailSuggestions.classList.add('hidden');
+          emailInput.focus();
         }
       })
     } else {
       emailSuggestions?.classList.add('hidden');
     }
   })
+
+  // Keyboard controls for email suggestions
+  emailInput?.addEventListener('keydown', function(ev){
+    if(emailSuggestions?.classList.contains('hidden')) return;
+    const items = Array.from(emailSuggestions.querySelectorAll('li'));
+    if(items.length === 0) return;
+    const active = emailSuggestions.querySelector('li[aria-selected="true"]');
+    let index = active ? items.indexOf(active) : -1;
+    if(ev.key === 'ArrowDown'){
+      ev.preventDefault();
+      index = Math.min(items.length - 1, index + 1);
+      items.forEach(i => i.removeAttribute('aria-selected'));
+      items[index].setAttribute('aria-selected','true');
+      items[index].scrollIntoView({block:'nearest'});
+    }else if(ev.key === 'ArrowUp'){
+      ev.preventDefault();
+      index = Math.max(0, index - 1);
+      items.forEach(i => i.removeAttribute('aria-selected'));
+      items[index].setAttribute('aria-selected','true');
+      items[index].scrollIntoView({block:'nearest'});
+    }else if(ev.key === 'Enter'){
+      if(index >= 0){
+        const domain = items[index].dataset.domain;
+        const val = emailInput.value;
+        const atIndex = val.indexOf('@');
+        const pre = val.slice(0, atIndex + 1);
+        emailInput.value = pre + domain;
+        emailSuggestions.classList.add('hidden');
+        ev.preventDefault();
+      }
+    }else if(ev.key === 'Escape'){
+      emailSuggestions.classList.add('hidden');
+    }
+  });
 
   // Phone formatting helpers
   function formatIntl(raw){
@@ -107,10 +142,23 @@ form.addEventListener('submit', function(e){
   
   form.name.setAttribute('aria-invalid','false');
   form.email.setAttribute('aria-invalid','false');
-  if(!name || !email || !details){
-    formMessage.textContent = 'Please complete all required fields.';
+  // Inline field-level errors: clear previous
+  document.querySelectorAll('.field-error').forEach(function(el){el.remove()});
+  function showError(inputEl, message){
+    const p = document.createElement('p');
+    p.className = 'field-error mt-1 text-xs text-red-500';
+    p.textContent = message;
+    inputEl.setAttribute('aria-invalid','true');
+    inputEl.after(p);
+  }
+  let hasError = false;
+  if(!name){ showError(form.name, 'Name is required.'); hasError = true; }
+  if(!email){ showError(form.email, 'Email is required.'); hasError = true; }
+  if(!details){ showError(form.details, 'Details are required.'); hasError = true; }
+  if(hasError){
+    formMessage.textContent = 'Please fix the errors and try again.';
     formMessage.style.color = '#ef4444';
-    return
+    return;
   }
   if(!topic){
     formMessage.textContent = 'Please select a topic.';
@@ -157,11 +205,11 @@ form.addEventListener('submit', function(e){
   // live toggle handled above (outside submit)
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   if(!emailPattern.test(email)){
-    formMessage.textContent = 'Please enter a valid email address.';
+    showError(form.email, 'Enter a valid email (e.g., name@example.com).');
+    formMessage.textContent = 'Please fix the errors and try again.';
     formMessage.style.color = '#ef4444';
-    form.email.setAttribute('aria-invalid','true');
     form.email.focus();
-    return
+    return;
   }
   formMessage.textContent = '';
   const modal = document.getElementById('thankYouModal');
