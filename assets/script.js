@@ -6,6 +6,8 @@ if(form){
   const otherReasonWrapGlobal = document.getElementById('otherReasonWrap');
   const emailInput = document.getElementById('email');
   const emailSuggestions = document.getElementById('emailSuggestions');
+  const phoneInput = document.getElementById('phone');
+  const countrySelect = document.getElementById('country');
   // Show/hide Other reason field immediately on change (before submit)
   form.topic?.addEventListener('change', function(){
     if(form.topic.value === 'Other'){
@@ -41,6 +43,34 @@ if(form){
       emailSuggestions?.classList.add('hidden');
     }
   })
+
+  // Phone formatting helpers
+  function formatIntl(raw, cc){
+    let n = raw.trim().replace(/[^+\d]/g,'');
+    if(n.startsWith('+')){
+      // keep as-is, but normalize spacing below
+    } else if(n.startsWith('0')){
+      n = cc + n.slice(1);
+    } else if(n.length){
+      n = cc + n;
+    }
+    // add simple spacing for readability: +CC XXX XXX XXXX (best-effort)
+    const m = n.match(/^\+(\d+)(\d{3})(\d{3})(\d{0,4})$/);
+    if(m){
+      const parts = ["+"+m[1], m[2], m[3], m[4]].filter(Boolean);
+      return parts.join(' ');
+    }
+    return n; // fallback
+  }
+  const ccMap = {GB:'+44',US:'+1',CA:'+1',AU:'+61',NZ:'+64',IE:'+353',FR:'+33',DE:'+49',ES:'+34',IT:'+39'};
+  function currentCC(){return ccMap[countrySelect?.value || 'GB']}
+  function applyPhoneFormat(){
+    if(phoneInput && phoneInput.value){
+      phoneInput.value = formatIntl(phoneInput.value, currentCC());
+    }
+  }
+  phoneInput?.addEventListener('blur', applyPhoneFormat);
+  countrySelect?.addEventListener('change', applyPhoneFormat);
 
 form.addEventListener('submit', function(e){
   e.preventDefault();
