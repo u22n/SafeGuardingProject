@@ -31,6 +31,13 @@ a:focus,input:focus,textarea:focus,button:focus{outline:2px solid rgba(79,70,229
 .brand-btn:hover{background:var(--brand-dark)}
 .brand-border{border:1px solid var(--brand);color:var(--brand)}
 
+/* Modal */
+#thankYouModal{display:none;padding:1rem}
+#thankYouModal:not(.hidden), #thankYouModal[aria-hidden="false"]{display:flex}
+#thankYouModal .brand-btn{min-width:96px}
+@media (min-width:640px){#thankYouModal .max-w-lg{max-width:36rem}}
+
+
 @media (prefers-reduced-motion: reduce){
   *{transition:none!important}
 }

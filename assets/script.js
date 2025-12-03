@@ -9,10 +9,32 @@ form.addEventListener('submit', function(e){
     formMessage.textContent = 'Please complete all required fields.';
     return
   }
-  formMessage.textContent = 'Report submitted. Thank you — our safeguarding team will review your report.';
-  formMessage.classList.add('form-success');
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  if(!emailPattern.test(email)){
+    formMessage.textContent = 'Please enter a valid email address.';
+    return
+  }
+  formMessage.textContent = '';
+  const modal = document.getElementById('thankYouModal');
+  const closeBtn = document.getElementById('closeModal');
+  const previousActive = document.activeElement;
+  if(modal){
+    modal.classList.remove('hidden');
+    modal.setAttribute('aria-hidden','false');
+    if(closeBtn){closeBtn.focus()}
+    function closeHandler(){
+      modal.classList.add('hidden');
+      modal.setAttribute('aria-hidden','true');
+      closeBtn.removeEventListener('click', closeHandler);
+      document.removeEventListener('keydown', escHandler);
+      if(previousActive){previousActive.focus()}
+    }
+    function escHandler(ev){if(ev.key==='Escape'){closeHandler()}}
+    closeBtn.addEventListener('click', closeHandler);
+    document.addEventListener('keydown', escHandler);
+    modal.querySelector('[data-modal-overlay]')?.addEventListener('click', closeHandler);
+  }
   form.reset();
-  setTimeout(()=>{formMessage.textContent = ''; formMessage.classList.remove('form-success')}, 5000)
 })
 
   const yearEl = document.getElementById('year');
