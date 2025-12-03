@@ -15,10 +15,16 @@
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
   <header class="bg-white/70 backdrop-blur sticky top-0 z-40">
-    <nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between" aria-label="Main navigation">
+    <nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between relative" aria-label="Main navigation">
       <a href="index.html" class="text-2xl font-semibold brand-text">Safeguard</a>
-      <button class="nav-toggle sm:hidden" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation">☰</button>
-      <ul id="primaryNav" class="hidden sm:flex gap-4" role="menubar" aria-label="Primary">
+      <button class="nav-toggle sm:hidden" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="3" y="6" width="18" height="2" rx="1" fill="currentColor" />
+          <rect x="3" y="11" width="18" height="2" rx="1" fill="currentColor" />
+          <rect x="3" y="16" width="18" height="2" rx="1" fill="currentColor" />
+        </svg>
+      </button>
+      <ul id="primaryNav" class="nav-menu hidden sm:flex gap-4" role="menubar" aria-label="Primary">
         <li role="none"><a role="menuitem" href="index.html#what" class="px-2 py-1 rounded focus:outline-none">What</a></li>
         <li role="none"><a role="menuitem" href="index.html#signs" class="px-2 py-1 rounded focus:outline-none">Signs</a></li>
         <li role="none"><a role="menuitem" href="index.html#actions" class="px-2 py-1 rounded focus:outline-none">Action Steps</a></li>
