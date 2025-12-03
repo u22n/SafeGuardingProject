@@ -5,9 +5,15 @@ form.addEventListener('submit', function(e){
   e.preventDefault();
   const name = form.name.value.trim();
   const email = form.email.value.trim();
+  const topic = form.topic?.value || '';
   const details = form.details.value.trim();
   if(!name || !email || !details){
     formMessage.textContent = 'Please complete all required fields.';
+    formMessage.style.color = 'var(--brand)';
+    return
+  }
+  if(!topic){
+    formMessage.textContent = 'Please select a topic.';
     formMessage.style.color = 'var(--brand)';
     return
   }
