@@ -39,3 +39,5 @@ form.addEventListener('submit', function(e){
 
   const yearEl = document.getElementById('year');
   if(yearEl){yearEl.textContent = new Date().getFullYear()}
+
+/* Dark mode removed: no theme toggle logic */
