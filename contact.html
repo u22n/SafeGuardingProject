@@ -17,7 +17,8 @@
   <header class="bg-white/70 backdrop-blur sticky top-0 z-40">
     <nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between" aria-label="Main navigation">
       <a href="index.html" class="text-2xl font-semibold brand-text">Safeguard</a>
-      <ul class="flex gap-4" role="menubar" aria-label="Primary">
+      <button class="nav-toggle sm:hidden" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation">☰</button>
+      <ul id="primaryNav" class="hidden sm:flex gap-4" role="menubar" aria-label="Primary">
         <li role="none"><a role="menuitem" href="index.html#what" class="px-2 py-1 rounded focus:outline-none">What</a></li>
         <li role="none"><a role="menuitem" href="index.html#signs" class="px-2 py-1 rounded focus:outline-none">Signs</a></li>
         <li role="none"><a role="menuitem" href="index.html#actions" class="px-2 py-1 rounded focus:outline-none">Action Steps</a></li>

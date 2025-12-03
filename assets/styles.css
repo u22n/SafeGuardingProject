@@ -28,7 +28,7 @@ nav[aria-label="Main navigation"] a[role="menuitem"]:hover::after, nav[aria-labe
 
 /* Top contact link special hover */
 .contact-link{border-radius:6px;padding:.35rem .6rem}
-.contact-link:hover{background:var(--brand);color:#fff}
+.contact-link:hover{background:var(--brand);color:#000}
 .site-header{background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.03)}
 .site-footer{border-top:1px solid rgba(15,23,42,0.04);padding-top:1.5rem}
 .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem}
@@ -65,7 +65,8 @@ a:focus, a:focus-visible {box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.10)}
 @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
 .fade-in{animation:fadeIn .6s ease both}
 .float-illustration{animation:float 6s ease-in-out infinite}
-.hero-illustration{width:220px;height:220px}
+.hero-illustration{width:360px;height:360px}
+@media (max-width:640px){.hero-illustration{width:280px;height:280px}}
 @keyframes fadeUp {from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pop {from{opacity:0;transform:scale(.96) translateY(6px)}50%{transform:scale(1.02) translateY(-3px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .animate-fade-up{animation:fadeUp .6s cubic-bezier(.2,.9,.2,1) both}
@@ -104,3 +105,8 @@ main .bg-white{background:var(--card-bg) !important}
 
 /* Card inner wrapper to give subtle lifted panels on dark bg */
 .card-inner{background:var(--card-bg);padding:1.25rem;border-radius:10px}
+
+/* Mobile nav toggle styling */
+.nav-toggle{font-size:28px; line-height:1; color:var(--brand); padding:6px 10px; border-radius:8px; border:1px solid rgba(var(--brand-rgb),0.2); background:rgba(var(--brand-rgb),0.06)}
+.nav-toggle:focus{outline:2px solid rgba(var(--brand-rgb),0.35); outline-offset:2px}
+.nav-toggle[aria-expanded="true"]{background:rgba(var(--brand-rgb),0.12)}

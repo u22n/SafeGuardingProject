@@ -1,5 +1,6 @@
 const form = document.getElementById('reportForm');
 const formMessage = document.getElementById('formMessage');
+if(form){
 form.addEventListener('submit', function(e){
   e.preventDefault();
   const name = form.name.value.trim();
@@ -36,8 +37,26 @@ form.addEventListener('submit', function(e){
   }
   form.reset();
 })
+}
 
   const yearEl = document.getElementById('year');
   if(yearEl){yearEl.textContent = new Date().getFullYear()}
 
 /* Dark mode removed: no theme toggle logic */
+
+// Mobile nav toggle
+const navToggle = document.getElementById('navToggle');
+const primaryNav = document.getElementById('primaryNav');
+if(navToggle && primaryNav){
+  navToggle.addEventListener('click', function(){
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', String(!expanded));
+    if(primaryNav.classList.contains('hidden')){
+      primaryNav.classList.remove('hidden');
+      navToggle.setAttribute('aria-label','Close navigation');
+    }else{
+      primaryNav.classList.add('hidden');
+      navToggle.setAttribute('aria-label','Open navigation');
+    }
+  })
+}
