@@ -1,9 +1,7 @@
 const form = document.getElementById('reportForm');
 const formMessage = document.getElementById('formMessage');
 // Always start at top on refresh/load
-window.addEventListener('load', function(){
-  window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-});
+// (reverted) do not force scroll to top on load
 if(form){
   // Elements used across handlers
   const otherReasonInputGlobal = document.getElementById('otherReason');
@@ -34,12 +32,11 @@ if(form){
     const atIndex = val.indexOf('@');
     if(atIndex !== -1){
       emailSuggestions?.classList.remove('hidden');
-      emailSuggestions?.setAttribute('role','listbox');
+      // (reverted) ARIA listbox role changes
       const pre = val.slice(0, atIndex + 1);
       // update click handlers to fill domain
       emailSuggestions?.querySelectorAll('li').forEach(function(li){
-        li.setAttribute('role','option');
-        li.setAttribute('tabindex','-1');
+        // (reverted) option roles and tabindex
         li.onclick = function(){
           emailInput.value = pre + li.dataset.domain;
           emailSuggestions.classList.add('hidden');
@@ -47,35 +44,28 @@ if(form){
         }
       })
       // set first item selected by default for keyboard nav
-      const first = emailSuggestions.querySelector('li');
-      if(first){
-        emailSuggestions.querySelectorAll('li').forEach(i=>i.removeAttribute('aria-selected'));
-        first.setAttribute('aria-selected','true');
-      }
+      // (reverted) initial aria-selected handling
+      // (reverted) do not lock body scroll
     } else {
       emailSuggestions?.classList.add('hidden');
+      // (reverted) no body scroll unlock needed
     }
   })
 
   // Keyboard controls for email suggestions
   emailInput?.addEventListener('keydown', function(ev){
-    if(!emailSuggestions || emailSuggestions.classList.contains('hidden')) return;
+    if(emailSuggestions?.classList.contains('hidden')) return;
     const items = Array.from(emailSuggestions.querySelectorAll('li'));
     if(items.length === 0) return;
-    const active = emailSuggestions.querySelector('li[aria-selected="true"]');
-    let index = active ? items.indexOf(active) : -1;
+    let index = -1;
     if(ev.key === 'ArrowDown'){
       ev.preventDefault();
       index = Math.min(items.length - 1, index + 1);
-      items.forEach(i => i.removeAttribute('aria-selected'));
-      items[index].setAttribute('aria-selected','true');
       items[index].focus();
       items[index].scrollIntoView({block:'nearest'});
     }else if(ev.key === 'ArrowUp'){
       ev.preventDefault();
       index = Math.max(0, index - 1);
-      items.forEach(i => i.removeAttribute('aria-selected'));
-      items[index].setAttribute('aria-selected','true');
       items[index].focus();
       items[index].scrollIntoView({block:'nearest'});
     }else if(ev.key === 'Enter'){
