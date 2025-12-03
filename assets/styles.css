@@ -28,7 +28,7 @@ nav[aria-label="Main navigation"] a[role="menuitem"]:hover::after, nav[aria-labe
 
 /* Top contact link special hover */
 .contact-link{border-radius:6px;padding:.35rem .6rem}
-.contact-link:hover{background:var(--brand);color:#000}
+.contact-link:hover{background:var(--brand);color:#fff}
 .site-header{background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.03)}
 .site-footer{border-top:1px solid rgba(15,23,42,0.04);padding-top:1.5rem}
 .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem}
