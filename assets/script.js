@@ -1,6 +1,26 @@
 const form = document.getElementById('reportForm');
 const formMessage = document.getElementById('formMessage');
 if(form){
+  // Elements used across handlers
+  const otherReasonInputGlobal = document.getElementById('otherReason');
+  const otherReasonWrapGlobal = document.getElementById('otherReasonWrap');
+  // Show/hide Other reason field immediately on change (before submit)
+  form.topic?.addEventListener('change', function(){
+    if(form.topic.value === 'Other'){
+      otherReasonWrapGlobal?.classList.remove('hidden');
+      otherReasonInputGlobal?.focus();
+    } else {
+      otherReasonWrapGlobal?.classList.add('hidden');
+      if(otherReasonInputGlobal){otherReasonInputGlobal.value = ''}
+    }
+  })
+  // Initialize visibility on load (in case browser restores values)
+  if(form.topic && form.topic.value === 'Other'){
+    otherReasonWrapGlobal?.classList.remove('hidden');
+  } else {
+    otherReasonWrapGlobal?.classList.add('hidden');
+  }
+
 form.addEventListener('submit', function(e){
   e.preventDefault();
   const name = form.name.value.trim();
@@ -38,15 +58,7 @@ form.addEventListener('submit', function(e){
     if(otherReasonWrap){otherReasonWrap.classList.add('hidden')}
   }
 
-  // live toggle of Other reason visibility
-  form.topic?.addEventListener('change', function(){
-    if(form.topic.value === 'Other'){
-      otherReasonWrap?.classList.remove('hidden');
-    } else {
-      otherReasonWrap?.classList.add('hidden');
-      if(otherReasonInput){otherReasonInput.value = ''}
-    }
-  })
+  // live toggle handled above (outside submit)
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   if(!emailPattern.test(email)){
     formMessage.textContent = 'Please enter a valid email address.';
