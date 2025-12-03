@@ -29,6 +29,7 @@ nav[aria-label="Main navigation"] a[role="menuitem"]:hover::after, nav[aria-labe
 /* Top contact link special hover */
 .contact-link{border-radius:6px;padding:.35rem .6rem}
 .contact-link:hover{background:var(--brand);color:#fff}
+nav[aria-label="Main navigation"] .contact-link:hover{color:#fff !important}
 .site-header{background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.03)}
 .site-footer{border-top:1px solid rgba(15,23,42,0.04);padding-top:1.5rem}
 .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem}
@@ -85,7 +86,8 @@ a:focus, a:focus-visible {box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.10)}
   .nav-menu{position:absolute; top:100%; right:1rem; background:#fff; border:1px solid rgba(2,6,23,0.06); box-shadow:0 10px 30px rgba(2,6,23,0.08); border-radius:10px; padding:.5rem; display:flex; flex-direction:column; gap:.25rem; min-width:160px}
   .nav-menu a{padding:.4rem .6rem; border-radius:8px}
   .nav-menu a:hover{background:rgba(var(--brand-rgb),0.06)}
-  .nav-menu .brand-btn{color:#fff}
+  .nav-menu a.brand-btn{background:var(--brand);color:#fff}
+  .nav-menu a.brand-btn:hover{background:var(--brand-dark);color:#fff}
 }
 
 /* Sleek small "Back to Home" button */
