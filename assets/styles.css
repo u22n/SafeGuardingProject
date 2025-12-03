@@ -1,13 +1,12 @@
 :root{
-  --brand: #7c5cff; /* warm indigo for primary actions */
-  --brand-dark: #5a3bd6; /* darker for hovers */
-  --muted: #cbd5e1; /* muted/light text */
-  --card-bg: rgba(255,255,255,0.06); /* subtle card on dark bg */
-  --bg: #2c234d; /* warm indigo page background (less bright) */
+  --brand: #0ea5a4;
+  --brand-dark: #047d77;
+  --muted: #475569;
+  --card-bg: #f8fafc;
 }
 *{box-sizing:border-box}
 html,body,#root{height:100%}
-body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background:var(--bg);color:#e6e9f2}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial}
 
 button, a.button, .brand-btn{transition:transform .12s ease, box-shadow .12s ease, background-color .12s ease}
 button:hover, a.button:hover, .brand-btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(90,59,214,0.12)}
@@ -15,6 +14,16 @@ button:hover, a.button:hover, .brand-btn:hover{transform:translateY(-3px);box-sh
 nav[aria-label="Main navigation"]{backdrop-filter:blur(6px)}
 .brand-text, nav[aria-label="Main navigation"] a{transition:color .12s ease}
 nav[aria-label="Main navigation"] a[role="menuitem"]:hover{color:var(--brand-dark)}
+
+/* Nav underline effect */
+nav[aria-label="Main navigation"] a[role="menuitem"]{position:relative;padding:.25rem .45rem}
+nav[aria-label="Main navigation"] a[role="menuitem"]::after{content:"";position:absolute;left:0;right:auto;bottom:-6px;height:2px;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-dark));transition:width .22s cubic-bezier(.2,.9,.2,1)}
+nav[aria-label="Main navigation"] a[role="menuitem"]:hover::after, nav[aria-label="Main navigation"] a[role="menuitem"][aria-current="page"]::after{width:100%}
+
+/* Top contact link special hover */
+.contact-link{border-radius:6px;padding:.35rem .6rem}
+.contact-link:hover{background:rgba(124,92,255,0.12);color:#fff}
+.site-header{background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.03)}
 .site-footer{border-top:1px solid rgba(15,23,42,0.04);padding-top:1.5rem}
 .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem}
 .image-placeholder{width:100%;height:220px;background:linear-gradient(180deg,rgba(124,92,255,0.06),rgba(90,59,214,0.03));display:flex;align-items:center;justify-content:center;border-radius:8px;color:var(--muted)}
@@ -51,6 +60,18 @@ a:focus, a:focus-visible {box-shadow:0 0 0 4px rgba(124,92,255,0.06)}
 .fade-in{animation:fadeIn .6s ease both}
 .float-illustration{animation:float 6s ease-in-out infinite}
 .hero-illustration{width:220px;height:220px}
+@keyframes fadeUp {from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pop {from{opacity:0;transform:scale(.96) translateY(6px)}50%{transform:scale(1.02) translateY(-3px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.animate-fade-up{animation:fadeUp .6s cubic-bezier(.2,.9,.2,1) both}
+.animate-pop{animation:pop .9s cubic-bezier(.2,.9,.2,1) both}
+
+/* Stagger helper for lists/sections */
+.stagger > *{opacity:0;transform:translateY(8px);animation:fadeUp .6s cubic-bezier(.2,.9,.2,1) both;animation-delay:calc(var(--stagger-index, 0) * 80ms)}
+.stagger > *:nth-child(1){--stagger-index:0}
+.stagger > *:nth-child(2){--stagger-index:1}
+.stagger > *:nth-child(3){--stagger-index:2}
+.stagger > *:nth-child(4){--stagger-index:3}
+.stagger > *:nth-child(5){--stagger-index:4}
 .brand-outline{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(124,92,255,0.12);color:var(--brand-dark);background:transparent;padding:.4rem .6rem}
 
 @media (prefers-reduced-motion: reduce){
