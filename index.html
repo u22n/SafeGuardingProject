@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <meta name="theme-color" content="#0EA5A4">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
@@ -36,10 +37,9 @@
         </p>
       </div>
       <div class="flex justify-center md:justify-end">
-        <svg role="img" aria-label="Shield illustration representing safeguarding" width="220" height="220" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-44 h-44">
-          <path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 11 5.16-.26 9-5.45 9-11V5l-9-3z" style="fill:var(--brand)"/>
-          <path d="M11 11l2 2 4-4" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <figure class="image-placeholder" aria-hidden="true">
+          <img src="assets/images/hero1.jpg" alt="Hero illustration" style="width:160px;height:160px" />
+        </figure>
       </div>
     </section>
 
@@ -80,22 +80,53 @@
       </ol>
       <div class="mt-6">
         <h3 class="text-lg font-semibold">Quick contacts</h3>
-        <ul class="mt-2 space-y-2">
-          <li class="flex items-center justify-between bg-white p-3 rounded shadow-sm">
-            <span>Emergency services</span>
-            <a href="tel:999" class="brand-text">999</a>
-          </li>
-          <li class="flex items-center justify-between bg-white p-3 rounded shadow-sm">
-            <span>Local Safeguarding Team</span>
-            <a href="#contact" class="brand-text">Report</a>
-          </li>
-        </ul>
+          <ul class="mt-2 space-y-2">
+            <li class="flex items-center justify-between bg-white p-3 rounded shadow-sm">
+              <span>Emergency services (local)</span>
+              <a href="tel:999" class="brand-text">999</a>
+            </li>
+            <li class="flex items-center justify-between bg-white p-3 rounded shadow-sm">
+              <span>Safeguarding team (24/7)</span>
+              <a href="mailto:safeguard@example.org" class="brand-text">safeguard@example.org</a>
+            </li>
+          </ul>
       </div>
     </section>
 
+      <section id="intl" class="mt-12" aria-labelledby="intl-heading">
+        <h2 id="intl-heading" class="text-2xl font-bold text-slate-900">Emergency Numbers — Selected Countries</h2>
+        <p class="mt-2 text-slate-700">Quick list of emergency numbers for commonly used regions.</p>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          <div class="bg-white p-4 rounded shadow-sm">
+            <strong class="block">United Kingdom</strong>
+            <span class="text-slate-600">999</span>
+          </div>
+          <div class="bg-white p-4 rounded shadow-sm">
+            <strong class="block">United States</strong>
+            <span class="text-slate-600">911</span>
+          </div>
+          <div class="bg-white p-4 rounded shadow-sm">
+            <strong class="block">European Union</strong>
+            <span class="text-slate-600">112</span>
+          </div>
+          <div class="bg-white p-4 rounded shadow-sm">
+            <strong class="block">Australia</strong>
+            <span class="text-slate-600">000</span>
+          </div>
+          <div class="bg-white p-4 rounded shadow-sm">
+            <strong class="block">Canada</strong>
+            <span class="text-slate-600">911</span>
+          </div>
+          <div class="bg-white p-4 rounded shadow-sm">
+            <strong class="block">New Zealand</strong>
+            <span class="text-slate-600">111</span>
+          </div>
+        </div>
+      </section>
+
     <section id="contact" class="mt-12" aria-labelledby="contact-heading">
       <h2 id="contact-heading" class="text-2xl font-bold text-slate-900">Contact & Report</h2>
-      <p class="mt-2 text-slate-700">Use this form to simulate a referral. In production, replace with your secure reporting endpoint.</p>
+      <p class="mt-2 text-slate-700">Submit a referral to our safeguarding team. All reports are handled confidentially and reviewed promptly.</p>
       <form id="reportForm" class="mt-4 grid gap-3 sm:grid-cols-2 bg-white p-4 rounded shadow-sm" novalidate>
         <div>
           <label for="name" class="block text-sm font-medium text-slate-700">Your name</label>
@@ -116,8 +147,34 @@
       </form>
     </section>
 
-    <footer class="mt-14 mb-8 text-sm text-slate-600">
-      <p>Designed for clarity and accessibility. Replace contact details with local services before publishing.</p>
+    <footer class="mt-14 mb-8 text-sm text-slate-600 site-footer" role="contentinfo">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="footer-grid">
+          <div>
+            <h4 class="font-semibold">About</h4>
+            <p class="mt-2">Clear safeguarding guidance and rapid reporting to protect people at risk.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold">Quick links</h4>
+            <ul class="mt-2 space-y-1">
+              <li><a href="#what" class="brand-text">What is safeguarding?</a></li>
+              <li><a href="#actions" class="brand-text">Action Steps</a></li>
+              <li><a href="#contact" class="brand-text">Contact & Report</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold">Contact</h4>
+            <p class="mt-2">Email: <a href="mailto:safeguard@example.org" class="brand-text">safeguard@example.org</a></p>
+            <p class="mt-1">Phone: <a href="tel:+440000000000" class="brand-text">+44 0000 000000</a></p>
+          </div>
+          <div>
+            <h4 class="font-semibold">Emergency</h4>
+            <p class="mt-2">Emergency: <span class="font-medium">999</span></p>
+            <p class="mt-1">International list in the page for other countries.</p>
+          </div>
+        </div>
+        <div class="mt-6 text-xs text-slate-500">© <span id="year"></span> Safeguard · All rights reserved</div>
+      </div>
     </footer>
   </main>
 

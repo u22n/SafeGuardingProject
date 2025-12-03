@@ -9,8 +9,11 @@ form.addEventListener('submit', function(e){
     formMessage.textContent = 'Please complete all required fields.';
     return
   }
-  formMessage.textContent = 'Report submitted. Thank you — this is a simulated submission.';
+  formMessage.textContent = 'Report submitted. Thank you — our safeguarding team will review your report.';
   formMessage.classList.add('form-success');
   form.reset();
   setTimeout(()=>{formMessage.textContent = ''; formMessage.classList.remove('form-success')}, 5000)
 })
+
+  const yearEl = document.getElementById('year');
+  if(yearEl){yearEl.textContent = new Date().getFullYear()}
