@@ -81,10 +81,12 @@ a:focus, a:focus-visible {box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.10)}
 .stagger > *:nth-child(5){--stagger-index:4}
 .brand-outline{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(var(--brand-rgb),0.14);color:var(--brand);background:transparent;padding:.4rem .6rem;border-radius:8px;transition:background-color .12s ease, transform .12s ease}
 .brand-outline:hover{background:rgba(var(--brand-rgb),0.06);transform:translateY(-1px)}
-.nav-menu{position:absolute; top:100%; right:1rem; background:#fff; border:1px solid rgba(2,6,23,0.06); box-shadow:0 10px 30px rgba(2,6,23,0.08); border-radius:10px; padding:.5rem; display:flex; flex-direction:column; gap:.25rem; min-width:160px}
-.nav-menu a{padding:.4rem .6rem; border-radius:8px}
-.nav-menu a:hover{background:rgba(var(--brand-rgb),0.06)}
-.nav-menu .brand-btn{color:#fff}
+@media (max-width:640px){
+  .nav-menu{position:absolute; top:100%; right:1rem; background:#fff; border:1px solid rgba(2,6,23,0.06); box-shadow:0 10px 30px rgba(2,6,23,0.08); border-radius:10px; padding:.5rem; display:flex; flex-direction:column; gap:.25rem; min-width:160px}
+  .nav-menu a{padding:.4rem .6rem; border-radius:8px}
+  .nav-menu a:hover{background:rgba(var(--brand-rgb),0.06)}
+  .nav-menu .brand-btn{color:#fff}
+}
 
 /* Sleek small "Back to Home" button */
 .back-home{display:inline-flex;align-items:center;gap:.5rem;border-radius:8px;padding:.45rem .7rem;border:1px solid rgba(var(--brand-rgb),0.16);color:var(--brand);background:transparent;font-weight:600;text-decoration:none;transition:transform .12s ease, box-shadow .12s ease, background-color .12s ease}
