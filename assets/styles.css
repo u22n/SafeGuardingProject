@@ -45,6 +45,10 @@ a:focus,input:focus,textarea:focus,button:focus{outline:none;box-shadow:0 0 0 4p
 a:focus, a:focus-visible {box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.10)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .hidden{display:none}
+.initial-hidden{display:none}
+@media (min-width: 640px){
+  .initial-hidden{display:block}
+}
 .form-success{color:var(--brand)}
 
 .brand-text{color:var(--brand)}

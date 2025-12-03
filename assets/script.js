@@ -1,5 +1,9 @@
 const form = document.getElementById('reportForm');
 const formMessage = document.getElementById('formMessage');
+// Always start at top on refresh/load
+window.addEventListener('load', function(){
+  window.scrollTo({top: 0, left: 0, behavior: 'auto'});
+});
 if(form){
   // Elements used across handlers
   const otherReasonInputGlobal = document.getElementById('otherReason');
@@ -30,15 +34,24 @@ if(form){
     const atIndex = val.indexOf('@');
     if(atIndex !== -1){
       emailSuggestions?.classList.remove('hidden');
+      emailSuggestions?.setAttribute('role','listbox');
       const pre = val.slice(0, atIndex + 1);
       // update click handlers to fill domain
       emailSuggestions?.querySelectorAll('li').forEach(function(li){
+        li.setAttribute('role','option');
+        li.setAttribute('tabindex','-1');
         li.onclick = function(){
           emailInput.value = pre + li.dataset.domain;
           emailSuggestions.classList.add('hidden');
           emailInput.focus();
         }
       })
+      // set first item selected by default for keyboard nav
+      const first = emailSuggestions.querySelector('li');
+      if(first){
+        emailSuggestions.querySelectorAll('li').forEach(i=>i.removeAttribute('aria-selected'));
+        first.setAttribute('aria-selected','true');
+      }
     } else {
       emailSuggestions?.classList.add('hidden');
     }
@@ -46,7 +59,7 @@ if(form){
 
   // Keyboard controls for email suggestions
   emailInput?.addEventListener('keydown', function(ev){
-    if(emailSuggestions?.classList.contains('hidden')) return;
+    if(!emailSuggestions || emailSuggestions.classList.contains('hidden')) return;
     const items = Array.from(emailSuggestions.querySelectorAll('li'));
     if(items.length === 0) return;
     const active = emailSuggestions.querySelector('li[aria-selected="true"]');
@@ -56,12 +69,14 @@ if(form){
       index = Math.min(items.length - 1, index + 1);
       items.forEach(i => i.removeAttribute('aria-selected'));
       items[index].setAttribute('aria-selected','true');
+      items[index].focus();
       items[index].scrollIntoView({block:'nearest'});
     }else if(ev.key === 'ArrowUp'){
       ev.preventDefault();
       index = Math.max(0, index - 1);
       items.forEach(i => i.removeAttribute('aria-selected'));
       items[index].setAttribute('aria-selected','true');
+      items[index].focus();
       items[index].scrollIntoView({block:'nearest'});
     }else if(ev.key === 'Enter'){
       if(index >= 0){
@@ -72,6 +87,7 @@ if(form){
         emailInput.value = pre + domain;
         emailSuggestions.classList.add('hidden');
         ev.preventDefault();
+        emailInput.focus();
       }
     }else if(ev.key === 'Escape'){
       emailSuggestions.classList.add('hidden');
