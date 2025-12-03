@@ -60,13 +60,18 @@
           <input id="phone" name="phone" type="tel" placeholder="+44 0000 000000" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
         </div>
         <div>
-          <label for="topic" class="block text-sm font-medium text-slate-700">Topic</label>
-          <select id="topic" name="topic" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none">
+          <label for="topic" class="block text-sm font-medium text-slate-700">Topic <span class="text-red-500" aria-hidden="true">*</span></label>
+          <select id="topic" name="topic" required class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none">
             <option value="">Choose a topic…</option>
             <option>Immediate concern</option>
             <option>General enquiry</option>
             <option>Follow-up</option>
+            <option>Other</option>
           </select>
+        </div>
+        <div id="otherReasonWrap" class="hidden md:col-span-2">
+          <label for="otherReason" class="block text-sm font-medium text-slate-700">Reason <span class="text-red-500" aria-hidden="true">*</span></label>
+          <input id="otherReason" name="otherReason" type="text" placeholder="Briefly describe the topic" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
         </div>
         <div class="md:col-span-2">
           <label for="details" class="block text-sm font-medium text-slate-700">Details <span class="text-red-500" aria-hidden="true">*</span></label>

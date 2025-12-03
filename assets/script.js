@@ -6,6 +6,8 @@ form.addEventListener('submit', function(e){
   const name = form.name.value.trim();
   const email = form.email.value.trim();
   const topic = form.topic?.value || '';
+  const otherReasonInput = document.getElementById('otherReason');
+  const otherReasonWrap = document.getElementById('otherReasonWrap');
   const details = form.details.value.trim();
   if(!name || !email || !details){
     formMessage.textContent = 'Please complete all required fields.';
@@ -14,9 +16,30 @@ form.addEventListener('submit', function(e){
   }
   if(!topic){
     formMessage.textContent = 'Please select a topic.';
-    formMessage.style.color = 'var(--brand)';
+    formMessage.style.color = '#ef4444';
     return
   }
+  if(topic === 'Other'){
+    if(otherReasonWrap){otherReasonWrap.classList.remove('hidden')}
+    const reason = otherReasonInput?.value.trim() || '';
+    if(!reason){
+      formMessage.textContent = 'Please provide a reason for Other.';
+      formMessage.style.color = '#ef4444';
+      return
+    }
+  } else {
+    if(otherReasonWrap){otherReasonWrap.classList.add('hidden')}
+  }
+
+  // live toggle of Other reason visibility
+  form.topic?.addEventListener('change', function(){
+    if(form.topic.value === 'Other'){
+      otherReasonWrap?.classList.remove('hidden');
+    } else {
+      otherReasonWrap?.classList.add('hidden');
+      if(otherReasonInput){otherReasonInput.value = ''}
+    }
+  })
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   if(!emailPattern.test(email)){
     formMessage.textContent = 'Please enter a valid email address.';
