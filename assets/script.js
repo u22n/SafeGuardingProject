@@ -29,6 +29,14 @@ form.addEventListener('submit', function(e){
   const otherReasonInput = document.getElementById('otherReason');
   const otherReasonWrap = document.getElementById('otherReasonWrap');
   const details = form.details.value.trim();
+  const evidence = document.getElementById('evidence');
+  const confirmCopy = document.getElementById('confirmCopy');
+  // Auto-format phone: keep digits and leading +, group visually
+  if(form.phone && form.phone.value){
+    const raw = form.phone.value.trim();
+    const normalized = raw.replace(/[^+\d]/g,'');
+    form.phone.value = normalized;
+  }
   
   form.name.setAttribute('aria-invalid','false');
   form.email.setAttribute('aria-invalid','false');
@@ -58,6 +66,27 @@ form.addEventListener('submit', function(e){
     if(otherReasonWrap){otherReasonWrap.classList.add('hidden')}
   }
 
+  // Evidence validation: optional, but if present validate type and size
+  if(evidence && evidence.files && evidence.files[0]){
+    const file = evidence.files[0];
+    const maxBytes = 5 * 1024 * 1024; // 5MB
+    const okTypes = ['image/jpeg','image/png','application/pdf'];
+    if(file.size > maxBytes){
+      formMessage.textContent = 'Attachment too large (max 5MB).';
+      formMessage.style.color = '#ef4444';
+      evidence.setAttribute('aria-invalid','true');
+      evidence.focus();
+      return
+    }
+    if(!okTypes.includes(file.type)){
+      formMessage.textContent = 'Unsupported file type. Use JPG, PNG, or PDF.';
+      formMessage.style.color = '#ef4444';
+      evidence.setAttribute('aria-invalid','true');
+      evidence.focus();
+      return
+    }
+  }
+
   // live toggle handled above (outside submit)
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   if(!emailPattern.test(email)){
@@ -75,6 +104,10 @@ form.addEventListener('submit', function(e){
     modal.classList.remove('hidden');
     modal.setAttribute('aria-hidden','false');
     if(closeBtn){closeBtn.focus()}
+    // Optionally note confirmation email toggle (no actual sending here)
+    if(confirmCopy && confirmCopy.checked){
+      // In a real app we would trigger an email here
+    }
     function closeHandler(){
       modal.classList.add('hidden');
       modal.setAttribute('aria-hidden','true');

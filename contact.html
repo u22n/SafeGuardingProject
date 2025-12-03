@@ -49,39 +49,55 @@
       <div class="grid gap-4 md:grid-cols-2">
         <div>
           <label for="name" class="block text-sm font-medium text-slate-700">Your name <span class="text-red-500" aria-hidden="true">*</span></label>
-          <input id="name" name="name" type="text" required placeholder="Jane Doe" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
+          <input id="name" name="name" type="text" required aria-describedby="name-help" placeholder="Jane Doe" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
+          <p id="name-help" class="mt-1 text-xs text-slate-500">Enter your full name.</p>
         </div>
         <div>
           <label for="email" class="block text-sm font-medium text-slate-700">Email <span class="text-red-500" aria-hidden="true">*</span></label>
-          <input id="email" name="email" type="email" required placeholder="jane@example.com" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
+          <input id="email" name="email" type="email" required aria-describedby="email-help" placeholder="jane@example.com" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
+          <p id="email-help" class="mt-1 text-xs text-slate-500">We may contact you for follow-up.</p>
         </div>
         <div>
           <label for="phone" class="block text-sm font-medium text-slate-700">Phone (optional)</label>
-          <input id="phone" name="phone" type="tel" placeholder="+44 0000 000000" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
+          <input id="phone" name="phone" type="tel" aria-describedby="phone-help" placeholder="+44 0000 000000" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
+          <p id="phone-help" class="mt-1 text-xs text-slate-500">We format this automatically.</p>
         </div>
         <div>
           <label for="topic" class="block text-sm font-medium text-slate-700">Topic <span class="text-red-500" aria-hidden="true">*</span></label>
-          <select id="topic" name="topic" required class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none">
+          <select id="topic" name="topic" required aria-describedby="topic-help" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none">
             <option value="">Choose a topic…</option>
             <option>Immediate concern</option>
             <option>General enquiry</option>
             <option>Follow-up</option>
             <option>Other</option>
           </select>
+          <p id="topic-help" class="mt-1 text-xs text-slate-500">Select the most relevant topic.</p>
         </div>
         <div id="otherReasonWrap" class="hidden md:col-span-2">
           <label for="otherReason" class="block text-sm font-medium text-slate-700">Reason <span class="text-red-500" aria-hidden="true">*</span></label>
-          <input id="otherReason" name="otherReason" type="text" placeholder="Briefly describe the topic" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
+          <input id="otherReason" name="otherReason" type="text" aria-describedby="other-help" placeholder="Briefly describe the topic" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
+          <p id="other-help" class="mt-1 text-xs text-slate-500">Required when selecting Other.</p>
         </div>
         <div class="md:col-span-2">
           <label for="details" class="block text-sm font-medium text-slate-700">Details <span class="text-red-500" aria-hidden="true">*</span></label>
-          <textarea id="details" name="details" rows="6" required placeholder="Provide clear, factual details…" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none"></textarea>
+          <textarea id="details" name="details" rows="6" required aria-describedby="details-help" placeholder="Provide clear, factual details…" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none"></textarea>
           <p class="mt-2 text-xs text-slate-500">Avoid sharing sensitive information unless necessary for safeguarding.</p>
+        </div>
+        <div class="md:col-span-2">
+          <label for="evidence" class="block text-sm font-medium text-slate-700">Attachment (optional)</label>
+          <input id="evidence" name="evidence" type="file" aria-describedby="evidence-help" accept=".jpg,.jpeg,.png,.pdf" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
+          <p id="evidence-help" class="mt-1 text-xs text-slate-500">Accepted: JPG/PNG/PDF up to 5MB.</p>
+        </div>
+        <div class="md:col-span-2">
+          <label class="inline-flex items-center gap-2">
+            <input id="confirmCopy" name="confirmCopy" type="checkbox" class="rounded" />
+            <span class="text-sm text-slate-700">Email me a confirmation copy</span>
+          </label>
         </div>
       </div>
       <div class="mt-6 flex items-center gap-3">
         <button id="submitBtn" type="submit" class="brand-btn px-4 py-2 rounded-lg">Submit Report</button>
-        <div id="formMessage" role="status" aria-live="polite" class="text-sm text-slate-700"></div>
+        <div id="formMessage" role="alert" aria-live="assertive" class="text-sm text-slate-700"></div>
       </div>
     </form>
 
@@ -105,6 +121,7 @@
       <p class="mt-3 text-slate-700">Thank you. Your report has been received and queued for review by our safeguarding team. If further information is required, we will contact you.</p>
       <div class="mt-4 p-3 bg-slate-50 rounded">
         <p class="text-sm text-slate-600">If someone is in immediate danger, please call <strong>999</strong> now.</p>
+        <p class="mt-1 text-xs text-slate-500">We aim to review all reports within 24–48 hours.</p>
       </div>
       <div class="mt-6 text-right">
         <button id="closeModal" class="brand-btn px-4 py-2 rounded-lg">Close</button>
