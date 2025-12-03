@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
+  <a href="#home" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:bg-white focus:border focus:rounded focus:px-3 focus:py-2">Skip to content</a>
   <header class="bg-white/70 backdrop-blur sticky top-0 z-40">
     <nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between relative" aria-label="Main navigation">
       <a href="#home" class="text-2xl font-semibold brand-text">Safeguard</a>
@@ -39,10 +40,10 @@
       <div>
         <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight" style="font-family: 'Poppins', 'Inter', system-ui;">Safeguarding: Recognise. Respond. Refer.</h1>
         <p class="mt-4 text-slate-700">Simple, practical guidance to help you identify safeguarding concerns and take the correct steps to keep people safe.</p>
-        <p class="mt-6 flex gap-3">
-          <a href="#actions" class="inline-block px-4 py-2 brand-btn text-white rounded shadow-sm">See Action Steps</a>
-          <a href="contact.html" class="inline-block px-4 py-2 brand-border brand-text rounded hover:bg-opacity-5 focus:outline-none focus:ring-2">Contact Support</a>
-        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#actions" class="inline-flex items-center gap-2 px-4 py-2 brand-btn text-white rounded shadow-sm"><span>See Action Steps</span></a>
+          <a href="contact.html" class="inline-flex items-center gap-2 px-4 py-2 brand-border brand-text rounded hover:bg-opacity-5 focus:outline-none focus:ring-2"><span>Contact Support</span></a>
+        </div>
       </div>
       <div class="flex justify-center md:justify-end">
         <figure class="float-illustration" aria-hidden="true">
@@ -100,6 +101,20 @@
           </ul>
       </div>
     </section>
+
+    <section id="faq" class="mt-12 fade-in" aria-labelledby="faq-heading">
+      <h2 id="faq-heading" class="text-2xl font-bold text-slate-900">FAQs</h2>
+      <div class="mt-4">
+        <button class="faq-toggle brand-outline" aria-expanded="false" aria-controls="faq1">What should I do if I'm unsure?</button>
+        <div id="faq1" class="faq-panel hidden mt-2 text-slate-700">If you are unsure, consult with a safeguarding lead or contact support for guidance. Trust your instincts and record what you observe.</div>
+        <button class="faq-toggle brand-outline mt-3" aria-expanded="false" aria-controls="faq2">Can I report anonymously?</button>
+        <div id="faq2" class="faq-panel hidden mt-2 text-slate-700">Anonymous reports may be accepted depending on your organisation's policy. However, providing contact details can help in follow-ups.</div>
+      </div>
+    </section>
+
+    <aside class="help-panel fixed bottom-4 right-4 z-30" aria-label="Quick help">
+      <a href="contact.html" class="brand-btn px-4 py-2 rounded-lg shadow">Need help?</a>
+    </aside>
 
       <section id="intl" class="mt-12" aria-labelledby="intl-heading">
         <h2 id="intl-heading" class="text-2xl font-bold text-slate-900">Emergency Numbers — Selected Countries</h2>

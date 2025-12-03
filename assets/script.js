@@ -212,3 +212,15 @@ if(navToggle && primaryNav){
     }
   })
 }
+
+// FAQ accordion
+document.querySelectorAll('.faq-toggle').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    const panel = document.getElementById(btn.getAttribute('aria-controls'));
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    if(panel){
+      panel.classList.toggle('hidden');
+    }
+  })
+})
