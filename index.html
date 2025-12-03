@@ -82,7 +82,7 @@
       </div>
     </section>
 
-    <section id="how" class="mt-12 fade-in" aria-labelledby="how-heading">
+    <section id="how" class="mt-12 fade-in card-wrap" aria-labelledby="how-heading">
       <h2 id="how-heading" class="text-2xl font-bold text-slate-900">How It Works</h2>
       <div class="mt-4 grid gap-3 sm:grid-cols-3">
         <div class="bg-white p-4 rounded shadow-sm text-center">
@@ -103,7 +103,7 @@
       </div>
     </section>
 
-    <section id="signs" class="mt-10 fade-in" aria-labelledby="signs-heading">
+    <section id="signs" class="mt-10 fade-in card-wrap" aria-labelledby="signs-heading">
       <h2 id="signs-heading" class="text-2xl font-bold text-slate-900">Signs to Watch For</h2>
       <ul class="mt-4 grid gap-3 sm:grid-cols-2">
         <li class="bg-white p-4 rounded shadow-sm">
@@ -125,7 +125,7 @@
       </ul>
     </section>
 
-    <section id="actions" class="mt-10 fade-in" aria-labelledby="actions-heading">
+    <section id="actions" class="mt-10 fade-in card-wrap" aria-labelledby="actions-heading">
       <h2 id="actions-heading" class="text-2xl font-bold text-slate-900">Action Steps</h2>
       <ol class="mt-4 list-decimal list-inside space-y-3">
         <li><strong>Stay calm:</strong> Keep the person safe and listen without judgement.</li>
@@ -148,7 +148,7 @@
       </div>
     </section>
 
-    <section id="faq" class="mt-12 fade-in" aria-labelledby="faq-heading">
+    <section id="faq" class="mt-12 fade-in card-wrap" aria-labelledby="faq-heading">
       <h2 id="faq-heading" class="text-2xl font-bold text-slate-900">FAQs</h2>
       <div class="mt-6 grid gap-6 sm:grid-cols-3">
         <div>
@@ -192,14 +192,29 @@
       <section id="cases" class="mt-12" aria-labelledby="cases-heading">
         <h2 id="cases-heading" class="text-2xl font-bold text-slate-900">Case Examples</h2>
         <div class="mt-4 grid gap-3 sm:grid-cols-2">
-          <div class="bg-white p-4 rounded shadow-sm"><strong>Scenario A</strong><p class="mt-1 text-slate-700">A student shows sudden fear around a staff member. Action: ensure safety, record facts, report.</p></div>
-          <div class="bg-white p-4 rounded shadow-sm"><strong>Scenario B</strong><p class="mt-1 text-slate-700">An elderly neighbor appears neglected. Action: check immediate needs, contact local safeguarding team.</p></div>
+          <div class="bg-white p-4 rounded shadow-sm">
+            <strong class="block">School disclosure</strong>
+            <p class="mt-1 text-slate-700">A pupil quietly tells you they don’t feel safe at home.</p>
+            <p class="mt-2 text-slate-700"><strong>Action:</strong> Stay calm, thank them for telling you, avoid promises of secrecy, ensure immediate safety, record exact words and context, and refer to the safeguarding lead the same day.</p>
+          </div>
+          <div class="bg-white p-4 rounded shadow-sm">
+            <strong class="block">Elder neglect</strong>
+            <p class="mt-1 text-slate-700">You notice weight loss, poor hygiene, and untreated sores in a neighbor.</p>
+            <p class="mt-2 text-slate-700"><strong>Action:</strong> Check immediate needs, document observations with dates, and contact local adult safeguarding services. If health risk is urgent, call emergency services.</p>
+          </div>
+          <div class="bg-white p-4 rounded shadow-sm sm:col-span-2">
+            <strong class="block">Online exploitation</strong>
+            <p class="mt-1 text-slate-700">A young person receives coercive messages from an unknown adult online.</p>
+            <p class="mt-2 text-slate-700"><strong>Action:</strong> Preserve evidence (screenshots, usernames), avoid confronting the suspected offender, provide reassurance, and report through safeguarding and appropriate authorities.</p>
+          </div>
         </div>
       </section>
 
       <section id="regional" class="mt-12" aria-labelledby="regional-heading">
         <h2 id="regional-heading" class="text-2xl font-bold text-slate-900">Regional Contacts</h2>
         <div class="mt-3 flex items-center gap-3">
+          <label for="regionSearch" class="text-sm">Search</label>
+          <input id="regionSearch" type="text" class="border rounded px-2 py-1" placeholder="Type a country/region" aria-label="Search country or region" />
           <label for="regionFilter" class="text-sm">Region</label>
           <select id="regionFilter" class="border rounded px-2 py-1">
             <option value="all" selected>All</option>
@@ -212,12 +227,36 @@
           </select>
         </div>
         <div class="mt-4 grid gap-3 sm:grid-cols-2" id="regionalGrid">
-          <div class="bg-white p-4 rounded shadow-sm" data-region="uk"><strong class="block">United Kingdom</strong><span class="text-slate-600">999</span></div>
-          <div class="bg-white p-4 rounded shadow-sm" data-region="us"><strong class="block">United States</strong><span class="text-slate-600">911</span></div>
-          <div class="bg-white p-4 rounded shadow-sm" data-region="eu"><strong class="block">European Union</strong><span class="text-slate-600">112</span></div>
-          <div class="bg-white p-4 rounded shadow-sm" data-region="au"><strong class="block">Australia</strong><span class="text-slate-600">000</span></div>
-          <div class="bg-white p-4 rounded shadow-sm" data-region="ca"><strong class="block">Canada</strong><span class="text-slate-600">911</span></div>
-          <div class="bg-white p-4 rounded shadow-sm" data-region="nz"><strong class="block">New Zealand</strong><span class="text-slate-600">111</span></div>
+          <div class="bg-white p-4 rounded shadow-sm" data-region="uk" data-name="united kingdom">
+            <strong class="block">United Kingdom</strong>
+            <a class="brand-text" href="tel:999" aria-label="Call 999">999</a>
+            <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://www.samaritans.org/" target="_blank" class="brand-text">Samaritans</a>, <a href="https://www.nspcc.org.uk/" target="_blank" class="brand-text">NSPCC</a></p>
+          </div>
+          <div class="bg-white p-4 rounded shadow-sm" data-region="us" data-name="united states">
+            <strong class="block">United States</strong>
+            <a class="brand-text" href="tel:911" aria-label="Call 911">911</a>
+            <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://988lifeline.org/" target="_blank" class="brand-text">988 Lifeline</a></p>
+          </div>
+          <div class="bg-white p-4 rounded shadow-sm" data-region="eu" data-name="european union">
+            <strong class="block">European Union</strong>
+            <a class="brand-text" href="tel:112" aria-label="Call 112">112</a>
+            <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://www.iasp.info/resources/helplines/" target="_blank" class="brand-text">International helplines</a></p>
+          </div>
+          <div class="bg-white p-4 rounded shadow-sm" data-region="au" data-name="australia">
+            <strong class="block">Australia</strong>
+            <a class="brand-text" href="tel:000" aria-label="Call 000">000</a>
+            <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://www.lifeline.org.au/" target="_blank" class="brand-text">Lifeline Australia</a></p>
+          </div>
+          <div class="bg-white p-4 rounded shadow-sm" data-region="ca" data-name="canada">
+            <strong class="block">Canada</strong>
+            <a class="brand-text" href="tel:911" aria-label="Call 911">911</a>
+            <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://talksuicide.ca/" target="_blank" class="brand-text">Talk Suicide</a></p>
+          </div>
+          <div class="bg-white p-4 rounded shadow-sm" data-region="nz" data-name="new zealand">
+            <strong class="block">New Zealand</strong>
+            <a class="brand-text" href="tel:111" aria-label="Call 111">111</a>
+            <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://www.mentalhealth.org.nz/get-help/" target="_blank" class="brand-text">Mental Health Foundation NZ</a></p>
+          </div>
         </div>
       </section>
 

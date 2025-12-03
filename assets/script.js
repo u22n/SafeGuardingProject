@@ -216,6 +216,7 @@ if(navToggle && primaryNav){
 // Regional contacts filter
 const regionFilter = document.getElementById('regionFilter');
 const regionalGrid = document.getElementById('regionalGrid');
+const regionSearch = document.getElementById('regionSearch');
 if(regionFilter && regionalGrid){
   regionFilter.addEventListener('change', function(){
     const val = regionFilter.value;
@@ -225,6 +226,23 @@ if(regionFilter && regionalGrid){
       card.classList.toggle('hidden', !show);
     });
   });
+}
+
+// Name search filter (combined with region filter)
+if(regionSearch && regionalGrid){
+  function applyCombinedFilter(){
+    const selectVal = regionFilter ? regionFilter.value : 'all';
+    const q = regionSearch.value.trim().toLowerCase();
+    regionalGrid.querySelectorAll('[data-region]').forEach(function(card){
+      const region = card.getAttribute('data-region');
+      const name = (card.getAttribute('data-name') || '').toLowerCase();
+      const matchesRegion = (selectVal === 'all' || selectVal === region);
+      const matchesQuery = (!q || name.includes(q));
+      card.classList.toggle('hidden', !(matchesRegion && matchesQuery));
+    });
+  }
+  regionSearch.addEventListener('input', applyCombinedFilter);
+  if(regionFilter){regionFilter.addEventListener('change', applyCombinedFilter)}
 }
 
 // FAQ accordion

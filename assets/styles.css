@@ -118,6 +118,8 @@ main .bg-white{background:var(--card-bg) !important}
 
 /* Card inner wrapper to give subtle lifted panels on dark bg */
 .card-inner{background:var(--card-bg);padding:1.25rem;border-radius:10px}
+section.card-wrap{background:#fff;border:1px solid rgba(2,6,23,0.06);border-radius:12px;padding:1.25rem}
+section.card-wrap + section.card-wrap{margin-top:1rem}
 form#reportForm input, form#reportForm select, form#reportForm textarea{border:1px solid rgba(2,6,23,0.12)}
 form#reportForm input:focus, form#reportForm select:focus, form#reportForm textarea:focus{border-color:rgba(var(--brand-rgb),0.35)}
 form#reportForm ::placeholder{color:#94a3b8}
