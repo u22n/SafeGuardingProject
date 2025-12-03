@@ -12,6 +12,7 @@
   <meta name="theme-color" content="#0EA5A4">
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/styles.css" />
+  <script src="https://unpkg.com/libphonenumber-js@1.11.9/bundle/libphonenumber-js.min.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
   <header class="bg-white/70 backdrop-blur sticky top-0 z-40">
@@ -116,6 +117,17 @@
             <input id="confirmCopy" name="confirmCopy" type="checkbox" class="rounded" />
             <span class="text-sm text-slate-700">Email me a confirmation copy</span>
           </label>
+        </div>
+        <div class="md:col-span-2">
+          <fieldset>
+            <legend class="text-sm font-medium text-slate-700">Preferred contact method</legend>
+            <div class="mt-2 flex flex-wrap gap-4" aria-describedby="preferred-help">
+              <label class="inline-flex items-center gap-2"><input type="radio" name="preferred" value="email" class="rounded" checked><span class="text-sm">Email</span></label>
+              <label class="inline-flex items-center gap-2"><input type="radio" name="preferred" value="phone" class="rounded"><span class="text-sm">Phone</span></label>
+              <label class="inline-flex items-center gap-2"><input type="radio" name="preferred" value="either" class="rounded"><span class="text-sm">Either</span></label>
+            </div>
+            <p id="preferred-help" class="mt-1 text-xs text-slate-500">We’ll use your preferred method for follow-up.</p>
+          </fieldset>
         </div>
       </div>
       <div class="mt-6 flex items-center gap-3">

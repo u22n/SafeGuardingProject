@@ -46,21 +46,24 @@ if(form){
 
   // Phone formatting helpers
   function formatIntl(raw, cc){
-    let n = raw.trim().replace(/[^+\d]/g,'');
-    if(n.startsWith('+')){
-      // keep as-is, but normalize spacing below
-    } else if(n.startsWith('0')){
-      n = cc + n.slice(1);
-    } else if(n.length){
-      n = cc + n;
+    const lib = window.libphonenumber || window['libphonenumber-js'];
+    let candidate = raw.trim();
+    // Prepend cc if local style
+    if(!candidate.startsWith('+')){
+      const stripped = candidate.replace(/[^\d]/g,'');
+      if(stripped.startsWith('0')){
+        candidate = cc + stripped.slice(1);
+      } else if(stripped.length){
+        candidate = cc + stripped;
+      }
     }
-    // add simple spacing for readability: +CC XXX XXX XXXX (best-effort)
-    const m = n.match(/^\+(\d+)(\d{3})(\d{3})(\d{0,4})$/);
-    if(m){
-      const parts = ["+"+m[1], m[2], m[3], m[4]].filter(Boolean);
-      return parts.join(' ');
-    }
-    return n; // fallback
+    try{
+      const phone = lib.parsePhoneNumber(candidate);
+      if(phone && phone.isValid()){
+        return phone.formatInternational();
+      }
+    }catch(e){/* ignore parse errors */}
+    return candidate.replace(/[^+\d]/g,'');
   }
   const ccMap = {GB:'+44',US:'+1',CA:'+1',AU:'+61',NZ:'+64',IE:'+353',FR:'+33',DE:'+49',ES:'+34',IT:'+39'};
   function currentCC(){return ccMap[countrySelect?.value || 'GB']}
