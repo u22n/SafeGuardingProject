@@ -604,7 +604,21 @@ if(navToggle && primaryNav){
 const regionFilter = document.getElementById('regionFilter');
 const regionalGrid = document.getElementById('regionalGrid');
 const regionSearch = document.getElementById('regionSearch');
+const visibleCountEl = document.getElementById('visibleCount');
+const totalCountEl = document.getElementById('totalCount');
+
 if(regionFilter && regionalGrid){
+  // Update counter
+  function updateCounter(){
+    const allCards = regionalGrid.querySelectorAll('[data-region]');
+    const visibleCards = regionalGrid.querySelectorAll('[data-region]:not(.hidden)');
+    if(totalCountEl) totalCountEl.textContent = allCards.length;
+    if(visibleCountEl) visibleCountEl.textContent = visibleCards.length;
+  }
+  
+  // Initialize - update total count
+  updateCounter();
+  
   regionFilter.addEventListener('change', function(){
     const val = regionFilter.value;
     regionalGrid.querySelectorAll('[data-region]').forEach(function(card){
@@ -612,6 +626,7 @@ if(regionFilter && regionalGrid){
       const show = (val === 'all' || val === region);
       card.classList.toggle('hidden', !show);
     });
+    updateCounter();
   });
 }
 
@@ -627,6 +642,12 @@ if(regionSearch && regionalGrid){
       const matchesQuery = (!q || name.includes(q));
       card.classList.toggle('hidden', !(matchesRegion && matchesQuery));
     });
+    if(visibleCountEl && totalCountEl){
+      const allCards = regionalGrid.querySelectorAll('[data-region]');
+      const visibleCards = regionalGrid.querySelectorAll('[data-region]:not(.hidden)');
+      if(totalCountEl) totalCountEl.textContent = allCards.length;
+      if(visibleCountEl) visibleCountEl.textContent = visibleCards.length;
+    }
   }
   regionSearch.addEventListener('input', applyCombinedFilter);
   if(regionFilter){regionFilter.addEventListener('change', applyCombinedFilter)}

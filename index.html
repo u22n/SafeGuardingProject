@@ -285,47 +285,285 @@
           <input id="regionSearch" type="text" class="border rounded px-2 py-1" placeholder="Type a country/region" aria-label="Search country or region" />
           <label for="regionFilter" class="text-sm">Region</label>
           <select id="regionFilter" class="border rounded px-2 py-1">
-            <option value="all" selected>All</option>
+            <option value="all" selected>All Regions</option>
             <option value="uk">United Kingdom</option>
             <option value="us">United States</option>
             <option value="eu">European Union</option>
             <option value="au">Australia</option>
             <option value="ca">Canada</option>
             <option value="nz">New Zealand</option>
+            <option value="ie">Ireland</option>
+            <option value="fr">France</option>
+            <option value="de">Germany</option>
+            <option value="es">Spain</option>
+            <option value="it">Italy</option>
+            <option value="nl">Netherlands</option>
+            <option value="be">Belgium</option>
+            <option value="se">Sweden</option>
+            <option value="no">Norway</option>
+            <option value="dk">Denmark</option>
+            <option value="fi">Finland</option>
+            <option value="pl">Poland</option>
+            <option value="in">India</option>
+            <option value="jp">Japan</option>
+            <option value="kr">South Korea</option>
+            <option value="sg">Singapore</option>
+            <option value="hk">Hong Kong</option>
+            <option value="za">South Africa</option>
+            <option value="br">Brazil</option>
+            <option value="mx">Mexico</option>
+            <option value="ae">United Arab Emirates</option>
           </select>
         </div>
         <div class="mt-4 grid gap-3 sm:grid-cols-2" id="regionalGrid">
           <div class="card card-pad" data-region="uk" data-name="united kingdom">
-            <strong class="block">United Kingdom</strong>
-            <a class="brand-text" href="tel:999" aria-label="Call 999"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">999</span></a>
-            <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://www.samaritans.org/" target="_blank" class="brand-text">Samaritans</a>, <a href="https://www.nspcc.org.uk/" target="_blank" class="brand-text">NSPCC</a></p>
+            <strong class="block text-slate-900">United Kingdom</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:999" aria-label="Emergency 999"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">999</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:101" aria-label="Non-emergency 101"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">101</span></a> <span class="text-slate-500 text-xs">Police Non-Emergency</span></div>
+              <div><a class="brand-text" href="tel:111" aria-label="NHS 111"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">111</span></a> <span class="text-slate-500 text-xs">NHS Helpline</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.samaritans.org/" target="_blank" rel="noopener" class="brand-text underline">Samaritans</a> (116 123), <a href="https://www.nspcc.org.uk/" target="_blank" rel="noopener" class="brand-text underline">NSPCC</a> (0808 800 5000), <a href="https://www.childline.org.uk/" target="_blank" rel="noopener" class="brand-text underline">Childline</a> (0800 1111)</p>
           </div>
           <div class="card card-pad" data-region="us" data-name="united states">
-            <strong class="block">United States</strong>
-            <a class="brand-text" href="tel:911" aria-label="Call 911"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">911</span></a>
-            <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://988lifeline.org/" target="_blank" class="brand-text">988 Lifeline</a></p>
+            <strong class="block text-slate-900">United States</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:911" aria-label="Emergency 911"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">911</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:988" aria-label="988 Suicide & Crisis Lifeline"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">988</span></a> <span class="text-slate-500 text-xs">Suicide & Crisis Lifeline</span></div>
+              <div><a class="brand-text" href="tel:18004224453" aria-label="National Child Abuse Hotline"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">1-800-422-4453</span></a> <span class="text-slate-500 text-xs">Child Abuse Hotline</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://988lifeline.org/" target="_blank" rel="noopener" class="brand-text underline">988 Lifeline</a>, <a href="https://www.childwelfare.gov/" target="_blank" rel="noopener" class="brand-text underline">Child Welfare</a>, <a href="https://www.rainn.org/" target="_blank" rel="noopener" class="brand-text underline">RAINN</a> (1-800-656-4673)</p>
           </div>
           <div class="card card-pad" data-region="eu" data-name="european union">
-            <strong class="block">European Union</strong>
-            <a class="brand-text" href="tel:112" aria-label="Call 112"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a>
-            <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://www.iasp.info/resources/helplines/" target="_blank" class="brand-text">International helplines</a></p>
+            <strong class="block text-slate-900">European Union</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:112" aria-label="Emergency 112"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a> <span class="text-slate-500 text-xs">Emergency (All EU)</span></div>
+              <div><a class="brand-text" href="tel:116111" aria-label="Child Helpline"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">116 111</span></a> <span class="text-slate-500 text-xs">Child Helpline</span></div>
+              <div><a class="brand-text" href="tel:116006" aria-label="Victim Support"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">116 006</span></a> <span class="text-slate-500 text-xs">Victim Support</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.childhelplineinternational.org/" target="_blank" rel="noopener" class="brand-text underline">Child Helpline Intl</a>, <a href="https://ec.europa.eu/justice/saynostopvaw/" target="_blank" rel="noopener" class="brand-text underline">EU Violence Hotlines</a>, <a href="https://www.iasp.info/resources/helplines/" target="_blank" rel="noopener" class="brand-text underline">International Crisis Lines</a></p>
           </div>
           <div class="card card-pad" data-region="au" data-name="australia">
-            <strong class="block">Australia</strong>
-            <a class="brand-text" href="tel:000" aria-label="Call 000"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">000</span></a>
-            <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://www.lifeline.org.au/" target="_blank" class="brand-text">Lifeline Australia</a></p>
+            <strong class="block text-slate-900">Australia</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:000" aria-label="Emergency 000"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">000</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:131114" aria-label="Lifeline Australia"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">13 11 14</span></a> <span class="text-slate-500 text-xs">Lifeline Crisis Support</span></div>
+              <div><a class="brand-text" href="tel:1800551800" aria-label="Kids Helpline"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">1800 55 1800</span></a> <span class="text-slate-500 text-xs">Kids Helpline</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.lifeline.org.au/" target="_blank" rel="noopener" class="brand-text underline">Lifeline Australia</a>, <a href="https://kidshelpline.com.au/" target="_blank" rel="noopener" class="brand-text underline">Kids Helpline</a>, <a href="https://www.1800respect.org.au/" target="_blank" rel="noopener" class="brand-text underline">1800RESPECT</a> (1800 737 732)</p>
           </div>
           <div class="card card-pad" data-region="ca" data-name="canada">
-            <strong class="block">Canada</strong>
-            <a class="brand-text" href="tel:911" aria-label="Call 911"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">911</span></a>
-            <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://talksuicide.ca/" target="_blank" class="brand-text">Talk Suicide</a></p>
+            <strong class="block text-slate-900">Canada</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:911" aria-label="Emergency 911"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">911</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:988" aria-label="Suicide Crisis Helpline"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">988</span></a> <span class="text-slate-500 text-xs">Suicide Crisis Helpline</span></div>
+              <div><a class="brand-text" href="tel:18006684357" aria-label="Kids Help Phone"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">1-800-668-6868</span></a> <span class="text-slate-500 text-xs">Kids Help Phone</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://talksuicide.ca/" target="_blank" rel="noopener" class="brand-text underline">Talk Suicide</a>, <a href="https://kidshelpphone.ca/" target="_blank" rel="noopener" class="brand-text underline">Kids Help Phone</a>, <a href="https://www.crisisservicescanada.ca/" target="_blank" rel="noopener" class="brand-text underline">Crisis Services Canada</a> (1-833-456-4566)</p>
           </div>
-          <div class="card card-pad" data-region="nz" data-name="new zealand">
-            <strong class="block">New Zealand</strong>
-            <a class="brand-text" href="tel:111" aria-label="Call 111"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">111</span></a>
-            <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://www.mentalhealth.org.nz/get-help/" target="_blank" class="brand-text">Mental Health Foundation NZ</a></p>
+          <div class="card card-pad hidden" data-region="nz" data-name="new zealand">
+            <strong class="block text-slate-900">New Zealand</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:111" aria-label="Emergency 111"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">111</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:1737" aria-label="Need to Talk"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">1737</span></a> <span class="text-slate-500 text-xs">Need to Talk? (Free 24/7)</span></div>
+              <div><a class="brand-text" href="tel:0800543354" aria-label="Lifeline NZ"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">0800 543 354</span></a> <span class="text-slate-500 text-xs">Lifeline NZ</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.mentalhealth.org.nz/get-help/" target="_blank" rel="noopener" class="brand-text underline">Mental Health Foundation</a>, <a href="https://www.youthline.co.nz/" target="_blank" rel="noopener" class="brand-text underline">Youthline</a> (0800 376 633), <a href="https://www.safetotalk.nz/" target="_blank" rel="noopener" class="brand-text underline">Safe to Talk</a> (0800 044 334)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="ie" data-name="ireland">
+            <strong class="block text-slate-900">Ireland</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:112" aria-label="Emergency 112"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:999" aria-label="Emergency 999"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">999</span></a> <span class="text-slate-500 text-xs">Emergency (Alt)</span></div>
+              <div><a class="brand-text" href="tel:116123" aria-label="Samaritans Ireland"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">116 123</span></a> <span class="text-slate-500 text-xs">Samaritans (Free 24/7)</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.tusla.ie/" target="_blank" rel="noopener" class="brand-text underline">TUSLA</a> (Child Protection), <a href="https://www.pieta.ie/" target="_blank" rel="noopener" class="brand-text underline">Pieta House</a> (1800 247 247), <a href="https://www.childline.ie/" target="_blank" rel="noopener" class="brand-text underline">Childline</a> (1800 666 666)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="fr" data-name="france">
+            <strong class="block text-slate-900">France</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:112" aria-label="Emergency 112"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a> <span class="text-slate-500 text-xs">Emergency (EU)</span></div>
+              <div><a class="brand-text" href="tel:15" aria-label="SAMU"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">15</span></a> <span class="text-slate-500 text-xs">SAMU (Medical)</span></div>
+              <div><a class="brand-text" href="tel:119" aria-label="Child Protection"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">119</span></a> <span class="text-slate-500 text-xs">Child Protection</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.sos-amitie.com/" target="_blank" rel="noopener" class="brand-text underline">SOS Amitié</a> (09 72 39 40 50), <a href="https://www.solidaritefemmes.org/" target="_blank" rel="noopener" class="brand-text underline">Violence Femmes Info</a> (3919)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="de" data-name="germany">
+            <strong class="block text-slate-900">Germany</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:112" aria-label="Emergency 112"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:110" aria-label="Police"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">110</span></a> <span class="text-slate-500 text-xs">Police</span></div>
+              <div><a class="brand-text" href="tel:08001110333" aria-label="Child Protection Hotline"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">0800 111 0333</span></a> <span class="text-slate-500 text-xs">Child Protection Hotline</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.telefonseelsorge.de/" target="_blank" rel="noopener" class="brand-text underline">Telefonseelsorge</a> (0800 111 0 111), <a href="https://www.nummergegenkummer.de/" target="_blank" rel="noopener" class="brand-text underline">Nummer gegen Kummer</a> (116 111)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="es" data-name="spain">
+            <strong class="block text-slate-900">Spain</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:112" aria-label="Emergency 112"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:091" aria-label="National Police"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">091</span></a> <span class="text-slate-500 text-xs">National Police</span></div>
+              <div><a class="brand-text" href="tel:016" aria-label="Gender Violence Helpline"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">016</span></a> <span class="text-slate-500 text-xs">Gender Violence Helpline</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.telefonodelaesperanza.org/" target="_blank" rel="noopener" class="brand-text underline">Teléfono de la Esperanza</a> (717 003 717), <a href="https://www.anar.org/" target="_blank" rel="noopener" class="brand-text underline">ANAR</a> (900 20 20 10)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="it" data-name="italy">
+            <strong class="block text-slate-900">Italy</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:112" aria-label="Emergency 112"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:114" aria-label="Child Emergency"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">114</span></a> <span class="text-slate-500 text-xs">Child Emergency</span></div>
+              <div><a class="brand-text" href="tel:1522" aria-label="Anti-Violence"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">1522</span></a> <span class="text-slate-500 text-xs">Anti-Violence Helpline</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.telefonoazzurro.it/" target="_blank" rel="noopener" class="brand-text underline">Telefono Azzurro</a> (19696), <a href="https://www.telefonoamico.it/" target="_blank" rel="noopener" class="brand-text underline">Telefono Amico</a> (02 2327 2327)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="nl" data-name="netherlands">
+            <strong class="block text-slate-900">Netherlands</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:112" aria-label="Emergency 112"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:0800-0431" aria-label="Child Abuse Helpline"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">0800-0431</span></a> <span class="text-slate-500 text-xs">Child Abuse Helpline</span></div>
+              <div><a class="brand-text" href="tel:113" aria-label="Suicide Prevention"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">113</span></a> <span class="text-slate-500 text-xs">Suicide Prevention (24/7)</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.113.nl/" target="_blank" rel="noopener" class="brand-text underline">113 Suicide Prevention</a>, <a href="https://www.kindertelefoon.nl/" target="_blank" rel="noopener" class="brand-text underline">Kindertelefoon</a> (0800-0432)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="be" data-name="belgium">
+            <strong class="block text-slate-900">Belgium</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:112" aria-label="Emergency 112"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:101" aria-label="Police"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">101</span></a> <span class="text-slate-500 text-xs">Police</span></div>
+              <div><a class="brand-text" href="tel:1712" aria-label="Child Focus"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">116 000</span></a> <span class="text-slate-500 text-xs">Child Focus</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.childfocus.be/" target="_blank" rel="noopener" class="brand-text underline">Child Focus</a> (116 000), <a href="https://www.tele-onthaal.be/" target="_blank" rel="noopener" class="brand-text underline">Tele-Onthaal</a> (106)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="se" data-name="sweden">
+            <strong class="block text-slate-900">Sweden</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:112" aria-label="Emergency 112"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:114-14" aria-label="Healthcare"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">1177</span></a> <span class="text-slate-500 text-xs">Healthcare Information</span></div>
+              <div><a class="brand-text" href="tel:116111" aria-label="Children's Helpline"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">116 111</span></a> <span class="text-slate-500 text-xs">BRIS (Children's Helpline)</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.bris.se/" target="_blank" rel="noopener" class="brand-text underline">BRIS</a> (116 111), <a href="https://mind.se/" target="_blank" rel="noopener" class="brand-text underline">MIND</a> (90101)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="no" data-name="norway">
+            <strong class="block text-slate-900">Norway</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:112" aria-label="Emergency 112"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:116111" aria-label="Child Helpline"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">116 111</span></a> <span class="text-slate-500 text-xs">Child Helpline</span></div>
+              <div><a class="brand-text" href="tel:116006" aria-label="Victim Support"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">116 006</span></a> <span class="text-slate-500 text-xs">Victim Support</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.alarmtelefonen.no/" target="_blank" rel="noopener" class="brand-text underline">Alarmtelefonen</a> (116 006), <a href="https://www.kirkens-sos.no/" target="_blank" rel="noopener" class="brand-text underline">Kirkens SOS</a> (22 40 00 40)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="dk" data-name="denmark">
+            <strong class="block text-slate-900">Denmark</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:112" aria-label="Emergency 112"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:114" aria-label="Non-Emergency"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">114</span></a> <span class="text-slate-500 text-xs">Medical Helpline</span></div>
+              <div><a class="brand-text" href="tel:116111" aria-label="Children's Helpline"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">116 111</span></a> <span class="text-slate-500 text-xs">BørneTelefonen</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://bornetelefonen.dk/" target="_blank" rel="noopener" class="brand-text underline">BørneTelefonen</a> (116 111), <a href="https://www.livslinien.dk/" target="_blank" rel="noopener" class="brand-text underline">Livslinien</a> (70 201 201)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="fi" data-name="finland">
+            <strong class="block text-slate-900">Finland</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:112" aria-label="Emergency 112"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:116111" aria-label="Child Helpline"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">116 111</span></a> <span class="text-slate-500 text-xs">Mannerheim League Helpline</span></div>
+              <div><a class="brand-text" href="tel:09-2525-0111" aria-label="Crisis Helpline"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">09 2525 0111</span></a> <span class="text-slate-500 text-xs">Crisis Helpline</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.mll.fi/" target="_blank" rel="noopener" class="brand-text underline">Mannerheim League</a> (116 111), <a href="https://mieli.fi/" target="_blank" rel="noopener" class="brand-text underline">Mieli</a> (09 2525 0111)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="pl" data-name="poland">
+            <strong class="block text-slate-900">Poland</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:112" aria-label="Emergency 112"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:997" aria-label="Police"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">997</span></a> <span class="text-slate-500 text-xs">Police</span></div>
+              <div><a class="brand-text" href="tel:116111" aria-label="Child Helpline"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">116 111</span></a> <span class="text-slate-500 text-xs">Child Helpline (24/7)</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://116111.pl/" target="_blank" rel="noopener" class="brand-text underline">Child Helpline</a> (116 111), <a href="https://www.niebieskalinia.info/" target="_blank" rel="noopener" class="brand-text underline">Blue Line</a> (800 120 002)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="in" data-name="india">
+            <strong class="block text-slate-900">India</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:112" aria-label="Emergency 112"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:1098" aria-label="Childline India"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">1098</span></a> <span class="text-slate-500 text-xs">Childline India (24/7)</span></div>
+              <div><a class="brand-text" href="tel:9152987821" aria-label="AASRA"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">91529 87821</span></a> <span class="text-slate-500 text-xs">AASRA Crisis Line</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.childlineindia.org/" target="_blank" rel="noopener" class="brand-text underline">Childline India</a> (1098), <a href="https://www.vandrevalafoundation.com/" target="_blank" rel="noopener" class="brand-text underline">Vandrevala</a> (1860 266 2345)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="jp" data-name="japan">
+            <strong class="block text-slate-900">Japan</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:110" aria-label="Police"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">110</span></a> <span class="text-slate-500 text-xs">Police</span></div>
+              <div><a class="brand-text" href="tel:119" aria-label="Fire/Ambulance"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">119</span></a> <span class="text-slate-500 text-xs">Fire/Ambulance</span></div>
+              <div><a class="brand-text" href="tel:0120-279-338" aria-label="Child Helpline"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">0120-279-338</span></a> <span class="text-slate-500 text-xs">Child Helpline (24/7)</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.tell-jp.com/" target="_blank" rel="noopener" class="brand-text underline">TELL Lifeline</a> (03-5774-0992), <a href="https://www.findhelp.jp/" target="_blank" rel="noopener" class="brand-text underline">Find Help JP</a></p>
+          </div>
+          <div class="card card-pad hidden" data-region="kr" data-name="south korea">
+            <strong class="block text-slate-900">South Korea</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:112" aria-label="Police"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a> <span class="text-slate-500 text-xs">Police</span></div>
+              <div><a class="brand-text" href="tel:119" aria-label="Fire/Medical"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">119</span></a> <span class="text-slate-500 text-xs">Fire/Medical Emergency</span></div>
+              <div><a class="brand-text" href="tel:1577-0199" aria-label="Child Abuse"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">1577-0199</span></a> <span class="text-slate-500 text-xs">Child Abuse Helpline</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.koreanhelpline.com/" target="_blank" rel="noopener" class="brand-text underline">Korea Helpline</a> (02-793-5233), <a href="https://www.suicide.org/hotlines/international/south-korea-suicide-hotlines.html" target="_blank" rel="noopener" class="brand-text underline">Crisis Counselling</a> (1393)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="sg" data-name="singapore">
+            <strong class="block text-slate-900">Singapore</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:999" aria-label="Police/Ambulance"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">999</span></a> <span class="text-slate-500 text-xs">Police/Ambulance</span></div>
+              <div><a class="brand-text" href="tel:1800-221-4444" aria-label="SOS"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">1800-221-4444</span></a> <span class="text-slate-500 text-xs">Samaritans of Singapore (24/7)</span></div>
+              <div><a class="brand-text" href="tel:1800-777-0000" aria-label="Child Protection"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">1800-777-0000</span></a> <span class="text-slate-500 text-xs">Child Protection (MSF)</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.sos.org.sg/" target="_blank" rel="noopener" class="brand-text underline">Samaritans of SG</a> (1800-221-4444), <a href="https://www.msf.gov.sg/" target="_blank" rel="noopener" class="brand-text underline">MSF</a> (1800-777-0000)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="hk" data-name="hong kong">
+            <strong class="block text-slate-900">Hong Kong</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:999" aria-label="Emergency 999"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">999</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:2382-2007" aria-label="The Samaritans"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">2382 0000</span></a> <span class="text-slate-500 text-xs">Samaritans (24/7)</span></div>
+              <div><a class="brand-text" href="tel:2382-2007" aria-label="Suicide Prevention"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">2389 2222</span></a> <span class="text-slate-500 text-xs">Suicide Prevention Services</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.sps.org.hk/" target="_blank" rel="noopener" class="brand-text underline">Suicide Prevention Services</a> (2389 2222), <a href="https://www.ceasecrisis.org.hk/" target="_blank" rel="noopener" class="brand-text underline">Cease Crisis Centre</a> (18288)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="za" data-name="south africa">
+            <strong class="block text-slate-900">South Africa</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:10111" aria-label="Police"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">10111</span></a> <span class="text-slate-500 text-xs">Police</span></div>
+              <div><a class="brand-text" href="tel:112" aria-label="Emergency"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a> <span class="text-slate-500 text-xs">Emergency (Mobile)</span></div>
+              <div><a class="brand-text" href="tel:0800-055-555" aria-label="Childline SA"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">0800 055 555</span></a> <span class="text-slate-500 text-xs">Childline SA (24/7)</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.childlinesa.org.za/" target="_blank" rel="noopener" class="brand-text underline">Childline SA</a> (0800 055 555), <a href="https://www.lifeline.org.za/" target="_blank" rel="noopener" class="brand-text underline">Lifeline SA</a> (0861 322 322)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="br" data-name="brazil">
+            <strong class="block text-slate-900">Brazil</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:190" aria-label="Police"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">190</span></a> <span class="text-slate-500 text-xs">Military Police</span></div>
+              <div><a class="brand-text" href="tel:192" aria-label="Ambulance"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">192</span></a> <span class="text-slate-500 text-xs">Ambulance (SAMU)</span></div>
+              <div><a class="brand-text" href="tel:100" aria-label="Child Protection"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">100</span></a> <span class="text-slate-500 text-xs">Child Protection (Disque 100)</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.cvv.org.br/" target="_blank" rel="noopener" class="brand-text underline">CVV</a> (188), <a href="https://www.gov.br/mdh/pt-br/disque100" target="_blank" rel="noopener" class="brand-text underline">Disque 100</a> (Human Rights)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="mx" data-name="mexico">
+            <strong class="block text-slate-900">Mexico</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:911" aria-label="Emergency 911"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">911</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
+              <div><a class="brand-text" href="tel:089" aria-label="Anonymous Reporting"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">089</span></a> <span class="text-slate-500 text-xs">Anonymous Reporting</span></div>
+              <div><a class="brand-text" href="tel:800-290-0024" aria-label="Child Helpline"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">800-290-0024</span></a> <span class="text-slate-500 text-xs">Child Helpline</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.gob.mx/sipinna" target="_blank" rel="noopener" class="brand-text underline">SIPINNA</a> (Child Protection), <a href="https://www.gob.mx/conavim" target="_blank" rel="noopener" class="brand-text underline">CONAVIM</a> (Violence Prevention)</p>
+          </div>
+          <div class="card card-pad hidden" data-region="ae" data-name="united arab emirates">
+            <strong class="block text-slate-900">United Arab Emirates</strong>
+            <div class="mt-2 space-y-1">
+              <div><a class="brand-text font-semibold" href="tel:999" aria-label="Police"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">999</span></a> <span class="text-slate-500 text-xs">Police</span></div>
+              <div><a class="brand-text" href="tel:998" aria-label="Ambulance"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">998</span></a> <span class="text-slate-500 text-xs">Ambulance</span></div>
+              <div><a class="brand-text" href="tel:800-988" aria-label="Child Protection"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">116 111</span></a> <span class="text-slate-500 text-xs">Child Helpline</span></div>
+            </div>
+            <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://u.ae/en/information-and-services/social-affairs/child-protection" target="_blank" rel="noopener" class="brand-text underline">Child Protection</a>, <a href="https://www.Dubai.ae/" target="_blank" rel="noopener" class="brand-text underline">Dubai Foundation</a> (800-988)</p>
           </div>
         </div>
+        <div class="mt-4 text-center">
+          <p class="text-slate-600 text-sm">Showing <span id="visibleCount">4</span> of <span id="totalCount">27</span> regions. Use search or filter to find more.</p>
+        </div>
+      </section>
       </section>
 
       
