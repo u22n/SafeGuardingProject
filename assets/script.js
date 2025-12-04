@@ -136,12 +136,101 @@ if(form){
     }catch(e){/* ignore parse errors */}
     return candidate.replace(/[^+\d]/g,'');
   }
+  // Lazy-load libphonenumber when phone field is focused/used
+  let _phoneLibLoading = false;
+  function loadPhoneLib(){
+    return new Promise(function(resolve, reject){
+      if(window.libphonenumber || window['libphonenumber-js']){ resolve(true); return; }
+      if(_phoneLibLoading){
+        // poll until present
+        const t = setInterval(function(){ if(window.libphonenumber || window['libphonenumber-js']){ clearInterval(t); resolve(true); } }, 100);
+        return;
+      }
+      _phoneLibLoading = true;
+      const s = document.createElement('script');
+      s.src = 'https://unpkg.com/libphonenumber-js@1.11.9/bundle/libphonenumber-js.min.js';
+      s.async = true;
+      s.onload = function(){ _phoneLibLoading = false; resolve(true); };
+      s.onerror = function(){ _phoneLibLoading = false; reject(new Error('lib load failed')); };
+      document.head.appendChild(s);
+    });
+  }
   function applyPhoneFormat(){
-    if(phoneInput && phoneInput.value){
-      phoneInput.value = formatIntl(phoneInput.value);
+    if(!phoneInput) return;
+    if(!phoneInput.value) return;
+    const libPresent = (window.libphonenumber || window['libphonenumber-js']);
+    if(!libPresent){
+      // load and then attempt formatting
+      loadPhoneLib().then(function(){ try{ phoneInput.value = formatIntl(phoneInput.value); }catch(e){} }).catch(function(){});
+      return;
     }
+    try{ phoneInput.value = formatIntl(phoneInput.value); }catch(e){}
   }
   phoneInput?.addEventListener('blur', applyPhoneFormat);
+  phoneInput?.addEventListener('focus', function(){ loadPhoneLib().catch(()=>{}); });
+  phoneInput?.addEventListener('input', function(){ if(phoneInput.value.length>3) loadPhoneLib().catch(()=>{}); });
+
+  // Small utility: show toast
+  const toastEl = document.getElementById('toast');
+  function showToast(msg, type){
+    if(!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.classList.remove('hidden');
+    toastEl.classList.add('show');
+    if(type === 'error') toastEl.style.background = '#b91c1c'; else toastEl.style.background = '#111827';
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(function(){ toastEl.classList.remove('show'); toastEl.classList.add('hidden'); }, 3500);
+  }
+
+  // Validation utilities (real-time)
+  function setValidationIcon(inputEl, state){
+    if(!inputEl) return;
+    const wrap = inputEl.closest('.relative');
+    if(!wrap) return;
+    const icon = wrap.querySelector('.field-valid');
+    if(!icon) return;
+    icon.classList.remove('visible','error');
+    if(state === 'valid'){
+      icon.classList.add('visible');
+    } else if(state === 'invalid'){
+      icon.classList.add('visible','error');
+    }
+  }
+  function validateName(){
+    const v = (form.name.value || '').trim();
+    if(!v){ setValidationIcon(form.name, 'invalid'); return false; }
+    setValidationIcon(form.name, 'valid'); return true;
+  }
+  function validateEmail(){
+    const v = (emailInput.value || '').trim();
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if(!pattern.test(v)){ setValidationIcon(emailInput, 'invalid'); return false; }
+    setValidationIcon(emailInput, 'valid'); return true;
+  }
+  function validatePhone(){
+    const v = (phoneInput.value || '').trim();
+    if(!v){ // optional phone; clear icon
+      setValidationIcon(phoneInput, null); return true;
+    }
+    const lib = window.libphonenumber || window['libphonenumber-js'];
+    if(lib){
+      try{
+        const parsed = lib.parsePhoneNumberFromString(v);
+        if(parsed && parsed.isValid && parsed.isValid()){
+          setValidationIcon(phoneInput, 'valid'); return true;
+        }
+      }catch(e){ }
+      // fallback simple check
+    }
+    const digits = v.replace(/\D/g,'');
+    if(digits.length >= 7){ setValidationIcon(phoneInput, 'valid'); return true; }
+    setValidationIcon(phoneInput, 'invalid'); return false;
+  }
+
+  // wire real-time validation
+  form.name?.addEventListener('input', function(){ if(form.name.classList) { validateName(); } });
+  emailInput?.addEventListener('input', function(){ validateEmail(); });
+  phoneInput?.addEventListener('input', function(){ validatePhone(); });
 
   // Dropzone behaviors
   function preventDefaults(e){ e.preventDefault(); e.stopPropagation(); }
@@ -169,8 +258,8 @@ if(form){
     if(!file) return;
     const maxBytes = 5 * 1024 * 1024;
     const okTypes = ['image/jpeg','image/png','application/pdf'];
-    if(file.size > maxBytes){ formMessage.textContent = 'Attachment too large (max 5MB).'; formMessage.style.color = '#ef4444'; return; }
-    if(!okTypes.includes(file.type)){ formMessage.textContent = 'Unsupported file type. Use JPG, PNG, or PDF.'; formMessage.style.color = '#ef4444'; return; }
+    if(file.size > maxBytes){ formMessage.textContent = 'Attachment too large (max 5MB).'; formMessage.style.color = '#ef4444'; showToast('Attachment too large (max 5MB).','error'); return; }
+    if(!okTypes.includes(file.type)){ formMessage.textContent = 'Unsupported file type. Use JPG, PNG, or PDF.'; formMessage.style.color = '#ef4444'; showToast('Unsupported file type. Use JPG, PNG, or PDF.','error'); return; }
     // Update label and show remove
     dzLabel.textContent = file.name;
     dzClearBtn?.classList.remove('hidden');
@@ -181,7 +270,7 @@ if(form){
       reader.onprogress = function(e){ if(e.lengthComputable && dzProgressBar){ const pct = Math.round((e.loaded / e.total) * 100); dzProgressBar.style.width = pct + '%'; dzProgressBar.setAttribute('aria-valuenow', String(pct)); } };
       reader.onload = function(){ if(dzProgressBar){ dzProgressBar.style.width = '100%'; dzProgressBar.setAttribute('aria-valuenow','100'); setTimeout(function(){ if(dzProgress) dzProgress.classList.add('hidden'); }, 600); }
       };
-      reader.onerror = function(){ formMessage.textContent = 'Error reading file.'; formMessage.style.color = '#ef4444'; };
+      reader.onerror = function(){ formMessage.textContent = 'Error reading file.'; formMessage.style.color = '#ef4444'; showToast('Error reading file.','error'); };
       // Start reading (this triggers onprogress for larger files)
       reader.readAsArrayBuffer(file);
     }catch(e){ /* ignore */ }
