@@ -1,6 +1,12 @@
 // Ensure page starts at the top on load/refresh
 if('scrollRestoration' in history){history.scrollRestoration='manual';}
+window.scrollTo(0,0);
+
 window.addEventListener('DOMContentLoaded', function(){
+  window.scrollTo(0,0);
+});
+
+window.addEventListener('pageshow', function(e){
   window.scrollTo(0,0);
 });
 
