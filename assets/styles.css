@@ -181,8 +181,8 @@ a:focus, a:focus-visible {box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.10)}
 .field-valid::before{content:'';display:block;width:10px;height:6px;border-left:2px solid transparent;border-bottom:2px solid transparent;border-color:#fff;transform:rotate(-45deg)}
 .field-valid.visible{background:linear-gradient(90deg,var(--brand),var(--brand-dark));opacity:1}
 .field-valid.error{background:#ef4444;opacity:1}
-.field-valid.error::before{content:'';display:block;width:10px;height:10px;position:relative;border:none;transform:rotate(45deg)}
-.field-valid.error::after{content:'';position:absolute;width:2px;height:10px;background:#fff;transform:rotate(90deg)}
+.field-valid.error::before{content:'';position:absolute;width:2px;height:10px;background:#fff;transform:rotate(45deg)}
+.field-valid.error::after{content:'';position:absolute;width:2px;height:10px;background:#fff;transform:rotate(-45deg)}
 
 /* Toast */
 .toast{position:fixed;right:1rem;bottom:1.25rem;z-index:60;padding:.6rem .9rem;border-radius:10px;background:#111827;color:#fff;box-shadow:0 8px 24px rgba(2,6,23,0.12);max-width:320px}
