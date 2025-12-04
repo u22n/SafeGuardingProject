@@ -529,6 +529,19 @@ form.addEventListener('submit', function(e){
     return;
   }
   formMessage.textContent = '';
+  
+  // Generate fake reference number
+  const now = new Date();
+  const year = now.getFullYear();
+  const randomNum = Math.floor(10000 + Math.random() * 90000); // 5-digit random number
+  const referenceNum = `SG-${year}-${randomNum}`;
+  
+  // Update modal with reference number
+  const refEl = document.getElementById('referenceNumber');
+  if(refEl) {
+    refEl.textContent = referenceNum;
+  }
+  
   const modal = document.getElementById('thankYouModal');
   const closeBtn = document.getElementById('closeModal');
   const previousActive = document.activeElement;
@@ -710,3 +723,27 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// Anonymous reporter toggle
+const anonymousToggle = document.getElementById('anonymousToggle');
+const anonymousExplainer = document.getElementById('anonymousExplainer');
+const shieldIcon = document.getElementById('shieldIcon');
+const anonymousSection = document.getElementById('anonymousSection');
+
+if (anonymousToggle && anonymousExplainer && shieldIcon) {
+  anonymousToggle.addEventListener('change', function() {
+    if (this.checked) {
+      anonymousExplainer.classList.remove('hidden');
+      shieldIcon.classList.remove('text-slate-400');
+      shieldIcon.classList.add('text-brand');
+      anonymousSection.style.borderColor = 'rgba(139,92,246,0.4)';
+      anonymousSection.style.background = 'linear-gradient(135deg, rgba(139,92,246,0.1) 0%, rgba(255,255,255,0.95) 100%)';
+    } else {
+      anonymousExplainer.classList.add('hidden');
+      shieldIcon.classList.remove('text-brand');
+      shieldIcon.classList.add('text-slate-400');
+      anonymousSection.style.borderColor = 'rgba(139,92,246,0.2)';
+      anonymousSection.style.background = 'linear-gradient(135deg, rgba(139,92,246,0.05) 0%, rgba(255,255,255,0.9) 100%)';
+    }
+  });
+}
