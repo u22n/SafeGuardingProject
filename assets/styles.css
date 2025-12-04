@@ -108,9 +108,9 @@ a:focus, a:focus-visible {box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.10)}
 /* Header & Footer */
 .site-header{background:#ffffffd9;backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid #e2e8f0}
 .site-footer{background:#f1f5f9;color:#0f172a;padding:3rem 0;border-top:1px solid #e2e8f0;width:100%}
-.site-footer a{color:#0EA5A4}
-.site-footer .brand-text{color:#0EA5A4}
-.site-footer .brand-text::after{background:linear-gradient(90deg,#0EA5A4,transparent)}
+.site-footer a{color:#0F766E}
+.site-footer .brand-text{color:#0F766E}
+.site-footer .brand-text::after{background:linear-gradient(90deg,#0F766E,transparent)}
 .footer-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 
 /* Nav tweaks */
@@ -134,6 +134,10 @@ a:focus, a:focus-visible {box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.10)}
 .hero-wrap .container{max-width:64rem}
 .hero-title{font-size:clamp(2rem,3.5vw,3rem);line-height:1.15}
 .hero-lead{font-size:1.0625rem;color:#475569}
+
+/* Section panels: page-like modules */
+.section-panel{background:#ffffff;border:1px solid #e2e8f0;border-radius:1rem;box-shadow:0 10px 30px rgba(2,6,23,.06);padding:2rem;margin:2rem 0}
+.section-panel .eyebrow{margin-top:-.5rem;display:block}
 .brand-bg{background:linear-gradient(90deg, var(--brand), var(--brand-dark))}
 .brand-btn{background:var(--brand);color:#fff}
 .brand-btn:hover{background:var(--brand-dark)}
