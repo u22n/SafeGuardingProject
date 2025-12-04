@@ -67,6 +67,14 @@ if(form){
           emailInput.focus();
         }
       })
+      // If the user has typed a full known domain, hide the suggestions
+      const domainPart = val.slice(atIndex + 1).toLowerCase();
+      if(domainPart){
+        const match = Array.from(emailSuggestions.querySelectorAll('li')).some(function(li){
+          return li.dataset.domain && li.dataset.domain.toLowerCase() === domainPart;
+        });
+        if(match){ emailSuggestions.classList.add('hidden'); }
+      }
       // set first item selected by default for keyboard nav
       // (reverted) initial aria-selected handling
       // (reverted) do not lock body scroll
@@ -81,29 +89,32 @@ if(form){
     if(emailSuggestions?.classList.contains('hidden')) return;
     const items = Array.from(emailSuggestions.querySelectorAll('li'));
     if(items.length === 0) return;
-    let index = -1;
+    // determine currently focused suggestion (if any)
+    const currentIndex = items.findIndex(i => i === document.activeElement);
     if(ev.key === 'ArrowDown'){
       ev.preventDefault();
-      index = Math.min(items.length - 1, index + 1);
-      items[index].focus();
-      items[index].scrollIntoView({block:'nearest'});
-    }else if(ev.key === 'ArrowUp'){
+      const next = (currentIndex === -1) ? 0 : Math.min(items.length - 1, currentIndex + 1);
+      items[next].focus();
+      items[next].scrollIntoView({block:'nearest'});
+    } else if(ev.key === 'ArrowUp'){
       ev.preventDefault();
-      index = Math.max(0, index - 1);
-      items[index].focus();
-      items[index].scrollIntoView({block:'nearest'});
-    }else if(ev.key === 'Enter'){
-      if(index >= 0){
-        const domain = items[index].dataset.domain;
+      const prev = (currentIndex === -1) ? items.length - 1 : Math.max(0, currentIndex - 1);
+      items[prev].focus();
+      items[prev].scrollIntoView({block:'nearest'});
+    } else if(ev.key === 'Enter'){
+      // if a suggestion is focused, choose it
+      const focused = items.find(i => i === document.activeElement);
+      if(focused){
+        ev.preventDefault();
+        const domain = focused.dataset.domain;
         const val = emailInput.value;
         const atIndex = val.indexOf('@');
         const pre = val.slice(0, atIndex + 1);
         emailInput.value = pre + domain;
         emailSuggestions.classList.add('hidden');
-        ev.preventDefault();
         emailInput.focus();
       }
-    }else if(ev.key === 'Escape'){
+    } else if(ev.key === 'Escape'){
       emailSuggestions.classList.add('hidden');
     }
   });
@@ -182,6 +193,35 @@ if(form){
     showToast._t = setTimeout(function(){ toastEl.classList.remove('show'); toastEl.classList.add('hidden'); }, 3500);
   }
 
+  // Reset UI elements (icons, counters, progress, dropzone, errors)
+  function resetFormUI(){
+    // clear top-level message
+    if(formMessage){ formMessage.textContent = ''; formMessage.style.color = ''; }
+    // remove inline field errors
+    document.querySelectorAll('.field-error').forEach(function(el){ el.remove(); });
+    // reset validation icons
+    document.querySelectorAll('.field-valid').forEach(function(icon){ icon.classList.remove('visible','error'); });
+    // clear aria-invalid on inputs
+    ['name','email','phone','details','evidence','otherReason'].forEach(function(id){
+      const el = document.getElementById(id);
+      if(el) el.removeAttribute('aria-invalid');
+    });
+    // reset details counter and progress
+    const dCounter = document.getElementById('detailsCounter');
+    if(dCounter){ dCounter.textContent = '0 words'; dCounter.classList.remove('visible','error'); }
+    const dFill = document.getElementById('detailsProgressFill');
+    if(dFill){ dFill.style.width = '0%'; dFill.classList.remove('over'); dFill.setAttribute('aria-valuenow','0'); }
+    // reset dropzone UI
+    const dzLabelEl = document.getElementById('dzLabel'); if(dzLabelEl) dzLabelEl.textContent = 'Choose a file or drag & drop here';
+    const dzClear = document.getElementById('dzClearBtn'); if(dzClear) dzClear.classList.add('hidden');
+    const dzProg = document.getElementById('dzProgress'); if(dzProg) dzProg.classList.add('hidden');
+    const dzBar = document.getElementById('dzProgressBar'); if(dzBar) dzBar.style.width = '0%';
+    // hide email suggestions
+    const emailSug = document.getElementById('emailSuggestions'); if(emailSug) emailSug.classList.add('hidden');
+    // hide toast
+    if(toastEl){ clearTimeout(showToast._t); toastEl.classList.add('hidden'); }
+  }
+
   // Validation utilities (real-time)
   function setValidationIcon(inputEl, state){
     if(!inputEl) return;
@@ -198,8 +238,8 @@ if(form){
   }
   function validateName(){
     const v = (form.name.value || '').trim();
-    if(!v){ setValidationIcon(form.name, 'invalid'); return false; }
-    setValidationIcon(form.name, 'valid'); return true;
+    // Validate presence but do not show realtime icons for the name field.
+    return !!v;
   }
   function validateEmail(){
     const v = (emailInput.value || '').trim();
@@ -228,7 +268,33 @@ if(form){
   }
 
   // wire real-time validation
-  form.name?.addEventListener('input', function(){ if(form.name.classList) { validateName(); } });
+  // Prevent realtime tick icons for the name field: clear any icon when typing
+  form.name?.addEventListener('input', function(){
+    try{
+      const wrap = form.name.closest('.relative');
+      const icon = wrap?.querySelector('.field-valid');
+      if(icon){ icon.classList.remove('visible','error'); }
+    }catch(e){}
+  });
+  // Also clear validation tick when the field loses focus or on change if empty
+  form.name?.addEventListener('blur', function(){
+    try{
+      if(!(form.name.value || '').trim()){
+        const wrap = form.name.closest('.relative');
+        const icon = wrap?.querySelector('.field-valid');
+        if(icon){ icon.classList.remove('visible','error'); }
+      }
+    }catch(e){}
+  });
+  form.name?.addEventListener('change', function(){
+    try{
+      if(!(form.name.value || '').trim()){
+        const wrap = form.name.closest('.relative');
+        const icon = wrap?.querySelector('.field-valid');
+        if(icon){ icon.classList.remove('visible','error'); }
+      }
+    }catch(e){}
+  });
   emailInput?.addEventListener('input', function(){ validateEmail(); });
   phoneInput?.addEventListener('input', function(){ validatePhone(); });
 
@@ -450,10 +516,14 @@ form.addEventListener('submit', function(e){
       // In a real app we would trigger an email here
     }
     function closeHandler(){
+      // clear all visual UI state so the form appears fresh next time
+      try{ resetFormUI(); }catch(e){}
       modal.classList.add('hidden');
       modal.setAttribute('aria-hidden','true');
       closeBtn.removeEventListener('click', closeHandler);
       document.removeEventListener('keydown', escHandler);
+      // also remove overlay listener if present
+      modal.querySelector('[data-modal-overlay]')?.removeEventListener('click', closeHandler);
       if(previousActive){previousActive.focus()}
     }
     function escHandler(ev){if(ev.key==='Escape'){closeHandler()}}
@@ -462,6 +532,8 @@ form.addEventListener('submit', function(e){
     modal.querySelector('[data-modal-overlay]')?.addEventListener('click', closeHandler);
   }
   form.reset();
+  // ensure UI elements (counters, progress, icons, errors) are cleared after reset
+  try{ resetFormUI(); }catch(e){}
 })
   
   // Enforce min/max word count at submit: block submission earlier in handler will prevent modal showing
