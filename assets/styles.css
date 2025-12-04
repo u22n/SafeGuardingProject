@@ -87,6 +87,11 @@ a:focus, a:focus-visible {box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.10)}
 .form-success{color:var(--brand)}
 
 .brand-text{color:var(--brand)}
+/* Global brand-text underline animation: gradient underline on hover/focus */
+.brand-text{position:relative;padding:.04rem .06rem}
+.brand-text::after{content:"";position:absolute;left:0;right:auto;bottom:-6px;height:2px;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-dark));transition:width .22s cubic-bezier(.2,.9,.2,1)}
+.brand-text:hover::after, .brand-text:focus::after{width:100%}
+.brand-text:focus{outline:none}
 .brand-bg{background:linear-gradient(90deg, var(--brand), var(--brand-dark))}
 .brand-btn{background:var(--brand);color:#fff}
 .brand-btn:hover{background:var(--brand-dark)}
