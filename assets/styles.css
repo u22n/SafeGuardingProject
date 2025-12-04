@@ -47,6 +47,13 @@ a[href^="tel"]:focus{outline:none;box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.0
 .phone-icon{width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:.5rem;flex:0 0 16px}
 .phone-num{font-weight:600}
 
+/* Footer icon wrap: circular background and hover tint for raster icons */
+.icon-wrap{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:9999px;overflow:hidden;margin-right:.5rem;transition:background .18s ease, transform .12s ease}
+.icon-wrap img{width:16px;height:16px;display:block}
+.site-footer a:hover .icon-wrap, .site-footer a:focus .icon-wrap{background:linear-gradient(90deg,var(--brand),var(--brand-dark));transform:translateY(-2px)}
+.site-footer a:hover .icon-wrap img, .site-footer a:focus .icon-wrap img{filter:brightness(0) invert(1)}
+@media (max-width:640px){.icon-wrap{width:26px;height:26px}.icon-wrap img{width:18px;height:18px}}
+
 /* Top contact link special hover */
 .contact-link{border-radius:6px;padding:.35rem .6rem}
 .contact-link:hover{background:var(--brand);color:#fff}
