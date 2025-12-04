@@ -104,6 +104,18 @@ a:focus, a:focus-visible {box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.10)}
 
 .brand-border{border:1px solid rgba(var(--brand-rgb),0.12);color:var(--brand)}
 
+/* Dropzone styles for evidence upload */
+.dropzone{border:1px solid rgba(2,6,23,0.06);padding:0;border-radius:8px;transition:background .15s ease,border-color .15s ease}
+.dropzone .dz-content{display:flex;align-items:center;justify-content:space-between}
+.dropzone .dz-input{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.dropzone.dragover{background:rgba(var(--brand-rgb),0.04);border-style:dashed;border-color:rgba(var(--brand-rgb),0.6)}
+.progress-wrap{height:6px;background:rgba(99,102,241,0.06);border-radius:999px;overflow:hidden;margin-top:.5rem}
+.progress-bar{height:6px;background:linear-gradient(90deg,var(--brand),var(--brand-dark));width:0%;transition:width .18s ease}
+
+/* Character counter for details */
+.char-counter{opacity:0;transition:opacity .18s ease, transform .18s ease;height:1rem}
+.char-counter.visible{opacity:1}
+
 /* Quick Contacts: make brand-text links in the Actions/Quick contacts block animate like other site links */
 #actions a.brand-text{position:relative;padding:.06rem .06rem}
 #actions a.brand-text::after{content:"";position:absolute;left:0;right:auto;bottom:-6px;height:2px;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-dark));transition:width .22s cubic-bezier(.2,.9,.2,1)}

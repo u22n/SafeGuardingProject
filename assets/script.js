@@ -24,6 +24,15 @@ if(form){
   const emailInput = document.getElementById('email');
   const emailSuggestions = document.getElementById('emailSuggestions');
   const phoneInput = document.getElementById('phone');
+  const evidenceInput = document.getElementById('evidence');
+  const dropzone = document.getElementById('evidenceDropzone');
+  const dzChooseBtn = document.getElementById('dzChooseBtn');
+  const dzClearBtn = document.getElementById('dzClearBtn');
+  const dzLabel = document.getElementById('dzLabel');
+  const dzProgress = document.getElementById('dzProgress');
+  const dzProgressBar = document.getElementById('dzProgressBar');
+  const detailsEl = document.getElementById('details');
+  const detailsCounter = document.getElementById('detailsCounter');
   // Show/hide Other reason field immediately on change (before submit)
   form.topic?.addEventListener('change', function(){
     if(form.topic.value === 'Other'){
@@ -133,6 +142,58 @@ if(form){
     }
   }
   phoneInput?.addEventListener('blur', applyPhoneFormat);
+
+  // Dropzone behaviors
+  function preventDefaults(e){ e.preventDefault(); e.stopPropagation(); }
+  if(dropzone){
+    ['dragenter','dragover','dragleave','drop'].forEach(function(evt){ dropzone.addEventListener(evt, preventDefaults, false); });
+    dropzone.addEventListener('dragover', function(){ dropzone.classList.add('dragover'); });
+    dropzone.addEventListener('dragleave', function(){ dropzone.classList.remove('dragover'); });
+    dropzone.addEventListener('drop', function(ev){
+      dropzone.classList.remove('dragover');
+      const dt = ev.dataTransfer;
+      if(dt && dt.files && dt.files.length){
+        handleFileSelection(dt.files[0]);
+        // set the file onto the hidden input so form submit picks it up
+        try{ evidenceInput.files = dt.files; }catch(err){}
+      }
+    });
+  }
+  if(dzChooseBtn && evidenceInput){ dzChooseBtn.addEventListener('click', function(){ evidenceInput.click() }); }
+  if(evidenceInput){
+    evidenceInput.addEventListener('change', function(){ if(evidenceInput.files && evidenceInput.files[0]){ handleFileSelection(evidenceInput.files[0]); } });
+  }
+  if(dzClearBtn){ dzClearBtn.addEventListener('click', function(){ if(evidenceInput){ evidenceInput.value = ''; dzLabel.textContent = 'Choose a file or drag & drop here'; dzClearBtn.classList.add('hidden'); dzProgress.classList.add('hidden'); dzProgressBar.style.width = '0%'; } }); }
+
+  function handleFileSelection(file){
+    if(!file) return;
+    const maxBytes = 5 * 1024 * 1024;
+    const okTypes = ['image/jpeg','image/png','application/pdf'];
+    if(file.size > maxBytes){ formMessage.textContent = 'Attachment too large (max 5MB).'; formMessage.style.color = '#ef4444'; return; }
+    if(!okTypes.includes(file.type)){ formMessage.textContent = 'Unsupported file type. Use JPG, PNG, or PDF.'; formMessage.style.color = '#ef4444'; return; }
+    // Update label and show remove
+    dzLabel.textContent = file.name;
+    dzClearBtn?.classList.remove('hidden');
+    // Show progress and read file to provide a progress indicator
+    if(dzProgress){ dzProgress.classList.remove('hidden'); dzProgress.setAttribute('aria-hidden','false'); dzProgressBar.style.width = '4%'; dzProgressBar.setAttribute('aria-valuenow','4'); }
+    try{
+      const reader = new FileReader();
+      reader.onprogress = function(e){ if(e.lengthComputable && dzProgressBar){ const pct = Math.round((e.loaded / e.total) * 100); dzProgressBar.style.width = pct + '%'; dzProgressBar.setAttribute('aria-valuenow', String(pct)); } };
+      reader.onload = function(){ if(dzProgressBar){ dzProgressBar.style.width = '100%'; dzProgressBar.setAttribute('aria-valuenow','100'); setTimeout(function(){ if(dzProgress) dzProgress.classList.add('hidden'); }, 600); }
+      };
+      reader.onerror = function(){ formMessage.textContent = 'Error reading file.'; formMessage.style.color = '#ef4444'; };
+      // Start reading (this triggers onprogress for larger files)
+      reader.readAsArrayBuffer(file);
+    }catch(e){ /* ignore */ }
+  }
+
+  // Details live character counter
+  if(detailsEl && detailsCounter){
+    function updateDetailsCounter(){ const len = detailsEl.value.length; detailsCounter.textContent = `${len} character${len===1?'':'s'}`; if(len>0){ detailsCounter.classList.add('visible'); } else { detailsCounter.classList.remove('visible'); } }
+    detailsEl.addEventListener('input', updateDetailsCounter);
+    // initialize
+    updateDetailsCounter();
+  }
 
 form.addEventListener('submit', function(e){
   e.preventDefault();

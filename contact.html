@@ -93,11 +93,24 @@
         <div class="md:col-span-2">
           <label for="details" class="block text-sm font-medium text-slate-700">Details <span class="text-red-500" aria-hidden="true">*</span></label>
           <textarea id="details" name="details" rows="6" required aria-describedby="details-help" placeholder="Provide clear, factual details…" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none"></textarea>
+          <div id="detailsCounter" class="char-counter text-xs text-slate-500" aria-live="polite">0 characters</div>
           <p class="mt-2 text-xs text-slate-500">Avoid sharing sensitive information unless necessary for safeguarding.</p>
         </div>
         <div class="md:col-span-2">
           <label for="evidence" class="block text-sm font-medium text-slate-700">Attachment (optional)</label>
-          <input id="evidence" name="evidence" type="file" aria-describedby="evidence-help" accept=".jpg,.jpeg,.png,.pdf" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
+          <div id="evidenceDropzone" class="dropzone mt-1 relative">
+            <input id="evidence" name="evidence" type="file" aria-describedby="evidence-help" accept=".jpg,.jpeg,.png,.pdf" class="dz-input" />
+            <div class="dz-content p-3 flex items-center justify-between">
+              <div class="dz-preview text-sm text-slate-600" id="dzLabel">Choose a file or drag &amp; drop here</div>
+              <div class="flex items-center gap-2">
+                <button type="button" id="dzChooseBtn" class="brand-outline">Choose</button>
+                <button type="button" id="dzClearBtn" class="text-sm text-slate-500 hidden">Remove</button>
+              </div>
+            </div>
+            <div class="progress-wrap hidden" id="dzProgress" aria-hidden="true">
+              <div class="progress-bar" id="dzProgressBar" style="width:0%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+            </div>
+          </div>
           <p id="evidence-help" class="mt-1 text-xs text-slate-500">Accepted: JPG/PNG/PDF up to 5MB.</p>
         </div>
         <div class="md:col-span-2">
