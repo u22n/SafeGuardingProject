@@ -235,7 +235,9 @@
           <ul class="mt-2 space-y-2">
             <li class="flex items-center justify-between card card-pad">
               <span>Emergency services (local)</span>
-              <a href="tel:999" class="brand-text" aria-label="Call 999"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">999</span></a>
+              <div class="phone-with-copy">
+                <a href="tel:999" class="brand-text" aria-label="Call 999"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">999</span></a>
+              </div>
             </li>
             <li class="flex items-center justify-between card card-pad">
               <span>Safeguarding team (24/7)</span>
@@ -247,10 +249,8 @@
 
     <section id="faq" class="mt-12 fade-in card-wrap" aria-labelledby="faq-heading">
       <h2 id="faq-heading" class="text-2xl font-bold text-slate-900">FAQs</h2>
-      <div class="mt-3 flex items-center gap-3 flex-wrap">
-        <input id="faqSearch" type="text" class="border rounded-lg px-3 py-2 flex-1 min-w-[200px]" placeholder="Search FAQs..." aria-label="Search FAQs" />
-        <button id="expandAllFAQ" class="brand-outline px-3 py-2">Expand All</button>
-        <button id="collapseAllFAQ" class="brand-outline px-3 py-2">Collapse All</button>
+      <div class="mt-3">
+        <input id="faqSearch" type="text" class="border border-slate-200 rounded-lg px-4 py-2.5 w-full focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-all" placeholder="🔍 Search FAQs..." aria-label="Search FAQs" />
       </div>
       <div class="mt-6 grid gap-6 sm:grid-cols-3" id="faqContainer">
         <div>

@@ -976,28 +976,6 @@ if (faqSearch) {
     });
 }
 
-// Expand/Collapse all FAQs
-const expandAllBtn = document.getElementById('expandAllFAQ');
-const collapseAllBtn = document.getElementById('collapseAllFAQ');
-if (expandAllBtn && collapseAllBtn) {
-    expandAllBtn.addEventListener('click', () => {
-        document.querySelectorAll('.faq-item button[aria-expanded]').forEach(btn => {
-            const panel = document.getElementById(btn.getAttribute('aria-controls'));
-            if (panel && btn.getAttribute('aria-expanded') === 'false') {
-                btn.click();
-            }
-        });
-    });
-    collapseAllBtn.addEventListener('click', () => {
-        document.querySelectorAll('.faq-item button[aria-expanded]').forEach(btn => {
-            const panel = document.getElementById(btn.getAttribute('aria-controls'));
-            if (panel && btn.getAttribute('aria-expanded') === 'true') {
-                btn.click();
-            }
-        });
-    });
-}
-
 // "Was this helpful?" feedback
 document.querySelectorAll('.faq-helpful-btn').forEach(btn => {
     btn.addEventListener('click', () => {
