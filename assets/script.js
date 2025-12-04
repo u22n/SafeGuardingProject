@@ -1,37 +1,8 @@
-// Ensure page starts at the top on load/refresh/navigation (covers bfcache/pageshow)
+// Ensure page starts at the top on load/refresh
 if('scrollRestoration' in history){history.scrollRestoration='manual';}
-window.scrollTo(0,0);
-document.documentElement.scrollTop = 0;
-document.body.scrollTop = 0;
-
-(function ensureStartAtTop(){
-  try{
-    window.addEventListener('DOMContentLoaded', function(){
-      window.scrollTo({top:0,left:0,behavior:'instant'});
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    });
-    window.addEventListener('pageshow', function(e){
-      window.scrollTo({top:0,left:0,behavior:'instant'});
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    });
-    window.addEventListener('load', function(){
-      setTimeout(function(){ 
-        window.scrollTo({top:0,left:0,behavior:'instant'});
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
-      }, 0);
-    });
-    window.addEventListener('beforeunload', function(){ 
-      try{ 
-        window.scrollTo(0,0);
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
-      }catch(err){} 
-    });
-  }catch(e){/* no-op */}
-})();
+window.addEventListener('DOMContentLoaded', function(){
+  window.scrollTo(0,0);
+});
 
 const form = document.getElementById('reportForm');
 const formMessage = document.getElementById('formMessage');
@@ -580,8 +551,6 @@ form.addEventListener('submit', function(e){
 
   const yearEl = document.getElementById('year');
   if(yearEl){yearEl.textContent = new Date().getFullYear()}
-
-/* Dark mode removed: no theme toggle logic */
 
 // Mobile nav toggle
 const navToggle = document.getElementById('navToggle');
