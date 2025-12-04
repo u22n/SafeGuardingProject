@@ -1,17 +1,35 @@
 // Ensure page starts at the top on load/refresh/navigation (covers bfcache/pageshow)
+if('scrollRestoration' in history){history.scrollRestoration='manual';}
+window.scrollTo(0,0);
+document.documentElement.scrollTop = 0;
+document.body.scrollTop = 0;
+
 (function ensureStartAtTop(){
   try{
+    window.addEventListener('DOMContentLoaded', function(){
+      window.scrollTo({top:0,left:0,behavior:'instant'});
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    });
     window.addEventListener('pageshow', function(e){
-      if(e.persisted){
-        try{ window.scrollTo({top:0,left:0,behavior:'auto'}); }catch(err){}
-      }
+      window.scrollTo({top:0,left:0,behavior:'instant'});
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
     });
     window.addEventListener('load', function(){
-      // small timeout to override any browser restore
-      setTimeout(function(){ try{ window.scrollTo({top:0,left:0,behavior:'auto'}); }catch(err){} }, 0);
+      setTimeout(function(){ 
+        window.scrollTo({top:0,left:0,behavior:'instant'});
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }, 0);
     });
-    // Attempt to reset scroll before unload so reload starts from top in some browsers
-    window.addEventListener('beforeunload', function(){ try{ window.scrollTo(0,0); }catch(err){} });
+    window.addEventListener('beforeunload', function(){ 
+      try{ 
+        window.scrollTo(0,0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }catch(err){} 
+    });
   }catch(e){/* no-op */}
 })();
 
