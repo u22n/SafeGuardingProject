@@ -628,5 +628,85 @@ document.querySelectorAll('.faq-toggle').forEach(function(btn){
     if(panel){
       panel.classList.toggle('hidden');
     }
-  })
-})
+  });
+});
+
+// Animated counter for impact metrics
+function animateCounter(element, target, suffix = '') {
+  const duration = 2000;
+  const start = 0;
+  const startTime = performance.now();
+  
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    
+    // Easing function for smooth animation
+    const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+    const current = Math.floor(start + (target - start) * easeOutQuart);
+    
+    if (target === 24) {
+      element.textContent = '24/7';
+    } else if (target >= 1000) {
+      element.textContent = (current / 1000).toFixed(1) + 'K+' + suffix;
+    } else {
+      element.textContent = current + (suffix || '%');
+    }
+    
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      // Final value
+      if (target === 24) {
+        element.textContent = '24/7';
+      } else if (target >= 1000) {
+        element.textContent = (target / 1000).toFixed(1) + 'K+' + suffix;
+      } else {
+        element.textContent = target + (suffix || '%');
+      }
+    }
+  }
+  
+  requestAnimationFrame(update);
+}
+
+// Initialize counters with Intersection Observer
+const counters = document.querySelectorAll('[data-count]');
+if (counters.length > 0) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.animated) {
+        entry.target.dataset.animated = 'true';
+        const target = parseInt(entry.target.dataset.count);
+        animateCounter(entry.target, target);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  counters.forEach(counter => observer.observe(counter));
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#' || href === '#home') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      const headerOffset = 80;
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  });
+});

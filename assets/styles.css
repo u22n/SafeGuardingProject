@@ -142,6 +142,10 @@ a:focus, a:focus-visible {box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.10)}
 .hero-title{font-size:clamp(2rem,3.5vw,3rem);line-height:1.15;text-shadow:0 2px 4px rgba(0,0,0,0.03)}
 .hero-lead{font-size:1.0625rem;color:#475569}
 
+/* Impact metrics animation */
+[data-count]{font-family:'Poppins',system-ui;transition:all .3s ease}
+.text-brand{color:var(--brand)}
+
 /* Section panels: page-like modules */
 .section-panel{background:linear-gradient(155deg, rgba(255,255,255,0.98) 0%, rgba(248,250,252,0.92) 35%, rgba(243,244,246,0.88) 70%, rgba(237,233,254,0.85) 100%);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.6);border-radius:1.5rem;box-shadow:0 12px 40px rgba(2,6,23,.12),0 0 0 1px rgba(255,255,255,0.7) inset;padding:3rem;margin:3rem 0}
 .section-panel .eyebrow{margin-top:-.5rem;display:block}
