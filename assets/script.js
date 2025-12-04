@@ -621,11 +621,28 @@ if(regionFilter && regionalGrid){
   
   regionFilter.addEventListener('change', function(){
     const val = regionFilter.value;
-    regionalGrid.querySelectorAll('[data-region]').forEach(function(card){
-      const region = card.getAttribute('data-region');
-      const show = (val === 'all' || val === region);
-      card.classList.toggle('hidden', !show);
-    });
+    const allCards = regionalGrid.querySelectorAll('[data-region]');
+    
+    if(val === 'default'){
+      // Show only first 4 (UK, US, EU, AU)
+      allCards.forEach(function(card, index){
+        card.classList.toggle('hidden', index >= 4);
+      });
+    } else if(val === 'all'){
+      // Show all cards
+      allCards.forEach(function(card){
+        card.classList.remove('hidden');
+      });
+    } else {
+      // Show only matching region
+      allCards.forEach(function(card){
+        const region = card.getAttribute('data-region');
+        card.classList.toggle('hidden', region !== val);
+      });
+    }
+    
+    // Clear search when changing filter
+    if(regionSearch) regionSearch.value = '';
     updateCounter();
   });
 }
@@ -633,20 +650,37 @@ if(regionFilter && regionalGrid){
 // Name search filter (combined with region filter)
 if(regionSearch && regionalGrid){
   function applyCombinedFilter(){
-    const selectVal = regionFilter ? regionFilter.value : 'all';
+    const selectVal = regionFilter ? regionFilter.value : 'default';
     const q = regionSearch.value.trim().toLowerCase();
     
-    // If there's a search query, show all matching cards regardless of initial hidden state
-    regionalGrid.querySelectorAll('[data-region]').forEach(function(card){
-      const region = card.getAttribute('data-region');
-      const name = (card.getAttribute('data-name') || '').toLowerCase();
-      const matchesRegion = (selectVal === 'all' || selectVal === region);
-      const matchesQuery = (!q || name.includes(q));
-      
-      // Show if matches both region filter and search query
-      const shouldShow = matchesRegion && matchesQuery;
-      card.classList.toggle('hidden', !shouldShow);
-    });
+    // If there's a search query, search through all cards
+    if(q){
+      regionalGrid.querySelectorAll('[data-region]').forEach(function(card){
+        const name = (card.getAttribute('data-name') || '').toLowerCase();
+        const matchesQuery = name.includes(q);
+        card.classList.toggle('hidden', !matchesQuery);
+      });
+    } else {
+      // No search query - restore filter state
+      if(selectVal === 'default'){
+        // Show only first 4
+        const allCards = regionalGrid.querySelectorAll('[data-region]');
+        allCards.forEach(function(card, index){
+          card.classList.toggle('hidden', index >= 4);
+        });
+      } else if(selectVal === 'all'){
+        // Show all
+        regionalGrid.querySelectorAll('[data-region]').forEach(function(card){
+          card.classList.remove('hidden');
+        });
+      } else {
+        // Show only matching region
+        regionalGrid.querySelectorAll('[data-region]').forEach(function(card){
+          const region = card.getAttribute('data-region');
+          card.classList.toggle('hidden', region !== selectVal);
+        });
+      }
+    }
     
     // Update counter
     if(visibleCountEl && totalCountEl){
