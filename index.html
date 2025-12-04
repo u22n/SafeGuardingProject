@@ -71,8 +71,8 @@
           </div>
         </div>
         
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="#steps" class="inline-flex items-center gap-2 px-4 py-2 brand-btn text-white rounded shadow-sm smooth-scroll-link"><span>See Action Steps</span></a>
+        <div class="mt-6 flex flex-wrap gap-3 justify-center md:justify-start">
+          <a href="#steps" class="inline-flex items-center gap-2 px-6 py-3 brand-btn text-white rounded-lg shadow-lg hover:shadow-xl transition-all smooth-scroll-link"><span>See Action Steps</span></a>
         </div>
       </div>
       <div class="flex justify-center md:justify-end">
@@ -676,35 +676,45 @@
       <div class="container px-4">
         <div class="footer-grid">
           <div>
-            <h4 class="font-semibold">About</h4>
-            <p class="mt-2">Clear safeguarding guidance and rapid reporting to protect people at risk.</p>
+            <h4 class="font-semibold text-slate-900 mb-3">About</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Clear safeguarding guidance and rapid reporting to protect people at risk.</p>
+            <div class="mt-4">
+              <h5 class="font-semibold text-slate-900 mb-2">Quick links</h5>
+              <ul class="space-y-2 text-sm">
+                <li><a href="#overview" class="brand-text">What is safeguarding?</a></li>
+                <li><a href="#steps" class="brand-text">Action Steps</a></li>
+                <li><a href="contact.html" class="brand-text">Contact & Report</a></li>
+              </ul>
+            </div>
           </div>
           <div>
-            <h4 class="font-semibold">Quick links</h4>
-            <ul class="mt-2 space-y-1">
-              <li><a href="#overview" class="brand-text">What is safeguarding?</a></li>
-              <li><a href="#steps" class="brand-text">Action Steps</a></li>
-              <li><a href="contact.html" class="brand-text">Contact & Report</a></li>
-            </ul>
+            <h4 class="font-semibold text-slate-900 mb-3">Contact</h4>
+            <div class="space-y-3 text-sm text-slate-600">
+              <div>
+                <p class="mb-1">Email:</p>
+                <a href="mailto:safeguard@example.org" class="brand-text font-medium break-all">safeguard@example.org</a>
+              </div>
+              <div>
+                <p class="mb-1">Phone:</p>
+                <a href="tel:+440000000000" class="brand-text font-medium" aria-label="Call +44 0000 000000"><span class="phone-num">+44 0000 000000</span></a>
+              </div>
+            </div>
           </div>
           <div>
-            <h4 class="font-semibold">Contact</h4>
-            <p class="mt-2">Email: <a href="mailto:safeguard@example.org" class="brand-text">safeguard@example.org</a></p>
-            <p class="mt-1">Phone: <a href="tel:+440000000000" class="brand-text" aria-label="Call +44 0000 000000"><span class="icon-wrap" aria-hidden="true"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" /></span><span class="phone-num">+44 0000 000000</span></a></p>
-          </div>
-          <div>
-            <h4 class="font-semibold">Emergency</h4>
-            <p class="mt-2">Emergency: <span class="font-medium">999</span></p>
-            <p class="mt-1">International list in the page for other countries.</p>
-          </div>
-          <div>
-            <h4 class="font-semibold">Accessibility</h4>
-            <p class="mt-2">We aim for WCAG AA. Spot an issue? <a href="contact.html" class="brand-text">Send feedback</a>.</p>
+            <h4 class="font-semibold text-slate-900 mb-3">Emergency</h4>
+            <div class="space-y-2 text-sm text-slate-600">
+              <p><span class="font-semibold text-slate-900">Emergency: 999</span></p>
+              <p>See international list in the page for other countries.</p>
+            </div>
+            <div class="mt-4">
+              <h5 class="font-semibold text-slate-900 mb-2">Accessibility</h5>
+              <p class="text-sm text-slate-600">We aim for WCAG AA. Spot an issue? <a href="contact.html" class="brand-text">Send feedback</a>.</p>
+            </div>
           </div>
         </div>
-        <div class="mt-6 flex items-center justify-between text-xs text-slate-500">
+        <div class="mt-6 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <span>© <span id="year"></span> Safeguard · All rights reserved</span>
-          <a href="#home" class="brand-text">Back to top</a>
+          <a href="#home" class="brand-text font-medium">Back to top ↑</a>
         </div>
       </div>
     </footer>

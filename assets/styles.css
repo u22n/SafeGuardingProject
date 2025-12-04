@@ -73,8 +73,8 @@ a[href^="mailto"]{font-family:'Poppins','Inter',system-ui,-apple-system,'Segoe U
 .contact-link:hover{background:var(--brand);color:#fff}
 nav[aria-label="Main navigation"] .contact-link:hover{color:#fff !important}
 .site-header{background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.03)}
-.site-footer{border-top:1px solid rgba(15,23,42,0.04);padding-top:1.5rem}
-.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem}
+.site-footer{border-top:1px solid rgba(15,23,42,0.04);padding-top:2rem;padding-bottom:2rem}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:2.5rem}@media(min-width:640px){.footer-grid{grid-template-columns:repeat(2,1fr);gap:2rem}}@media(min-width:1024px){.footer-grid{grid-template-columns:repeat(3,1fr);gap:3rem}}
 
 @media (pointer: coarse){
   html,body,a,button,input,select,textarea{cursor: auto}
