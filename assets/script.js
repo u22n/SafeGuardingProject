@@ -617,6 +617,50 @@ const regionSearch = document.getElementById('regionSearch');
 const visibleCountEl = document.getElementById('visibleCount');
 const totalCountEl = document.getElementById('totalCount');
 
+// Custom region selector (styled list) wiring
+const regionSelectButton = document.getElementById('regionSelectButton');
+const regionFilterList = document.getElementById('regionFilterList');
+const regionSelectLabel = document.getElementById('regionSelectLabel');
+
+if(regionSelectButton && regionFilterList && regionFilter){
+  function toggleRegionList(forceOpen){
+    const open = typeof forceOpen === 'boolean' ? forceOpen : regionFilterList.classList.contains('hidden');
+    regionFilterList.classList.toggle('hidden', !open);
+  }
+
+  regionSelectButton.addEventListener('click', function(){
+    toggleRegionList();
+  });
+
+  // Close on outside click
+  document.addEventListener('click', function(e){
+    if(!regionSelectButton.contains(e.target) && !regionFilterList.contains(e.target)){
+      regionFilterList.classList.add('hidden');
+    }
+  });
+
+  // Handle item selection (click + keyboard)
+  regionFilterList.querySelectorAll('li').forEach(function(item){
+    function selectItem(){
+      const val = item.getAttribute('data-region');
+      const label = item.textContent.trim();
+      if(regionFilter){
+        regionFilter.value = val;
+        regionFilter.dispatchEvent(new Event('change'));
+      }
+      if(regionSelectLabel) regionSelectLabel.textContent = label;
+      regionFilterList.classList.add('hidden');
+    }
+    item.addEventListener('click', selectItem);
+    item.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        selectItem();
+      }
+    });
+  });
+}
+
 if(regionFilter && regionalGrid){
   function updateCounter(){
     const allCards = regionalGrid.querySelectorAll('[data-region]');
