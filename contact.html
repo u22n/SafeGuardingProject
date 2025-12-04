@@ -62,12 +62,12 @@
           <div class="relative">
             <input id="email" name="email" type="email" required aria-describedby="email-help" placeholder="jane@…" class="mt-1 block w-full border rounded-lg px-3 py-2 focus:ring-indigo-300 focus:outline-none" />
             <span class="field-valid" aria-hidden="true"></span>
-            <ul id="emailSuggestions" class="hidden email-suggestions absolute left-0 right-0 top-full z-10 bg-white border rounded-lg shadow mt-1 text-sm">
-              <li data-domain="gmail.com" class="px-3 py-2 hover:bg-slate-50 cursor-pointer">gmail.com</li>
-              <li data-domain="yahoo.com" class="px-3 py-2 hover:bg-slate-50 cursor-pointer">yahoo.com</li>
-                <li data-domain="outlook.com" class="px-3 py-2 hover:bg-slate-50 cursor-pointer">outlook.com</li>
-              <li data-domain="hotmail.com" class="px-3 py-2 hover:bg-slate-50 cursor-pointer">hotmail.com</li>
-              <li data-domain="icloud.com" class="px-3 py-2 hover:bg-slate-50 cursor-pointer">icloud.com</li>
+            <ul id="emailSuggestions" class="hidden email-suggestions absolute left-0 right-0 top-full z-10 mt-1 text-sm">
+              <li data-domain="gmail.com" tabindex="0">gmail.com</li>
+              <li data-domain="yahoo.com" tabindex="0">yahoo.com</li>
+              <li data-domain="outlook.com" tabindex="0">outlook.com</li>
+              <li data-domain="hotmail.com" tabindex="0">hotmail.com</li>
+              <li data-domain="icloud.com" tabindex="0">icloud.com</li>
             </ul>
           </div>
           <p id="email-help" class="mt-1 text-xs text-slate-500">We may contact you for follow-up.</p>
