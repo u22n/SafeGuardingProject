@@ -2,10 +2,10 @@ Safeguarding — Clear Guidance
 
 A fast, accessible guide to recognising safeguarding concerns and taking the right next steps. The site focuses on clarity, speed to action, and trust — with copy-to-clipboard numbers, concise action steps, and region-specific contacts.
 
-Live site: https://u22n.github.io/project/
+Live site: https://u22n.github.io/SafeGuardingProject//
 
 Responsive Preview
-[![Responsive preview (Am I Responsive)](assets/images/image.png)](https://ui.dev/amiresponsive?url=https://u22n.github.io/project/)
+[![Responsive preview (Am I Responsive)](assets/images/image.png)](https://ui.dev/amiresponsive?url=https://u22n.github.io/SafeGuardingProject/)
 
 Contents
 - Overview
