@@ -33,8 +33,8 @@ nav[aria-label="Main navigation"] .brand-btn:hover{color:#fff !important}
 .site-footer a{position:relative;padding:.15rem .35rem;transition:transform .14s ease, box-shadow .14s ease, color .12s ease}
 .site-footer a::after{content:"";position:absolute;left:0;right:auto;bottom:-6px;height:2px;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-dark));transition:width .24s cubic-bezier(.2,.9,.2,1)}
 .site-footer a:hover::after, .site-footer a:focus::after{width:100%}
-.site-footer a:hover, .site-footer a:focus{transform:translateY(-3px);box-shadow:0 8px 20px rgba(var(--brand-rgb),0.06);color:var(--brand)}
-.site-footer a:focus{outline:none;box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.08)}
+.site-footer a:hover, .site-footer a:focus{color:var(--brand)}
+.site-footer a:focus{outline:none}
 
 /* Phone contact links: match navbar/footer animation and hover lift */
 a[href^="tel"]{position:relative;transition:transform .14s ease, box-shadow .14s ease, color .12s ease}
@@ -50,9 +50,12 @@ a[href^="tel"]:focus{outline:none;box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.0
 /* Footer icon wrap: circular background and hover tint for raster icons */
 .icon-wrap{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:9999px;overflow:hidden;margin-right:.5rem;transition:background .18s ease, transform .12s ease}
 .icon-wrap img{width:16px;height:16px;display:block}
-.site-footer a:hover .icon-wrap, .site-footer a:focus .icon-wrap{background:linear-gradient(90deg,var(--brand),var(--brand-dark));transform:translateY(-2px)}
+.site-footer a:hover .icon-wrap, .site-footer a:focus .icon-wrap{background:linear-gradient(90deg,var(--brand),var(--brand-dark))}
 .site-footer a:hover .icon-wrap img, .site-footer a:focus .icon-wrap img{filter:brightness(0) invert(1)}
 @media (max-width:640px){.icon-wrap{width:26px;height:26px}.icon-wrap img{width:18px;height:18px}}
+
+/* Footer phone number sizing to keep it fitting in one line on wide screens */
+.site-footer .phone-num{font-weight:600;white-space:nowrap;font-size:0.95rem}
 
 /* Top contact link special hover */
 .contact-link{border-radius:6px;padding:.35rem .6rem}
