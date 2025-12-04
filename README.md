@@ -4,6 +4,9 @@ A fast, accessible guide to recognising safeguarding concerns and taking the rig
 
 Live site: https://u22n.github.io/project/
 
+Responsive Preview
+[![Responsive preview (Am I Responsive)](assets/images/image.png)](https://ui.dev/amiresponsive?url=https://u22n.github.io/project/)
+
 Contents
 - Overview
 - Features
