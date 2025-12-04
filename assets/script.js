@@ -558,6 +558,96 @@ form.addEventListener('submit', function(e){
   const yearEl = document.getElementById('year');
   if(yearEl){yearEl.textContent = new Date().getFullYear()}
 
+// Voice input for details field
+const voiceInputBtn = document.getElementById('voiceInputBtn');
+const detailsField = document.getElementById('details');
+if(voiceInputBtn && detailsField && ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)){
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  recognition.continuous = false;
+  recognition.interimResults = false;
+  recognition.lang = 'en-GB';
+  
+  voiceInputBtn.addEventListener('click', function(){
+    voiceInputBtn.classList.add('listening');
+    try{
+      recognition.start();
+    }catch(e){
+      console.error('Speech recognition error:', e);
+      voiceInputBtn.classList.remove('listening');
+    }
+  });
+  
+  recognition.onresult = function(event){
+    const transcript = event.results[0][0].transcript;
+    if(detailsField.value){
+      detailsField.value += ' ' + transcript;
+    }else{
+      detailsField.value = transcript;
+    }
+    // Trigger input event to update word counter
+    detailsField.dispatchEvent(new Event('input'));
+    voiceInputBtn.classList.remove('listening');
+  };
+  
+  recognition.onerror = function(event){
+    console.error('Speech recognition error:', event.error);
+    voiceInputBtn.classList.remove('listening');
+    if(event.error === 'not-allowed'){
+      showToast('Microphone access denied', 'error');
+    }
+  };
+  
+  recognition.onend = function(){
+    voiceInputBtn.classList.remove('listening');
+  };
+}else if(voiceInputBtn){
+  // Hide button if speech recognition not supported
+  voiceInputBtn.style.display = 'none';
+}
+
+// Submit button loading state
+const submitBtn = document.getElementById('submitBtn');
+const submitBtnText = document.getElementById('submitBtnText');
+const submitSpinner = document.getElementById('submitSpinner');
+if(form && submitBtn){
+  form.addEventListener('submit', function(){
+    if(submitBtnText && submitSpinner){
+      submitBtnText.textContent = 'Submitting...';
+      submitSpinner.classList.remove('hidden');
+      submitBtn.disabled = true;
+    }
+    // Re-enable after modal appears
+    setTimeout(function(){
+      if(submitBtnText && submitSpinner){
+        submitBtnText.textContent = 'Submit Report';
+        submitSpinner.classList.add('hidden');
+        submitBtn.disabled = false;
+      }
+    }, 2000);
+  });
+}
+
+// Animate reports counter
+const reportsCounter = document.getElementById('reportsThisMonth');
+if(reportsCounter){
+  // Generate random number between 89-156
+  const randomReports = Math.floor(Math.random() * (156 - 89 + 1)) + 89;
+  reportsCounter.dataset.count = randomReports;
+  
+  // Animate on page load
+  const observerOptions = {threshold: 0.5};
+  const observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting && !reportsCounter.dataset.animated){
+        reportsCounter.dataset.animated = 'true';
+        animateCounter(reportsCounter, randomReports);
+      }
+    });
+  }, observerOptions);
+  observer.observe(reportsCounter);
+}
+
 // Mobile nav toggle
 const navToggle = document.getElementById('navToggle');
 const primaryNav = document.getElementById('primaryNav');
