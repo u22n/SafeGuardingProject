@@ -187,9 +187,29 @@ if(form){
     }catch(e){ /* ignore */ }
   }
 
-  // Details live character counter
+  // Details live word counter with minimum requirement (data-min-words)
   if(detailsEl && detailsCounter){
-    function updateDetailsCounter(){ const len = detailsEl.value.length; detailsCounter.textContent = `${len} character${len===1?'':'s'}`; if(len>0){ detailsCounter.classList.add('visible'); } else { detailsCounter.classList.remove('visible'); } }
+    function countWords(text){
+      if(!text) return 0;
+      return text.trim().split(/\s+/).filter(Boolean).length;
+    }
+    function updateDetailsCounter(){
+      const text = detailsEl.value || '';
+      const words = countWords(text);
+      const minWords = parseInt(detailsEl.dataset.minWords, 10) || 50;
+      if(words > 0){ detailsCounter.classList.add('visible'); } else { detailsCounter.classList.remove('visible'); }
+      if(words < minWords){
+        const need = minWords - words;
+        detailsCounter.innerHTML = `${words} word${words===1?'':'s'} — <span class="char-need">need ${need} more</span>`;
+      } else {
+        const over = words - minWords;
+        if(over === 0){
+          detailsCounter.innerHTML = `${words} word${words===1?'':'s'}`;
+        } else {
+          detailsCounter.innerHTML = `${words} word${words===1?'':'s'} — <span class="char-over">+${over}</span> over minimum`;
+        }
+      }
+    }
     detailsEl.addEventListener('input', updateDetailsCounter);
     // initialize
     updateDetailsCounter();
