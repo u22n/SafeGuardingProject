@@ -136,7 +136,7 @@ a:focus, a:focus-visible {box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.10)}
 .hero-lead{font-size:1.0625rem;color:#475569}
 
 /* Section panels: page-like modules */
-.section-panel{background:#ffffff;border:1px solid #e2e8f0;border-radius:1rem;box-shadow:0 10px 30px rgba(2,6,23,.06);padding:2rem;margin:2rem 0}
+.section-panel{background:linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);border:1px solid rgba(2,6,23,0.06);border-radius:1.25rem;box-shadow:0 4px 20px rgba(2,6,23,.04);padding:2rem;margin:2rem 0}
 .section-panel .eyebrow{margin-top:-.5rem;display:block}
 .brand-bg{background:linear-gradient(90deg, var(--brand), var(--brand-dark))}
 .brand-btn{background:var(--brand);color:#fff}
@@ -214,9 +214,10 @@ a:focus, a:focus-visible {box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.10)}
 .stagger > *:nth-child(3){--stagger-index:2}
 .stagger > *:nth-child(4){--stagger-index:3}
 .stagger > *:nth-child(5){--stagger-index:4}
-.brand-outline{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(var(--brand-rgb),0.14);color:var(--brand);background:transparent;padding:.4rem .6rem;border-radius:8px;transition:background-color .12s ease, transform .12s ease}
-.brand-outline:hover{background:rgba(var(--brand-rgb),0.06);transform:translateY(-1px)}
-.brand-outline:focus-visible{outline:none;box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.10)}
+.brand-outline{display:block;width:100%;text-align:left;border:1px solid rgba(var(--brand-rgb),0.12);color:#1e293b;background:linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);padding:.75rem 1rem;border-radius:12px;transition:all .15s ease;font-weight:500}
+.brand-outline:hover{background:linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);transform:translateY(-1px);border-color:rgba(var(--brand-rgb),0.25)}
+.brand-outline:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(var(--brand-rgb),0.15)}
+.faq-panel{background:linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);border:1px solid rgba(2,6,23,0.06);border-radius:10px;padding:1rem;margin-top:.5rem;line-height:1.6}
 @media (max-width:640px){
   .nav-menu{position:absolute; top:100%; right:1rem; background:#fff; border:1px solid rgba(2,6,23,0.06); box-shadow:0 10px 30px rgba(2,6,23,0.08); border-radius:10px; padding:.5rem; display:flex; flex-direction:column; gap:.25rem; min-width:160px}
   .nav-menu a{padding:.4rem .6rem; border-radius:8px}
@@ -255,8 +256,8 @@ section.card-wrap + section.card-wrap{margin-top:1.25rem}
 .card-grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .card-grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .section-spacer{margin-top:1.25rem}
-.card{background:#fff;border:1px solid rgba(2,6,23,0.08);border-radius:14px;padding:1rem;box-shadow:0 4px 18px rgba(2,6,23,0.05);transition:transform .12s ease, box-shadow .12s ease}
-.card:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(2,6,23,0.08)}
+.card{background:linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);border:1px solid rgba(2,6,23,0.06);border-radius:16px;padding:1.25rem;box-shadow:0 2px 12px rgba(2,6,23,0.04);transition:all .15s ease}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(2,6,23,0.08);border-color:rgba(var(--brand-rgb),0.15)}
 .card strong{font-weight:600}
 /* Removed card variants */
 form#reportForm input, form#reportForm select, form#reportForm textarea{border:1px solid rgba(2,6,23,0.12)}
@@ -278,4 +279,14 @@ html{
   border-radius: 0.5rem;
   padding: 1rem;
 }
+
+/* Safeguarding Badges */
+.badge{display:inline-flex;align-items:center;gap:.375rem;padding:.375rem .75rem;border-radius:999px;font-size:.875rem;font-weight:600;letter-spacing:.025em}
+.badge-priority{background:linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);color:#ffffff;box-shadow:0 2px 8px rgba(220,38,38,0.25)}
+.badge-urgent{background:linear-gradient(135deg, #ea580c 0%, #c2410c 100%);color:#ffffff;box-shadow:0 2px 8px rgba(234,88,12,0.25)}
+.badge-support{background:linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);color:#ffffff;box-shadow:0 2px 8px rgba(var(--brand-rgb),0.25)}
+.badge-info{background:linear-gradient(135deg, #0891b2 0%, #0e7490 100%);color:#ffffff;box-shadow:0 2px 8px rgba(8,145,178,0.25)}
+.badge-safe{background:linear-gradient(135deg, #059669 0%, #047857 100%);color:#ffffff;box-shadow:0 2px 8px rgba(5,150,105,0.25)}
+.badge-outline{background:rgba(var(--brand-rgb),0.08);color:var(--brand);border:1px solid rgba(var(--brand-rgb),0.2)}
+.badge svg{width:1rem;height:1rem;flex-shrink:0}
 /* (FAQ styles reverted to previous state by removing the softer restyle block) */
