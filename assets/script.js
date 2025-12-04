@@ -63,6 +63,8 @@ if(form){
         // (reverted) option roles and tabindex
         li.onclick = function(){
           emailInput.value = pre + li.dataset.domain;
+          // run validation immediately so tick updates for any domain
+          try{ validateEmail(); }catch(e){}
           emailSuggestions.classList.add('hidden');
           emailInput.focus();
         }
@@ -73,7 +75,10 @@ if(form){
         const match = Array.from(emailSuggestions.querySelectorAll('li')).some(function(li){
           return li.dataset.domain && li.dataset.domain.toLowerCase() === domainPart;
         });
-        if(match){ emailSuggestions.classList.add('hidden'); }
+        if(match){
+          emailSuggestions.classList.add('hidden');
+          try{ validateEmail(); }catch(e){}
+        }
       }
       // set first item selected by default for keyboard nav
       // (reverted) initial aria-selected handling
@@ -243,6 +248,8 @@ if(form){
   }
   function validateEmail(){
     const v = (emailInput.value || '').trim();
+    // if empty, clear any tick/error so no icons show while the field is empty
+    if(!v){ setValidationIcon(emailInput, null); return false; }
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if(!pattern.test(v)){ setValidationIcon(emailInput, 'invalid'); return false; }
     setValidationIcon(emailInput, 'valid'); return true;
