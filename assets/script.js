@@ -894,3 +894,136 @@ if (anonymousToggle && anonymousExplainer && shieldIcon) {
     }
   });
 }
+
+// Copy to clipboard functionality
+function copyToClipboard(text, button) {
+    navigator.clipboard.writeText(text).then(() => {
+        button.classList.add('copied');
+        const tooltip = document.createElement('span');
+        tooltip.className = 'copy-tooltip show';
+        tooltip.textContent = 'Copied!';
+        button.style.position = 'relative';
+        button.appendChild(tooltip);
+        setTimeout(() => {
+            button.classList.remove('copied');
+            tooltip.classList.remove('show');
+            setTimeout(() => tooltip.remove(), 200);
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy:', err);
+    });
+}
+
+// Add copy buttons to all phone numbers dynamically
+document.querySelectorAll('.phone-num').forEach(phoneSpan => {
+    const phoneText = phoneSpan.textContent.trim();
+    const parentDiv = phoneSpan.closest('div');
+    
+    // Skip if already has copy button
+    if (parentDiv && !parentDiv.classList.contains('phone-with-copy')) {
+        // Wrap in phone-with-copy div
+        parentDiv.classList.add('phone-with-copy');
+        
+        // Create copy button
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-phone-btn';
+        copyBtn.setAttribute('aria-label', `Copy ${phoneText}`);
+        copyBtn.innerHTML = '<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>';
+        parentDiv.appendChild(copyBtn);
+    }
+});
+
+// Copy phone numbers
+document.querySelectorAll('.copy-phone-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const phoneNum = btn.parentElement.querySelector('.phone-num');
+        const phoneText = phoneNum ? phoneNum.textContent.trim() : '';
+        if (phoneText) {
+            copyToClipboard(phoneText, btn);
+        }
+    });
+});
+
+// Copy reference number
+const copyRefBtn = document.getElementById('copyRefBtn');
+if (copyRefBtn) {
+    copyRefBtn.addEventListener('click', () => {
+        const refNumber = document.getElementById('referenceNumber').textContent.trim();
+        copyToClipboard(refNumber, copyRefBtn);
+    });
+}
+
+// FAQ Search
+const faqSearch = document.getElementById('faqSearch');
+if (faqSearch) {
+    faqSearch.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const question = item.getAttribute('data-faq-question')?.toLowerCase() || '';
+            if (query === '' || question.includes(query)) {
+                item.classList.remove('hidden');
+                if (query !== '') {
+                    item.classList.add('match');
+                } else {
+                    item.classList.remove('match');
+                }
+            } else {
+                item.classList.add('hidden');
+                item.classList.remove('match');
+            }
+        });
+    });
+}
+
+// Expand/Collapse all FAQs
+const expandAllBtn = document.getElementById('expandAllFAQ');
+const collapseAllBtn = document.getElementById('collapseAllFAQ');
+if (expandAllBtn && collapseAllBtn) {
+    expandAllBtn.addEventListener('click', () => {
+        document.querySelectorAll('.faq-item button[aria-expanded]').forEach(btn => {
+            const panel = document.getElementById(btn.getAttribute('aria-controls'));
+            if (panel && btn.getAttribute('aria-expanded') === 'false') {
+                btn.click();
+            }
+        });
+    });
+    collapseAllBtn.addEventListener('click', () => {
+        document.querySelectorAll('.faq-item button[aria-expanded]').forEach(btn => {
+            const panel = document.getElementById(btn.getAttribute('aria-controls'));
+            if (panel && btn.getAttribute('aria-expanded') === 'true') {
+                btn.click();
+            }
+        });
+    });
+}
+
+// "Was this helpful?" feedback
+document.querySelectorAll('.faq-helpful-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const parent = btn.closest('.faq-helpful');
+        parent.querySelectorAll('.faq-helpful-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        setTimeout(() => {
+            const feedback = btn.textContent.includes('👍') ? 'positive' : 'negative';
+            console.log(`FAQ feedback: ${feedback}`);
+        }, 100);
+    });
+});
+
+// Subtle parallax scroll effect
+let ticking = false;
+function updateParallax() {
+    const scrolled = window.pageYOffset;
+    const parallaxBg = document.querySelector('.parallax-bg');
+    if (parallaxBg && scrolled < window.innerHeight * 1.5) {
+        parallaxBg.style.transform = `translateY(${scrolled * 0.3}px)`;
+    }
+    ticking = false;
+}
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+    }
+});

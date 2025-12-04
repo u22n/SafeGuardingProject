@@ -345,3 +345,53 @@ html{
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 .animate-spin{animation:spin 1s linear infinite}
 
+/* Parallax scrolling effect */
+.parallax-bg{position:relative;overflow:hidden;transform-style:preserve-3d}
+.parallax-bg::before{content:'';position:absolute;inset:0;background:linear-gradient(165deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 45%, var(--bg-gradient-end) 100%);will-change:transform;z-index:-1;transform:translateZ(-1px) scale(1.1)}
+.parallax-content{position:relative;z-index:1;transform:translateZ(0)}
+
+/* Animated gradient background */
+@keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+body{background-size:200% 200%;animation:gradientShift 15s ease infinite}
+
+/* Stat cards with icons */
+.stat-card{display:flex;flex-direction:column;align-items:center;gap:0.5rem;padding:1rem;background:linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(243,244,246,0.8) 100%);border:1px solid rgba(var(--brand-rgb),0.1);border-radius:12px;transition:all .3s ease}
+.stat-card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(var(--brand-rgb),0.15);border-color:rgba(var(--brand-rgb),0.25)}
+.stat-icon{width:1.5rem;height:1.5rem;color:var(--brand);opacity:0.8}
+
+/* Trust badges */
+.trust-badges-container{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;padding:2rem 1rem;background:linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(243,244,246,0.4) 100%);border-top:1px solid rgba(2,6,23,0.04);border-bottom:1px solid rgba(2,6,23,0.04)}
+.trust-badge{display:flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;font-size:0.875rem;font-weight:600;color:#475569;transition:all .2s ease}
+.trust-badge:hover{color:var(--brand)}
+.trust-badge svg{flex-shrink:0}
+
+/* Copy phone button */
+.phone-with-copy{display:flex;align-items:center;gap:0.5rem;position:relative}
+.copy-phone-btn{padding:0.25rem;color:#94a3b8;background:transparent;border:1px solid transparent;border-radius:6px;transition:all .2s ease;cursor:pointer;opacity:0}
+.phone-with-copy:hover .copy-phone-btn{opacity:1}
+.copy-phone-btn:hover{color:var(--brand);background:rgba(var(--brand-rgb),0.08);border-color:rgba(var(--brand-rgb),0.2)}
+.copy-phone-btn:active{transform:scale(0.95)}
+.copy-phone-btn.copied{color:#10b981;background:rgba(16,185,129,0.1)}
+
+/* Copy tooltip */
+.copy-tooltip{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:0.5rem;padding:0.25rem 0.5rem;background:rgba(30,41,59,0.95);color:#fff;font-size:0.75rem;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s ease}
+.copy-tooltip.show{opacity:1}
+
+/* Copy reference button */
+.copy-ref-btn{padding:0.5rem;color:#94a3b8;background:rgba(255,255,255,0.8);border:1px solid rgba(2,6,23,0.1);border-radius:8px;transition:all .2s ease;cursor:pointer}
+.copy-ref-btn:hover{color:var(--brand);background:#fff;border-color:rgba(var(--brand-rgb),0.3);transform:scale(1.05)}
+.copy-ref-btn:active{transform:scale(0.95)}
+.copy-ref-btn.copied{color:#10b981;background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.3)}
+
+/* FAQ helpful buttons */
+.faq-helpful{display:flex;align-items:center;gap:0.5rem;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(2,6,23,0.06)}
+.faq-helpful-btn{padding:0.25rem 0.5rem;font-size:1rem;background:transparent;border:1px solid transparent;border-radius:6px;cursor:pointer;transition:all .15s ease;opacity:0.6}
+.faq-helpful-btn:hover{opacity:1;background:rgba(var(--brand-rgb),0.06);border-color:rgba(var(--brand-rgb),0.15);transform:scale(1.1)}
+.faq-helpful-btn:active{transform:scale(0.95)}
+.faq-helpful-btn.selected{opacity:1;background:rgba(var(--brand-rgb),0.1);border-color:rgba(var(--brand-rgb),0.25)}
+
+/* FAQ item highlight for search */
+.faq-item{transition:all .2s ease}
+.faq-item.match{background:rgba(var(--brand-rgb),0.05);border-left:3px solid var(--brand);padding-left:0.75rem}
+.faq-item.hidden{display:none}
+

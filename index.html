@@ -40,25 +40,34 @@
   </header>
 
   <main id="home">
-    <section class="hero-wrap">
-      <div class="container grid gap-8 md:grid-cols-2 items-center fade-in">
+    <section class="hero-wrap parallax-bg">
+      <div class="container grid gap-8 md:grid-cols-2 items-center fade-in parallax-content">
       <div>
         <h1 class="hero-title font-extrabold text-slate-900" style="font-family: 'Poppins', 'Inter', system-ui;">Safeguarding: Recognise. Respond. Refer.</h1>
         <p class="hero-lead mt-4">Simple, practical guidance to help you identify safeguarding concerns and take the correct steps to keep people safe.</p>
         
         <!-- Impact Metrics -->
         <div class="mt-6 grid grid-cols-3 gap-4 max-w-lg">
-          <div class="text-center">
+          <div class="stat-card">
+            <svg class="stat-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
             <div class="text-2xl font-bold text-brand" data-count="24">0</div>
-            <div class="text-xs text-slate-600 mt-1">7 Support</div>
+            <div class="text-xs text-slate-600 mt-1">Available 24/7</div>
           </div>
-          <div class="text-center">
+          <div class="stat-card">
+            <svg class="stat-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
             <div class="text-2xl font-bold text-brand" data-count="15000">0</div>
-            <div class="text-xs text-slate-600 mt-1">Reports Handled</div>
+            <div class="text-xs text-slate-600 mt-1">15K+ Helped</div>
           </div>
-          <div class="text-center">
+          <div class="stat-card">
+            <svg class="stat-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
             <div class="text-2xl font-bold text-brand" data-count="98">0</div>
-            <div class="text-xs text-slate-600 mt-1">Response Rate</div>
+            <div class="text-xs text-slate-600 mt-1">98% Satisfaction</div>
           </div>
         </div>
         
@@ -105,6 +114,28 @@
         </div>
       </div>
     </section>
+
+    <!-- Trust Badges -->
+    <div class="trust-badges-container">
+      <div class="trust-badge">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+        </svg>
+        <span>Verified Secure</span>
+      </div>
+      <div class="trust-badge">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+        </svg>
+        <span>Confidential</span>
+      </div>
+      <div class="trust-badge">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+        </svg>
+        <span>GDPR Compliant</span>
+      </div>
+    </div>
 
     <section id="how-it-works" class="section section-contrast fade-in card-wrap section-panel" aria-labelledby="how-it-works-heading">
       <span class="eyebrow">Process</span>
@@ -216,34 +247,102 @@
 
     <section id="faq" class="mt-12 fade-in card-wrap" aria-labelledby="faq-heading">
       <h2 id="faq-heading" class="text-2xl font-bold text-slate-900">FAQs</h2>
-      <div class="mt-6 grid gap-6 sm:grid-cols-3">
+      <div class="mt-3 flex items-center gap-3 flex-wrap">
+        <input id="faqSearch" type="text" class="border rounded-lg px-3 py-2 flex-1 min-w-[200px]" placeholder="Search FAQs..." aria-label="Search FAQs" />
+        <button id="expandAllFAQ" class="brand-outline px-3 py-2">Expand All</button>
+        <button id="collapseAllFAQ" class="brand-outline px-3 py-2">Collapse All</button>
+      </div>
+      <div class="mt-6 grid gap-6 sm:grid-cols-3" id="faqContainer">
         <div>
           <h3 class="text-lg font-semibold">Basics</h3>
           <div class="mt-3">
-            <button class="faq-toggle brand-outline" aria-expanded="false" aria-controls="faq-b1">What should I do if I'm unsure?</button>
-            <div id="faq-b1" class="faq-panel hidden mt-2 text-slate-700">If unsure, consult a safeguarding lead or contact support. Trust your instincts and record what you observe.</div>
-            <button class="faq-toggle brand-outline mt-3" aria-expanded="false" aria-controls="faq-b2">What if it's outside my region?</button>
-            <div id="faq-b2" class="faq-panel hidden mt-2 text-slate-700">Use the Regional Contacts filter to find the right number. In immediate danger, always call local emergency services.</div>
+            <div class="faq-item" data-faq-question="What should I do if I'm unsure?">
+              <button class="faq-toggle brand-outline" aria-expanded="false" aria-controls="faq-b1">What should I do if I'm unsure?</button>
+              <div id="faq-b1" class="faq-panel hidden mt-2 text-slate-700">
+                <p>If unsure, consult a safeguarding lead or contact support. Trust your instincts and record what you observe.</p>
+                <div class="faq-helpful">
+                  <span class="text-xs text-slate-500">Was this helpful?</span>
+                  <button class="faq-helpful-btn" data-helpful="yes" aria-label="Yes, this was helpful">👍</button>
+                  <button class="faq-helpful-btn" data-helpful="no" aria-label="No, this was not helpful">👎</button>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item mt-3" data-faq-question="What if it's outside my region?">
+              <button class="faq-toggle brand-outline" aria-expanded="false" aria-controls="faq-b2">What if it's outside my region?</button>
+              <div id="faq-b2" class="faq-panel hidden mt-2 text-slate-700">
+                <p>Use the Regional Contacts filter to find the right number. In immediate danger, always call local emergency services.</p>
+                <div class="faq-helpful">
+                  <span class="text-xs text-slate-500">Was this helpful?</span>
+                  <button class="faq-helpful-btn" data-helpful="yes" aria-label="Yes, this was helpful">👍</button>
+                  <button class="faq-helpful-btn" data-helpful="no" aria-label="No, this was not helpful">👎</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div>
           <h3 class="text-lg font-semibold">Reporting</h3>
           <div class="mt-3">
-            <button class="faq-toggle brand-outline" aria-expanded="false" aria-controls="faq-r1">Can I report anonymously?</button>
-            <div id="faq-r1" class="faq-panel hidden mt-2 text-slate-700">Anonymous reports may be accepted depending on policy. Providing contact details can help in follow-ups. See public help: <a href="https://www.nspcc.org.uk/" target="_blank" class="brand-text">NSPCC</a>.</div>
-            <button class="faq-toggle brand-outline mt-3" aria-expanded="false" aria-controls="faq-r2">How quickly will you respond?</button>
-            <div id="faq-r2" class="faq-panel hidden mt-2 text-slate-700">We aim to review reports within 24–48 hours. If someone is at immediate risk, call emergency services. Public help: <a href="https://www.childline.org.uk/" target="_blank" class="brand-text">Childline</a>, <a href="https://www.samaritans.org/" target="_blank" class="brand-text">Samaritans</a>.</div>
-            <button class="faq-toggle brand-outline mt-3" aria-expanded="false" aria-controls="faq-r3">Can I attach photos or documents?</button>
-            <div id="faq-r3" class="faq-panel hidden mt-2 text-slate-700">Yes. Upload JPG, PNG, or PDF up to 5MB. Keep attachments factual and avoid sensitive content unless essential.</div>
+            <div class="faq-item" data-faq-question="Can I report anonymously?">
+              <button class="faq-toggle brand-outline" aria-expanded="false" aria-controls="faq-r1">Can I report anonymously?</button>
+              <div id="faq-r1" class="faq-panel hidden mt-2 text-slate-700">
+                <p>Anonymous reports may be accepted depending on policy. Providing contact details can help in follow-ups. See public help: <a href="https://www.nspcc.org.uk/" target="_blank" class="brand-text">NSPCC</a>.</p>
+                <div class="faq-helpful">
+                  <span class="text-xs text-slate-500">Was this helpful?</span>
+                  <button class="faq-helpful-btn" data-helpful="yes" aria-label="Yes, this was helpful">👍</button>
+                  <button class="faq-helpful-btn" data-helpful="no" aria-label="No, this was not helpful">👎</button>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item mt-3" data-faq-question="How quickly will you respond?">
+              <button class="faq-toggle brand-outline" aria-expanded="false" aria-controls="faq-r2">How quickly will you respond?</button>
+              <div id="faq-r2" class="faq-panel hidden mt-2 text-slate-700">
+                <p>We aim to review reports within 24–48 hours. If someone is at immediate risk, call emergency services. Public help: <a href="https://www.childline.org.uk/" target="_blank" class="brand-text">Childline</a>, <a href="https://www.samaritans.org/" target="_blank" class="brand-text">Samaritans</a>.</p>
+                <div class="faq-helpful">
+                  <span class="text-xs text-slate-500">Was this helpful?</span>
+                  <button class="faq-helpful-btn" data-helpful="yes" aria-label="Yes, this was helpful">👍</button>
+                  <button class="faq-helpful-btn" data-helpful="no" aria-label="No, this was not helpful">👎</button>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item mt-3" data-faq-question="Can I attach photos or documents?">
+              <button class="faq-toggle brand-outline" aria-expanded="false" aria-controls="faq-r3">Can I attach photos or documents?</button>
+              <div id="faq-r3" class="faq-panel hidden mt-2 text-slate-700">
+                <p>Yes. Upload JPG, PNG, or PDF up to 5MB. Keep attachments factual and avoid sensitive content unless essential.</p>
+                <div class="faq-helpful">
+                  <span class="text-xs text-slate-500">Was this helpful?</span>
+                  <button class="faq-helpful-btn" data-helpful="yes" aria-label="Yes, this was helpful">👍</button>
+                  <button class="faq-helpful-btn" data-helpful="no" aria-label="No, this was not helpful">👎</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div>
           <h3 class="text-lg font-semibold">Privacy</h3>
           <div class="mt-3">
-            <button class="faq-toggle brand-outline" aria-expanded="false" aria-controls="faq-p1">Will my report be kept confidential?</button>
-            <div id="faq-p1" class="faq-panel hidden mt-2 text-slate-700">Reports are handled confidentially and shared only with appropriate safeguarding professionals as needed.</div>
-            <button class="faq-toggle brand-outline mt-3" aria-expanded="false" aria-controls="faq-p2">How is my data used?</button>
-            <div id="faq-p2" class="faq-panel hidden mt-2 text-slate-700">We store minimal necessary information for safeguarding purposes and follow relevant data protection laws. Public guidance: <a href="https://ico.org.uk/for-the-public/" target="_blank" class="brand-text">ICO</a>.</div>
+            <div class="faq-item" data-faq-question="Will my report be kept confidential?">
+              <button class="faq-toggle brand-outline" aria-expanded="false" aria-controls="faq-p1">Will my report be kept confidential?</button>
+              <div id="faq-p1" class="faq-panel hidden mt-2 text-slate-700">
+                <p>Reports are handled confidentially and shared only with appropriate safeguarding professionals as needed.</p>
+                <div class="faq-helpful">
+                  <span class="text-xs text-slate-500">Was this helpful?</span>
+                  <button class="faq-helpful-btn" data-helpful="yes" aria-label="Yes, this was helpful">👍</button>
+                  <button class="faq-helpful-btn" data-helpful="no" aria-label="No, this was not helpful">👎</button>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item mt-3" data-faq-question="How is my data used?">
+              <button class="faq-toggle brand-outline" aria-expanded="false" aria-controls="faq-p2">How is my data used?</button>
+              <div id="faq-p2" class="faq-panel hidden mt-2 text-slate-700">
+                <p>We store minimal necessary information for safeguarding purposes and follow relevant data protection laws. Public guidance: <a href="https://ico.org.uk/for-the-public/" target="_blank" class="brand-text">ICO</a>.</p>
+                <div class="faq-helpful">
+                  <span class="text-xs text-slate-500">Was this helpful?</span>
+                  <button class="faq-helpful-btn" data-helpful="yes" aria-label="Yes, this was helpful">👍</button>
+                  <button class="faq-helpful-btn" data-helpful="no" aria-label="No, this was not helpful">👎</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -319,10 +418,10 @@
         <div class="mt-4 grid gap-3 sm:grid-cols-2" id="regionalGrid">
           <div class="card card-pad" data-region="uk" data-name="united kingdom">
             <strong class="block text-slate-900">United Kingdom</strong>
-            <div class="mt-2 space-y-1">
-              <div><a class="brand-text font-semibold" href="tel:999" aria-label="Emergency 999"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">999</span></a> <span class="text-slate-500 text-xs">Emergency</span></div>
-              <div><a class="brand-text" href="tel:101" aria-label="Non-emergency 101"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">101</span></a> <span class="text-slate-500 text-xs">Police Non-Emergency</span></div>
-              <div><a class="brand-text" href="tel:111" aria-label="NHS 111"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">111</span></a> <span class="text-slate-500 text-xs">NHS Helpline</span></div>
+            <div class="mt-2 space-y-1 phone-list">
+              <div class="phone-with-copy"><a class="brand-text font-semibold" href="tel:999" aria-label="Emergency 999"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">999</span></a> <span class="text-slate-500 text-xs">Emergency</span><button class="copy-phone-btn" data-phone="999" aria-label="Copy 999"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></button></div>
+              <div class="phone-with-copy"><a class="brand-text" href="tel:101" aria-label="Non-emergency 101"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">101</span></a> <span class="text-slate-500 text-xs">Police Non-Emergency</span><button class="copy-phone-btn" data-phone="101" aria-label="Copy 101"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></button></div>
+              <div class="phone-with-copy"><a class="brand-text" href="tel:111" aria-label="NHS 111"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">111</span></a> <span class="text-slate-500 text-xs">NHS Helpline</span><button class="copy-phone-btn" data-phone="111" aria-label="Copy 111"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></button></div>
             </div>
             <p class="mt-3 text-slate-600 text-sm"><strong>Resources:</strong> <a href="https://www.samaritans.org/" target="_blank" rel="noopener" class="brand-text underline">Samaritans</a> (116 123), <a href="https://www.nspcc.org.uk/" target="_blank" rel="noopener" class="brand-text underline">NSPCC</a> (0808 800 5000), <a href="https://www.childline.org.uk/" target="_blank" rel="noopener" class="brand-text underline">Childline</a> (0800 1111)</p>
           </div>
