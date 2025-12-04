@@ -43,6 +43,10 @@ a[href^="tel"]:hover::after, a[href^="tel"]:focus::after{width:100%}
 a[href^="tel"]:hover, a[href^="tel"]:focus{transform:translateY(-3px);box-shadow:0 8px 20px rgba(var(--brand-rgb),0.06);color:var(--brand)}
 a[href^="tel"]:focus{outline:none;box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.08)}
 
+/* phone icon inside tel links */
+.phone-icon{width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:.5rem;flex:0 0 16px}
+.phone-num{font-weight:600}
+
 /* Top contact link special hover */
 .contact-link{border-radius:6px;padding:.35rem .6rem}
 .contact-link:hover{background:var(--brand);color:#fff}
