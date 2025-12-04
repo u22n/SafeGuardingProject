@@ -119,6 +119,14 @@ a:focus, a:focus-visible {box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.10)}
 .char-counter .char-over{color:#ef4444;font-weight:600;margin-left:.25rem}
 .char-counter .char-need{color:#6b7280}
 
+/* Progress bar for details counter */
+.counter-progress-wrap{max-width:28rem}
+.counter-progress{background:rgba(15,23,42,0.04)}
+.counter-progress-fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--brand-dark));transition:width .16s ease;background-size:200% 100%}
+.counter-progress-fill.over{background:linear-gradient(90deg,#ef4444,#c026d3)}
+.char-counter.error{color:#b91c1c;font-weight:600}
+.char-counter.error::before{content:'Error: ';font-weight:600;margin-right:.25rem}
+
 /* Quick Contacts: make brand-text links in the Actions/Quick contacts block animate like other site links */
 #actions a.brand-text{position:relative;padding:.06rem .06rem}
 #actions a.brand-text::after{content:"";position:absolute;left:0;right:auto;bottom:-6px;height:2px;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-dark));transition:width .22s cubic-bezier(.2,.9,.2,1)}

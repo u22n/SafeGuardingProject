@@ -193,21 +193,43 @@ if(form){
       if(!text) return 0;
       return text.trim().split(/\s+/).filter(Boolean).length;
     }
+    const detailsProgressFill = document.getElementById('detailsProgressFill');
+    const detailsMinLabel = document.getElementById('detailsMinLabel');
+    const detailsMaxLabel = document.getElementById('detailsMaxLabel');
     function updateDetailsCounter(){
       const text = detailsEl.value || '';
       const words = countWords(text);
       const minWords = parseInt(detailsEl.dataset.minWords, 10) || 50;
+      const maxWords = parseInt(detailsEl.dataset.maxWords, 10) || 150;
+      if(detailsMinLabel) detailsMinLabel.textContent = String(minWords);
+      if(detailsMaxLabel) detailsMaxLabel.textContent = String(maxWords);
+      // show/hide counter
       if(words > 0){ detailsCounter.classList.add('visible'); } else { detailsCounter.classList.remove('visible'); }
+      // compute progress between min and max
+      let pct = 0;
+      if(words <= minWords){
+        pct = Math.round((words / minWords) * 100);
+      } else if(words > minWords && words < maxWords){
+        pct = Math.round(((words - minWords) / (maxWords - minWords)) * 100);
+      } else { pct = 100; }
+      pct = Math.max(0, Math.min(100, pct));
+      if(detailsProgressFill){ detailsProgressFill.style.width = pct + '%'; detailsProgressFill.setAttribute('aria-valuenow', String(pct)); }
+      // update counter text and styling
       if(words < minWords){
         const need = minWords - words;
         detailsCounter.innerHTML = `${words} word${words===1?'':'s'} — <span class="char-need">need ${need} more</span>`;
+        detailsCounter.classList.remove('error');
+        detailsProgressFill.classList.remove('over');
+      } else if(words > maxWords){
+        const over = words - maxWords;
+        detailsCounter.innerHTML = `${words} word${words===1?'':'s'} — <span class="char-over">+${over}</span> over maximum`;
+        detailsCounter.classList.add('error');
+        if(detailsProgressFill) detailsProgressFill.classList.add('over');
       } else {
         const over = words - minWords;
-        if(over === 0){
-          detailsCounter.innerHTML = `${words} word${words===1?'':'s'}`;
-        } else {
-          detailsCounter.innerHTML = `${words} word${words===1?'':'s'} — <span class="char-over">+${over}</span> over minimum`;
-        }
+        detailsCounter.innerHTML = `${words} word${words===1?'':'s'} — ${over>0?`+${over} over minimum`: 'meets minimum'}`;
+        detailsCounter.classList.remove('error');
+        detailsProgressFill.classList.remove('over');
       }
     }
     detailsEl.addEventListener('input', updateDetailsCounter);
@@ -313,6 +335,19 @@ form.addEventListener('submit', function(e){
     form.email.focus();
     return;
   }
+  // Enforce details word min/max before showing modal
+  const detailsField = document.getElementById('details');
+  const detailText = detailsField ? detailsField.value || '' : '';
+  const wordCount = detailText.trim() ? detailText.trim().split(/\s+/).filter(Boolean).length : 0;
+  const minWords = detailsField ? parseInt(detailsField.dataset.minWords, 10) || 50 : 50;
+  const maxWords = detailsField ? parseInt(detailsField.dataset.maxWords, 10) || 150 : 150;
+  if(wordCount < minWords || wordCount > maxWords){
+    showError(detailsField, `Details must be between ${minWords} and ${maxWords} words. Current: ${wordCount}.`);
+    formMessage.textContent = 'Please adjust the details to meet the word limits.';
+    formMessage.style.color = '#ef4444';
+    detailsField.focus();
+    return;
+  }
   formMessage.textContent = '';
   const modal = document.getElementById('thankYouModal');
   const closeBtn = document.getElementById('closeModal');
@@ -339,6 +374,9 @@ form.addEventListener('submit', function(e){
   }
   form.reset();
 })
+  
+  // Enforce min/max word count at submit: block submission earlier in handler will prevent modal showing
+  // (We already validate details presence earlier; add a final check before showing modal)
 }
 
   const yearEl = document.getElementById('year');
