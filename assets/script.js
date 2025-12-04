@@ -635,13 +635,20 @@ if(regionSearch && regionalGrid){
   function applyCombinedFilter(){
     const selectVal = regionFilter ? regionFilter.value : 'all';
     const q = regionSearch.value.trim().toLowerCase();
+    
+    // If there's a search query, show all matching cards regardless of initial hidden state
     regionalGrid.querySelectorAll('[data-region]').forEach(function(card){
       const region = card.getAttribute('data-region');
       const name = (card.getAttribute('data-name') || '').toLowerCase();
       const matchesRegion = (selectVal === 'all' || selectVal === region);
       const matchesQuery = (!q || name.includes(q));
-      card.classList.toggle('hidden', !(matchesRegion && matchesQuery));
+      
+      // Show if matches both region filter and search query
+      const shouldShow = matchesRegion && matchesQuery;
+      card.classList.toggle('hidden', !shouldShow);
     });
+    
+    // Update counter
     if(visibleCountEl && totalCountEl){
       const allCards = regionalGrid.querySelectorAll('[data-region]');
       const visibleCards = regionalGrid.querySelectorAll('[data-region]:not(.hidden)');
