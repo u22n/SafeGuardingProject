@@ -29,22 +29,21 @@ nav[aria-label="Main navigation"] a[role="menuitem"]:hover::after, nav[aria-labe
 nav[aria-label="Main navigation"] .brand-btn{color:#fff}
 nav[aria-label="Main navigation"] .brand-btn:hover{color:#fff !important}
 
-/* Footer link animations: underline gradient and subtle lift on hover */
-.site-footer a{position:relative;padding:.15rem .35rem;transition:transform .14s ease, box-shadow .14s ease, color .12s ease}
+.site-footer a{position:relative;padding:.12rem .28rem;transition:transform .14s ease, box-shadow .14s ease, color .12s ease;font-family:'Poppins','Inter',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;font-weight:500;font-size:0.92rem}
 .site-footer a::after{content:"";position:absolute;left:0;right:auto;bottom:-6px;height:2px;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-dark));transition:width .24s cubic-bezier(.2,.9,.2,1)}
 .site-footer a:hover::after, .site-footer a:focus::after{width:100%}
 .site-footer a:hover, .site-footer a:focus{color:var(--brand)}
 .site-footer a:focus{outline:none}
 
-/* Phone contact links: match navbar/footer animation and hover lift */
-a[href^="tel"]{position:relative;transition:transform .14s ease, box-shadow .14s ease, color .12s ease}
+/* Phone contact links: inline icon + number; match navbar/footer animation and hover lift (footer overrides lift) */
+a[href^="tel"]{display:inline-flex;align-items:center;gap:.25rem;position:relative;transition:transform .14s ease, box-shadow .14s ease, color .12s ease}
 a[href^="tel"]::after{content:"";position:absolute;left:0;right:auto;bottom:-6px;height:2px;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-dark));transition:width .24s cubic-bezier(.2,.9,.2,1)}
 a[href^="tel"]:hover::after, a[href^="tel"]:focus::after{width:100%}
 a[href^="tel"]:hover, a[href^="tel"]:focus{transform:translateY(-3px);box-shadow:0 8px 20px rgba(var(--brand-rgb),0.06);color:var(--brand)}
 a[href^="tel"]:focus{outline:none;box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.08)}
 
 /* phone icon inside tel links */
-.phone-icon{width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:0;flex:0 0 16px}
+.phone-icon{width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:.25rem;flex:0 0 16px}
 .phone-num{font-weight:500;font-family:'Poppins','Inter',system-ui, -apple-system,Segoe UI,Roboto,Helvetica,Arial;font-variant-numeric:tabular-nums;color:var(--brand)}
 
 /* Footer icon wrap: circular background and hover tint for raster icons */
@@ -65,7 +64,7 @@ a[href^="mailto"]{font-family:'Poppins','Inter',system-ui,-apple-system,'Segoe U
 @media (max-width:640px){.icon-wrap{width:26px;height:26px}.icon-wrap img{width:18px;height:18px}}
 
 /* Footer phone number sizing to keep it fitting in one line on wide screens */
-.site-footer .phone-num{font-weight:600;white-space:nowrap;font-size:0.95rem}
+.site-footer .phone-num{font-weight:500;white-space:nowrap;font-size:0.92rem}
 
 /* Top contact link special hover */
 .contact-link{border-radius:6px;padding:.35rem .6rem}
