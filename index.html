@@ -17,7 +17,7 @@
   <a href="#home" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:bg-white focus:border focus:rounded focus:px-3 focus:py-2">Skip to content</a>
   <a href="#actions" class="sr-only focus:not-sr-only focus:fixed focus:top-14 focus:left-3 focus:bg-white focus:border focus:rounded focus:px-3 focus:py-2">Skip to Action Steps</a>
   <a href="#faq" class="sr-only focus:not-sr-only focus:fixed focus:top-24 focus:left-3 focus:bg-white focus:border focus:rounded focus:px-3 focus:py-2">Skip to FAQs</a>
-  <header class="bg-white/70 backdrop-blur sticky top-0 z-40">
+  <header class="site-header sticky top-0 z-40">
     <nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between relative" aria-label="Main navigation">
       <a href="#home" class="text-2xl font-semibold brand-text">Safeguard</a>
       <button class="nav-toggle sm:hidden" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation">
@@ -39,30 +39,34 @@
     </nav>
   </header>
 
-  <main id="home" class="max-w-4xl mx-auto px-4 py-10">
-    <section class="grid gap-8 md:grid-cols-2 items-center fade-in">
+  <main id="home">
+    <section class="hero-wrap">
+      <div class="container grid gap-8 md:grid-cols-2 items-center fade-in">
       <div>
-        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight" style="font-family: 'Poppins', 'Inter', system-ui;">Safeguarding: Recognise. Respond. Refer.</h1>
-        <p class="mt-4 text-slate-700">Simple, practical guidance to help you identify safeguarding concerns and take the correct steps to keep people safe.</p>
+        <h1 class="hero-title font-extrabold text-slate-900" style="font-family: 'Poppins', 'Inter', system-ui;">Safeguarding: Recognise. Respond. Refer.</h1>
+        <p class="hero-lead mt-4">Simple, practical guidance to help you identify safeguarding concerns and take the correct steps to keep people safe.</p>
         <div class="mt-6 flex flex-wrap gap-3">
           <a href="#actions" class="inline-flex items-center gap-2 px-4 py-2 brand-btn text-white rounded shadow-sm"><span>See Action Steps</span></a>
         </div>
       </div>
       <div class="flex justify-center md:justify-end">
         <figure aria-hidden="true">
-          <img src="assets/images/hero.svg" alt="Community support illustration" class="hero-illustration" style="object-fit: cover; border-radius: 12px;"/>
+          <img src="assets/images/hero.svg" alt="Community support illustration" class="hero-illustration" style="object-fit: cover; border-radius: 16px;"/>
         </figure>
       </div>
+      </div>
     </section>
+    <div class="container px-4 py-10">
 
-    <section id="what" class="mt-16 fade-in" aria-labelledby="what-heading">
+    <section id="what" class="section fade-in" aria-labelledby="what-heading">
+      <span class="eyebrow">Overview</span>
       <h2 id="what-heading" class="text-2xl font-bold text-slate-900">What is Safeguarding?</h2>
       <div class="mt-4 card-grid card-grid-2">
-        <div class="bg-white p-4 rounded shadow-sm">
+        <div class="card card-pad">
           <h3 class="font-semibold">Definition</h3>
           <p class="mt-2 text-slate-700">Safeguarding is the process of protecting children and adults from abuse, neglect, and harm. It focuses on prevention, timely action, and appropriate referral.</p>
         </div>
-        <div class="bg-white p-4 rounded shadow-sm">
+        <div class="card card-pad">
           <h3 class="font-semibold">Principles</h3>
           <ul class="mt-2 list-disc list-inside text-slate-700">
             <li>Empowerment and respect</li>
@@ -71,31 +75,32 @@
             <li>Accountability</li>
           </ul>
         </div>
-        <div class="bg-white p-4 rounded shadow-sm">
+        <div class="card card-pad">
           <h3 class="font-semibold">Who it protects</h3>
           <p class="mt-2 text-slate-700">Anyone at risk of harm, including children, vulnerable adults, and those facing exploitation or abuse.</p>
         </div>
-        <div class="bg-white p-4 rounded shadow-sm">
+        <div class="card card-pad">
           <h3 class="font-semibold">Your role</h3>
           <p class="mt-2 text-slate-700">Recognise signs, respond calmly, record facts, and report concerns through the proper channels.</p>
         </div>
       </div>
     </section>
 
-    <section id="how" class="mt-12 fade-in card-wrap" aria-labelledby="how-heading">
+    <section id="how" class="section section-contrast fade-in card-wrap" aria-labelledby="how-heading">
+      <span class="eyebrow">Process</span>
       <h2 id="how-heading" class="text-2xl font-bold text-slate-900">How It Works</h2>
       <div class="mt-4 card-grid card-grid-3">
-        <div class="bg-white p-4 rounded shadow-sm text-center">
+        <div class="card card-pad text-center">
           <div class="brand-bg text-white w-10 h-10 rounded-full mx-auto flex items-center justify-center" aria-hidden="true">1</div>
           <h3 class="mt-2 font-semibold">Recognise</h3>
           <p class="mt-1 text-slate-700">Notice signs or disclosures that suggest risk of harm.</p>
         </div>
-        <div class="bg-white p-4 rounded shadow-sm text-center">
+        <div class="card card-pad text-center">
           <div class="brand-bg text-white w-10 h-10 rounded-full mx-auto flex items-center justify-center" aria-hidden="true">2</div>
           <h3 class="mt-2 font-semibold">Respond</h3>
           <p class="mt-1 text-slate-700">Stay calm, reassure, and ensure immediate safety.</p>
         </div>
-        <div class="bg-white p-4 rounded shadow-sm text-center">
+        <div class="card card-pad text-center">
           <div class="brand-bg text-white w-10 h-10 rounded-full mx-auto flex items-center justify-center" aria-hidden="true">3</div>
           <h3 class="mt-2 font-semibold">Refer</h3>
           <p class="mt-1 text-slate-700">Record facts and report via the proper pathway.</p>
@@ -103,29 +108,31 @@
       </div>
     </section>
 
-    <section id="signs" class="mt-10 fade-in card-wrap" aria-labelledby="signs-heading">
+    <section id="signs" class="section fade-in card-wrap" aria-labelledby="signs-heading">
+      <span class="eyebrow">Indicators</span>
       <h2 id="signs-heading" class="text-2xl font-bold text-slate-900">Signs to Watch For</h2>
       <ul class="mt-4 card-grid card-grid-2">
-        <li class="bg-white p-4 rounded shadow-sm">
-          <strong class="block">Physical signs</strong>
+        <li class="card card-pad">
+          <strong class="block list-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>Physical signs</strong>
           <span class="text-slate-600">Unexplained injuries, repeated injuries, or signs of neglect.</span>
         </li>
-        <li class="bg-white p-4 rounded shadow-sm">
-          <strong class="block">Behavioural signs</strong>
+        <li class="card card-pad">
+          <strong class="block list-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16" stroke="currentColor" stroke-width="2"/></svg>Behavioural signs</strong>
           <span class="text-slate-600">Sudden withdrawal, fear, or unusual anxiety around a person.</span>
         </li>
-        <li class="bg-white p-4 rounded shadow-sm">
-          <strong class="block">Emotional signs</strong>
+        <li class="card card-pad">
+          <strong class="block list-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 7c2.5 0 4.5 2 4.5 4.5S14.5 16 12 16 7.5 14 7.5 11.5 9.5 7 12 7z" stroke="currentColor" stroke-width="2"/></svg>Emotional signs</strong>
           <span class="text-slate-600">Low mood, unexplained anger, or sudden changes in mood.</span>
         </li>
-        <li class="bg-white p-4 rounded shadow-sm">
-          <strong class="block">Environmental signs</strong>
+        <li class="card card-pad">
+          <strong class="block list-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="6" width="16" height="12" rx="2" stroke="currentColor" stroke-width="2"/></svg>Environmental signs</strong>
           <span class="text-slate-600">Unsafe living conditions or lack of basic care.</span>
         </li>
       </ul>
     </section>
 
-    <section id="actions" class="mt-10 fade-in card-wrap" aria-labelledby="actions-heading">
+    <section id="actions" class="section section-alt fade-in card-wrap" aria-labelledby="actions-heading">
+      <span class="eyebrow">Steps</span>
       <h2 id="actions-heading" class="text-2xl font-bold text-slate-900">Action Steps</h2>
       <ol class="mt-4 list-decimal list-inside space-y-3">
         <li><strong>Stay calm:</strong> Keep the person safe and listen without judgement.</li>
@@ -136,11 +143,11 @@
       <div class="mt-6">
         <h3 class="text-lg font-semibold">Quick contacts</h3>
           <ul class="mt-2 space-y-2">
-            <li class="flex items-center justify-between bg-white p-3 rounded shadow-sm">
+            <li class="flex items-center justify-between card card-pad">
               <span>Emergency services (local)</span>
               <a href="tel:999" class="brand-text" aria-label="Call 999"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">999</span></a>
             </li>
-            <li class="flex items-center justify-between bg-white p-3 rounded shadow-sm">
+            <li class="flex items-center justify-between card card-pad">
               <span>Safeguarding team (24/7)</span>
               <a href="mailto:safeguard@example.org" class="brand-text">safeguard@example.org</a>
             </li>
@@ -189,20 +196,21 @@
 
       
 
-      <section id="cases" class="mt-12" aria-labelledby="cases-heading">
+      <section id="cases" class="section" aria-labelledby="cases-heading">
+        <span class="eyebrow">Examples</span>
         <h2 id="cases-heading" class="text-2xl font-bold text-slate-900">Case Examples</h2>
         <div class="mt-4 card-grid card-grid-2">
-          <div class="bg-white p-4 rounded shadow-sm">
+          <div class="card card-pad">
             <strong class="block">School disclosure</strong>
             <p class="mt-1 text-slate-700">A pupil quietly tells you they don’t feel safe at home.</p>
             <p class="mt-2 text-slate-700"><strong>Action:</strong> Stay calm, thank them for telling you, avoid promises of secrecy, ensure immediate safety, record exact words and context, and refer to the safeguarding lead the same day.</p>
           </div>
-          <div class="bg-white p-4 rounded shadow-sm">
+          <div class="card card-pad">
             <strong class="block">Elder neglect</strong>
             <p class="mt-1 text-slate-700">You notice weight loss, poor hygiene, and untreated sores in a neighbor.</p>
             <p class="mt-2 text-slate-700"><strong>Action:</strong> Check immediate needs, document observations with dates, and contact local adult safeguarding services. If health risk is urgent, call emergency services.</p>
           </div>
-          <div class="bg-white p-4 rounded shadow-sm sm:col-span-2">
+          <div class="card card-pad sm:col-span-2">
             <strong class="block">Online exploitation</strong>
             <p class="mt-1 text-slate-700">A young person receives coercive messages from an unknown adult online.</p>
             <p class="mt-2 text-slate-700"><strong>Action:</strong> Preserve evidence (screenshots, usernames), avoid confronting the suspected offender, provide reassurance, and report through safeguarding and appropriate authorities.</p>
@@ -210,7 +218,8 @@
         </div>
       </section>
 
-      <section id="regional" class="mt-12" aria-labelledby="regional-heading">
+      <section id="regional" class="section section-alt" aria-labelledby="regional-heading">
+        <span class="eyebrow">Contacts</span>
         <h2 id="regional-heading" class="text-2xl font-bold text-slate-900">Regional Contacts</h2>
         <div class="mt-3 flex items-center gap-3">
           <label for="regionSearch" class="text-sm">Search</label>
@@ -227,32 +236,32 @@
           </select>
         </div>
         <div class="mt-4 grid gap-3 sm:grid-cols-2" id="regionalGrid">
-          <div class="bg-white p-4 rounded shadow-sm" data-region="uk" data-name="united kingdom">
+          <div class="card card-pad" data-region="uk" data-name="united kingdom">
             <strong class="block">United Kingdom</strong>
             <a class="brand-text" href="tel:999" aria-label="Call 999"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">999</span></a>
             <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://www.samaritans.org/" target="_blank" class="brand-text">Samaritans</a>, <a href="https://www.nspcc.org.uk/" target="_blank" class="brand-text">NSPCC</a></p>
           </div>
-          <div class="bg-white p-4 rounded shadow-sm" data-region="us" data-name="united states">
+          <div class="card card-pad" data-region="us" data-name="united states">
             <strong class="block">United States</strong>
             <a class="brand-text" href="tel:911" aria-label="Call 911"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">911</span></a>
             <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://988lifeline.org/" target="_blank" class="brand-text">988 Lifeline</a></p>
           </div>
-          <div class="bg-white p-4 rounded shadow-sm" data-region="eu" data-name="european union">
+          <div class="card card-pad" data-region="eu" data-name="european union">
             <strong class="block">European Union</strong>
             <a class="brand-text" href="tel:112" aria-label="Call 112"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">112</span></a>
             <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://www.iasp.info/resources/helplines/" target="_blank" class="brand-text">International helplines</a></p>
           </div>
-          <div class="bg-white p-4 rounded shadow-sm" data-region="au" data-name="australia">
+          <div class="card card-pad" data-region="au" data-name="australia">
             <strong class="block">Australia</strong>
             <a class="brand-text" href="tel:000" aria-label="Call 000"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">000</span></a>
             <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://www.lifeline.org.au/" target="_blank" class="brand-text">Lifeline Australia</a></p>
           </div>
-          <div class="bg-white p-4 rounded shadow-sm" data-region="ca" data-name="canada">
+          <div class="card card-pad" data-region="ca" data-name="canada">
             <strong class="block">Canada</strong>
             <a class="brand-text" href="tel:911" aria-label="Call 911"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">911</span></a>
             <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://talksuicide.ca/" target="_blank" class="brand-text">Talk Suicide</a></p>
           </div>
-          <div class="bg-white p-4 rounded shadow-sm" data-region="nz" data-name="new zealand">
+          <div class="card card-pad" data-region="nz" data-name="new zealand">
             <strong class="block">New Zealand</strong>
             <a class="brand-text" href="tel:111" aria-label="Call 111"><img src="assets/images/phoneicon.jpeg" class="phone-icon" alt="" aria-hidden="true"/><span class="phone-num">111</span></a>
             <p class="mt-1 text-slate-600 text-sm">Non-emergency helplines: <a href="https://www.mentalhealth.org.nz/get-help/" target="_blank" class="brand-text">Mental Health Foundation NZ</a></p>
@@ -265,8 +274,9 @@
 
     
 
-    <footer class="mt-14 mb-8 text-sm text-slate-600 site-footer" role="contentinfo">
-      <div class="max-w-4xl mx-auto px-4">
+    </div>
+    <footer class="site-footer" role="contentinfo">
+      <div class="container px-4">
         <div class="footer-grid">
           <div>
             <h4 class="font-semibold">About</h4>

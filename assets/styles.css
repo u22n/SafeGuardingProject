@@ -92,6 +92,48 @@ a:focus, a:focus-visible {box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.10)}
 .brand-text::after{content:"";position:absolute;left:0;right:auto;bottom:-6px;height:2px;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-dark));transition:width .22s cubic-bezier(.2,.9,.2,1)}
 .brand-text:hover::after, .brand-text:focus::after{width:100%}
 .brand-text:focus{outline:none}
+
+/* Layout improvements */
+.section{padding:4rem 0}
+.section-alt{background:#f1f5f9}
+.section-contrast{background:#e2e8f0}
+.eyebrow{display:inline-block;font-size:.75rem;color:#64748b;letter-spacing:.08em;text-transform:uppercase}
+.container{max-width:72rem;margin:0 auto;padding:0 1rem}
+
+/* Cards: clearer definition */
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:.75rem;box-shadow:0 1px 2px rgba(2,6,23,.06)}
+.card-pad{padding:1rem}
+.card-grid{display:grid;gap:1rem}
+
+/* Header & Footer */
+.site-header{background:#ffffffd9;backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid #e2e8f0}
+.site-footer{background:#f1f5f9;color:#0f172a;padding:3rem 0;border-top:1px solid #e2e8f0;width:100%}
+.site-footer a{color:#0EA5A4}
+.site-footer .brand-text{color:#0EA5A4}
+.site-footer .brand-text::after{background:linear-gradient(90deg,#0EA5A4,transparent)}
+.footer-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+
+/* Nav tweaks */
+.nav-menu a{color:#0f172a}
+.nav-link{padding:.25rem .5rem;border-radius:.5rem}
+.nav-link:hover{background:#f1f5f9}
+
+/* Iconography: small monochrome icons */
+.list-icon{display:inline-flex;align-items:center;gap:.5rem}
+.list-icon svg{width:18px;height:18px;color:#334155}
+
+/* Spacing rhythm */
+.stack-md>*+*{margin-top:1rem}
+.stack-lg>*+*{margin-top:1.5rem}
+
+/* Hero illustration refinement */
+.hero-illustration{max-width:560px}
+
+/* Hero full-bleed feel */
+.hero-wrap{padding:6rem 0;background:#f8fafc}
+.hero-wrap .container{max-width:64rem}
+.hero-title{font-size:clamp(2rem,3.5vw,3rem);line-height:1.15}
+.hero-lead{font-size:1.0625rem;color:#475569}
 .brand-bg{background:linear-gradient(90deg, var(--brand), var(--brand-dark))}
 .brand-btn{background:var(--brand);color:#fff}
 .brand-btn:hover{background:var(--brand-dark)}
