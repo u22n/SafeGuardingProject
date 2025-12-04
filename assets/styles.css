@@ -44,8 +44,8 @@ a[href^="tel"]:hover, a[href^="tel"]:focus{transform:translateY(-3px);box-shadow
 a[href^="tel"]:focus{outline:none;box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.08)}
 
 /* phone icon inside tel links */
-.phone-icon{width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:.5rem;flex:0 0 16px}
-.phone-num{font-weight:600}
+.phone-icon{width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:0;flex:0 0 16px}
+.phone-num{font-weight:500;font-family:'Poppins','Inter',system-ui, -apple-system,Segoe UI,Roboto,Helvetica,Arial;font-variant-numeric:tabular-nums;color:var(--brand)}
 
 /* Footer icon wrap: circular background and hover tint for raster icons */
 .icon-wrap{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:9999px;overflow:hidden;margin-right:.5rem;transition:background .18s ease}
@@ -55,8 +55,13 @@ a[href^="tel"]:focus{outline:none;box-shadow:0 0 0 6px rgba(var(--brand-rgb),0.0
 .site-footer a:focus .icon-wrap img{filter:brightness(0) invert(1)}
 /* Ensure pointer hover does not apply a tint or motion to footer phone icons */
 .site-footer a:hover .icon-wrap, .site-footer a:hover .icon-wrap img{background:transparent;filter:none}
-/* Also disable lift/transform for tel links in footer specifically */
+/* Make footer tel anchors inline-flex so icon and number sit together and the underline spans both */
+.site-footer a[href^="tel"]{display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap;position:relative}
+/* Disable lift/transform for tel links in footer specifically */
 .site-footer a[href^="tel"]:hover, .site-footer a[href^="tel"]:focus{transform:none;box-shadow:none;color:var(--brand)}
+
+/* Email links: use distinctive heading font but moderate weight so they stand out without feeling heavy */
+a[href^="mailto"]{font-family:'Poppins','Inter',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;font-weight:500}
 @media (max-width:640px){.icon-wrap{width:26px;height:26px}.icon-wrap img{width:18px;height:18px}}
 
 /* Footer phone number sizing to keep it fitting in one line on wide screens */
