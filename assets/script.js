@@ -631,8 +631,8 @@ if(form && submitBtn){
 // Animate reports counter
 const reportsCounter = document.getElementById('reportsThisMonth');
 if(reportsCounter){
-  // Generate random number between 89-156
-  const randomReports = Math.floor(Math.random() * (156 - 89 + 1)) + 89;
+  // Generate random number between 187-342
+  const randomReports = Math.floor(Math.random() * (342 - 187 + 1)) + 187;
   reportsCounter.dataset.count = randomReports;
   
   // Animate on page load
@@ -641,7 +641,27 @@ if(reportsCounter){
     entries.forEach(function(entry){
       if(entry.isIntersecting && !reportsCounter.dataset.animated){
         reportsCounter.dataset.animated = 'true';
-        animateCounter(reportsCounter, randomReports);
+        // Custom animation for reports counter (no suffix)
+        const duration = 2000;
+        const start = 0;
+        const startTime = performance.now();
+        
+        function update(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+          const current = Math.floor(start + (randomReports - start) * easeOutQuart);
+          
+          reportsCounter.textContent = current;
+          
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            reportsCounter.textContent = randomReports;
+          }
+        }
+        
+        requestAnimationFrame(update);
       }
     });
   }, observerOptions);
