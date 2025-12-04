@@ -747,3 +747,170 @@ if (anonymousToggle && anonymousExplainer && shieldIcon) {
     }
   });
 }
+
+// Settings Panel
+const settingsToggle = document.getElementById('settingsToggle');
+const settingsPanel = document.getElementById('settingsPanel');
+const settingsClose = document.getElementById('settingsClose');
+
+if (settingsToggle && settingsPanel && settingsClose) {
+  settingsToggle.addEventListener('click', () => {
+    settingsPanel.classList.remove('hidden');
+    setTimeout(() => {
+      settingsPanel.style.transform = 'translateX(0)';
+    }, 10);
+  });
+
+  settingsClose.addEventListener('click', () => {
+    settingsPanel.style.transform = 'translateX(100%)';
+    setTimeout(() => {
+      settingsPanel.classList.add('hidden');
+    }, 300);
+  });
+}
+
+// Theme Management
+const themeRadios = document.querySelectorAll('input[name="theme"]');
+const fontRadios = document.querySelectorAll('input[name="font"]');
+const reduceMotionCheckbox = document.getElementById('reduceMotion');
+
+function applyTheme(theme) {
+  document.documentElement.classList.remove('theme-light', 'theme-dark', 'theme-high-contrast');
+  document.documentElement.classList.add(`theme-${theme}`);
+  
+  if (theme === 'dark') {
+    document.documentElement.style.setProperty('--bg-gradient-start', '#1e293b');
+    document.documentElement.style.setProperty('--bg-gradient-mid', '#0f172a');
+    document.documentElement.style.setProperty('--bg-gradient-end', '#1e1b4b');
+    document.body.style.color = '#e2e8f0';
+  } else if (theme === 'high-contrast') {
+    document.documentElement.style.setProperty('--bg-gradient-start', '#ffffff');
+    document.documentElement.style.setProperty('--bg-gradient-mid', '#ffffff');
+    document.documentElement.style.setProperty('--bg-gradient-end', '#ffffff');
+    document.body.style.color = '#000000';
+  } else {
+    document.documentElement.style.setProperty('--bg-gradient-start', '#e0e7ff');
+    document.documentElement.style.setProperty('--bg-gradient-mid', '#f1f5f9');
+    document.documentElement.style.setProperty('--bg-gradient-end', '#ddd6fe');
+    document.body.style.color = '';
+  }
+  
+  localStorage.setItem('theme', theme);
+}
+
+function applyFont(font) {
+  document.documentElement.classList.remove('font-default', 'font-dyslexic', 'font-large');
+  document.documentElement.classList.add(`font-${font}`);
+  
+  if (font === 'dyslexic') {
+    document.body.style.fontFamily = "'Comic Sans MS', 'Chalkboard SE', 'Arial Rounded MT Bold', sans-serif";
+  } else if (font === 'large') {
+    document.documentElement.style.fontSize = '18px';
+  } else {
+    document.body.style.fontFamily = '';
+    document.documentElement.style.fontSize = '';
+  }
+  
+  localStorage.setItem('font', font);
+}
+
+function applyReduceMotion(reduce) {
+  if (reduce) {
+    document.documentElement.style.setProperty('--animation-duration', '0.01ms');
+    document.querySelectorAll('*').forEach(el => {
+      el.style.transition = 'none';
+      el.style.animation = 'none';
+    });
+  } else {
+    document.documentElement.style.setProperty('--animation-duration', '');
+    document.querySelectorAll('*').forEach(el => {
+      el.style.transition = '';
+      el.style.animation = '';
+    });
+  }
+  
+  localStorage.setItem('reduceMotion', reduce);
+}
+
+if (themeRadios.length > 0) {
+  themeRadios.forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        applyTheme(e.target.value);
+      }
+    });
+  });
+}
+
+if (fontRadios.length > 0) {
+  fontRadios.forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        applyFont(e.target.value);
+      }
+    });
+  });
+}
+
+if (reduceMotionCheckbox) {
+  reduceMotionCheckbox.addEventListener('change', (e) => {
+    applyReduceMotion(e.target.checked);
+  });
+}
+
+// Load saved preferences
+const savedTheme = localStorage.getItem('theme') || 'light';
+const savedFont = localStorage.getItem('font') || 'default';
+const savedReduceMotion = localStorage.getItem('reduceMotion') === 'true';
+
+document.querySelector(`input[name="theme"][value="${savedTheme}"]`)?.click();
+document.querySelector(`input[name="font"][value="${savedFont}"]`)?.click();
+if (reduceMotionCheckbox && savedReduceMotion) {
+  reduceMotionCheckbox.checked = true;
+  applyReduceMotion(true);
+}
+
+// i18n - Multi-language Support
+let translations = {};
+let currentLang = localStorage.getItem('language') || 'en';
+
+async function loadTranslations() {
+  try {
+    const response = await fetch('assets/translations.json');
+    translations = await response.json();
+    applyTranslations(currentLang);
+  } catch (error) {
+    console.warn('Could not load translations:', error);
+  }
+}
+
+function applyTranslations(lang) {
+  const t = translations[lang] || translations['en'];
+  
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = t[key];
+      } else {
+        el.textContent = t[key];
+      }
+    }
+  });
+  
+  currentLang = lang;
+  localStorage.setItem('language', lang);
+}
+
+const languageSelect = document.getElementById('languageSelect');
+if (languageSelect) {
+  languageSelect.value = currentLang;
+  languageSelect.addEventListener('change', (e) => {
+    applyTranslations(e.target.value);
+  });
+}
+
+// Load translations on page load
+if (Object.keys(translations).length === 0) {
+  loadTranslations();
+}
